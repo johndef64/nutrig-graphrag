@@ -71,7 +71,7 @@ DEEP_MODEL = "deepseek-chat"
 # OLLAMA SETTING
 # !!! qwen2-7B maybe produce unparsable results and cause the extraction of graph to fail.
 OLLAMA_MODEL = "qwen2"
-OLLAMA_MODEL = "gemma2" # solo per test
+OLLAMA_MODEL = "gemma2" 
 
 IP_ADDRESS = "0.0.0.0"
 PORT = 11434
@@ -96,19 +96,9 @@ OLLAMA_CLIENT = connect_ollama_server(ip_address=IP_ADDRESS, port = PORT)
 #     api_key="ollama",
 # )
 
-if False:
-    response = OLLAMA_CLIENT.chat.completions.create(
-        model=OLLAMA_MODEL,
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "Hello World!"},
-        ],
-    )
-    print(response.choices[0].message.content)
 
 
 ######## LLM API CALLS ########
-
 
 async def deepseepk_model_if_cache(
     prompt, system_prompt=None, history_messages=[], **kwargs
@@ -138,7 +128,7 @@ async def deepseepk_model_if_cache(
     # Cache the response if having-------------------
     if hashing_kv is not None:
         await hashing_kv.upsert(
-            {args_hash: {"return": response.choices[0].message.content, "model": MODEL}}
+            {args_hash: {"return": response.choices[0].message.content, "model": DEEP_MODEL}}
         )
     # -----------------------------------------------------
     return response.choices[0].message.content
@@ -211,11 +201,6 @@ async def ollama_model_server_if_cache(
         await hashing_kv.upsert({args_hash: {"return": result, "model": OLLAMA_MODEL}})
     # -----------------------------------------------------
     return result
-
-if False:
-    dd = ollama_model_if_cache("Hello world")
-    print(dd)
-
 
 
 async def ollama_model_if_cache(

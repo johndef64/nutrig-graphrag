@@ -29,9 +29,9 @@ WORKING_DIR = "./dummy_cache"  # For testing purposes, use a dummy cache directo
 
 
 api_keys = load_api_keys()
-# OPENAI EMBEDDER  [Non funziona]
 os.environ['OPENAI_API_KEY'] = api_keys["openai"]
-USING_OPENAI_EMBEDDER = True 
+USING_OPENAI_EMBEDDER = False 
+USING_OLLAMA_EMBEDDER = True 
 
 
 # HUGGINGFACE SETTING
@@ -44,21 +44,7 @@ if BERT_MODEL == "dmis-lab/biobert-v1.1":
     login(api_keys["huggingface"])
 
 
-if not USING_OPENAI_EMBEDDER:
-    EMBED_MODEL = SentenceTransformer(
-        BERT_MODEL, cache_folder=WORKING_DIR, device="cpu"
-    )
-
-    # We're using Sentence Transformers to generate embeddings for the BGE model
-    @wrap_embedding_func_with_attrs(
-        embedding_dim=EMBED_MODEL.get_sentence_embedding_dimension(),
-        max_token_size=EMBED_MODEL.max_seq_length,
-    )
-    async def local_embedding(texts: list[str]) -> np.ndarray:
-        return EMBED_MODEL.encode(texts, normalize_embeddings=True)
-
-else:
-
+if USING_OPENAI_EMBEDDER:
     @wrap_embedding_func_with_attrs(
         embedding_dim=1536,
         max_token_size=8191,
@@ -75,12 +61,44 @@ else:
         # Convert to numpy array
         return np.array(embeddings, dtype=np.float32)
     
+elif USING_OLLAMA_EMBEDDER:
+# Assumed embedding model settings
+    EMBEDDING_MODEL = "nomic-embed-text"
+    EMBEDDING_MODEL_DIM = 768
+    EMBEDDING_MODEL_MAX_TOKENS = 8192
+
+    # We're using Ollama to generate embeddings for the BGE model
+    @wrap_embedding_func_with_attrs(
+        embedding_dim=EMBEDDING_MODEL_DIM,
+        max_token_size=EMBEDDING_MODEL_MAX_TOKENS,
+    )
+    async def local_embedding(texts: list[str]) -> np.ndarray:
+        embed_text = []
+        for text in texts:
+            data = ollama.embeddings(model=EMBEDDING_MODEL, prompt=text)
+            embed_text.append(data["embedding"])
+
+        return embed_text
+
+else:
+    EMBED_MODEL = SentenceTransformer(
+        BERT_MODEL, cache_folder=WORKING_DIR, device="cpu"
+    )
+
+    # We're using Sentence Transformers to generate embeddings for the BGE model
+    @wrap_embedding_func_with_attrs(
+        embedding_dim=EMBED_MODEL.get_sentence_embedding_dimension(),
+        max_token_size=EMBED_MODEL.max_seq_length,
+    )
+    async def local_embedding(texts: list[str]) -> np.ndarray:
+        return EMBED_MODEL.encode(texts, normalize_embeddings=True)
+
 
 
 #%%
 
-USE_LLM = groq_model_if_cache
-# USE_LLM = ollama_model_if_cache
+# USE_LLM = groq_model_if_cache
+USE_LLM = ollama_model_if_cache
 # USE_LLM = deepseepk_model_if_cache
 
 
