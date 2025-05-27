@@ -3,7 +3,7 @@
 test_cache.json
 run_test*.py
 nano_graphrag_cache*/
-*.txt
+#*.txt
 examples/benchmarks/fixtures/
 tests/original_workflow.txt
 ### Python ###
