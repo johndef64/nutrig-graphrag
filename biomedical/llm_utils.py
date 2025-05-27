@@ -73,8 +73,6 @@ DEEP_MODEL = "deepseek-chat"
 OLLAMA_MODEL = "qwen2"
 OLLAMA_MODEL = "gemma2" # solo per test
 
-
-
 IP_ADDRESS = "0.0.0.0"
 PORT = 11434
 # https://ollama.com/library?sort=newest

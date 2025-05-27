@@ -17,7 +17,8 @@ logging.basicConfig(level=logging.WARNING)
 logging.getLogger("nano-graphrag").setLevel(logging.INFO)
 
 # Set WORKING_DIR
-os.chdir(r"/root/projects/nano-graphrag/biomedical")
+# os.chdir(r"/root/projects/nano-graphrag/biomedical")
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 print(os.getcwd())
 
 # WORKING_DIR = "./nano_graphrag_cache_groq_biomed_TEST_300halftext_LLAMA4_BioPrompts_biobert"
@@ -34,15 +35,18 @@ USING_OPENAI_EMBEDDER = True
 
 
 # HUGGINGFACE SETTING
-from huggingface_hub import login
-login(api_keys["huggingface"])
+#  "sentence-transformers/all-MiniLM-L6-v2", "dmis-lab/biobert-v1.1"
+BERT_MODEL = "dmis-lab/biobert-v1.1"
+BERT_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
-["sentence-transformers/all-MiniLM-L6-v2", "dmis-lab/biobert-v1.1"]
+if BERT_MODEL == "dmis-lab/biobert-v1.1":
+    from huggingface_hub import login
+    login(api_keys["huggingface"])
 
 
 if not USING_OPENAI_EMBEDDER:
     EMBED_MODEL = SentenceTransformer(
-        "dmis-lab/biobert-v1.1", cache_folder=WORKING_DIR, device="cpu"
+        BERT_MODEL, cache_folder=WORKING_DIR, device="cpu"
     )
 
     # We're using Sentence Transformers to generate embeddings for the BGE model
