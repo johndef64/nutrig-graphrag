@@ -297,25 +297,30 @@ def create_html_from_graphml(graphml_file, html_path, port=8000, json_file = 'gr
     create_html(html_path)
 
 
-
-
-
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
-folder=r"nano_graphrag_cache_groq_biomed_TEST_300halftext_LLAMA4_BioPrompts_biobert"
-folder=r"nano_graphrag_cache_groq_biomed_TEST_20Results_DEEPSEEK_BioPrompts_biobert"
-folder="cache_groqLLAMA4scout_biobert_bioprompt_20Results_TEST"
-folder = "cache_groqLLAMA4scout_openaiembed_bioprompt_20Results_TEST"
-
-file = folder+"/graph_chunk_entity_relation.graphml"
-
-# usage
-if __name__ == "__main__":
-    graphml_file = file  # replace with your GraphML file path
+def CreateGraphVisualization(folder):
+    file = folder+"/graph_chunk_entity_relation.graphml"
     html_path = f"graph_visualization/graph_visualization_{folder}/graph_visualization.html"
-    create_html_from_graphml(graphml_file, html_path, 11236) #, json_file=f'graph_{folder}_json.js')
-# %%
-os.getcwd()
+    create_html_from_graphml(file, html_path, 11236) 
 
-file
+
+
+
+# os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+# folder=r"nano_graphrag_cache_groq_biomed_TEST_300halftext_LLAMA4_BioPrompts_biobert"
+# folder=r"nano_graphrag_cache_groq_biomed_TEST_20Results_DEEPSEEK_BioPrompts_biobert"
+# folder="cache_groqLLAMA4scout_biobert_bioprompt_20Results_TEST"
+# folder = "cache_groqLLAMA4scout_openaiembed_bioprompt_20Results_TEST"
+
+# file = folder+"/graph_chunk_entity_relation.graphml"
+
+# # usage
+# if __name__ == "__main__":
+#     graphml_file = file  # replace with your GraphML file path
+#     html_path = f"graph_visualization/graph_visualization_{folder}/graph_visualization.html"
+#     create_html_from_graphml(graphml_file, html_path, 11236) #, json_file=f'graph_{folder}_json.js')
+# # %%
+# os.getcwd()
+
+# file
 #, json_file = f'graph_json_{file.split("/")[-1]}.js'

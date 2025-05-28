@@ -147,27 +147,31 @@ df.text = df.text.str.replace("<SEP>","\n\n")
 #%%
 
 ########## RUN THE JOB ##########
-start_id = 0
-batch_size = 5
+start_id = 33
+batch_size = 10
 import time
+
+t1 = time.time() 
 
 if __name__ == "__main__":
     #insert(TEXT)
     #insert(df.text[1])
     #insert("""  """)
-    if True:
-        for i in range(start_id, start_id+batch_size):
-            if len(df.text[i]) > 10: 
-                # print(f"""Inserting text of len {len(df.text[i])}""")
-                insert(df.text[i])
-                print(f"""\n\n<<<<<<<<<<<<<<<<<<<<<  {i+1}/{batch_size+start_id}  >>>>>>>>>>>>>>>>>>\n\n """)
-            else:
-                print("\n\n\n\n\nNo text...\n\n\n\n\n")
-            
-            print("Sleeping...")
-            time.sleep(3)
     
+    for i in range(start_id, start_id+batch_size):
+        if len(df.text[i]) > 10: 
+            # print(f"""Inserting text of len {len(df.text[i])}""")
+            insert(df.text[i])
+            print(f"""\n\n<<<<<<<<<<<<<<<<<<<<<  {i+1}/{batch_size+start_id}  >>>>>>>>>>>>>>>>>>\n\n """)
+        else:
+            print("\n\n\n\n\nNo text...\n\n\n\n\n")
+        
+        print("Sleeping...")
+        time.sleep(3)
     
+print(f"\033[94mBatch runtime: [{round(time.time() - t1, 2)}s]\033[0m")
+
+
 
 from biomedical.graphml_visualize import CreateGraphVisualization
 
