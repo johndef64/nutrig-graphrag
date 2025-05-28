@@ -11,3 +11,6 @@ dspy-ai
 neo4j
 aioboto3
 groq
+sentence-transformers
+nest-asyncio
+asyncio
