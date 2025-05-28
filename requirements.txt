@@ -14,3 +14,4 @@ groq
 sentence-transformers
 nest-asyncio
 asyncio
+ollama
