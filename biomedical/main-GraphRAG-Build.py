@@ -25,7 +25,7 @@ print(os.getcwd())
 # WORKING_DIR = "./nano_graphrag_cache_groq_biomed_TEST_200Results_LLAMA4_BioPrompts_biobert"
 WORKING_DIR = "./cache_groqLLAMA4scout_biobert_bioprompt_20Results_TEST"
 WORKING_DIR = "./cache_groqLLAMA4scout_openaiembed_bioprompt_20Results_TEST"
-WORKING_DIR = "./dummy_cache_groqllama4_openaiemb"  # For testing purposes, use a dummy cache directory
+WORKING_DIR = "./cache_groqllama4_openaiemb_50Results"  # For testing purposes, use a dummy cache directory
 
 
 api_keys = load_api_keys()
@@ -147,8 +147,8 @@ df.text = df.text.str.replace("<SEP>","\n\n")
 #%%
 
 ########## RUN THE JOB ##########
-start_id = 33
-batch_size = 10
+start_id = 46
+batch_size = 4
 import time
 
 t1 = time.time() 
@@ -167,7 +167,7 @@ if __name__ == "__main__":
             print("\n\n\n\n\nNo text...\n\n\n\n\n")
         
         print("Sleeping...")
-        time.sleep(3)
+        time.sleep(10)
     
 print(f"\033[94mBatch runtime: [{round(time.time() - t1, 2)}s]\033[0m")
 
@@ -180,12 +180,11 @@ CreateGraphVisualization(WORKING_DIR.split("/")[-1])
 
 
 #%%
-"""
-Nota: Inserire Risultati e Discussione insieme fa bloccare il batch 
 
-InternalServerError: Error code: 503 - {'error': {'message': 'Service Unavailable', 'type': 'internal_server_error'}}
-"""
+# Nota: Inserire Risultati e Discussione insieme fa bloccare il batch 
+
+# InternalServerError: Error code: 503 - {'error': {'message': 'Service Unavailable', 'type': 'internal_server_error'}}
+
+# Limite Grow : Error code: 429 - {'error': {'message': 'Rate limit reached for model `meta-llama/llama-4-scout-17b-16e-instruct` in organization `org_01jsh6rb0jfm88d0qyz3b7zr1k` service tier `on_demand` on tokens per minute (TPM): Limit 300000, Used 320646, Requested 3149. Please try again in 4.759s. Need more tokens? Visit https://groq.com/self-serve-support/ to request higher limits.', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
     
 #%%
-df.text
-
