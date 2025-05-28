@@ -25,13 +25,13 @@ print(os.getcwd())
 # WORKING_DIR = "./nano_graphrag_cache_groq_biomed_TEST_200Results_LLAMA4_BioPrompts_biobert"
 WORKING_DIR = "./cache_groqLLAMA4scout_biobert_bioprompt_20Results_TEST"
 WORKING_DIR = "./cache_groqLLAMA4scout_openaiembed_bioprompt_20Results_TEST"
-WORKING_DIR = "./dummy_cache"  # For testing purposes, use a dummy cache directory
+WORKING_DIR = "./dummy_cache_groqllama4_openaiemb"  # For testing purposes, use a dummy cache directory
 
 
 api_keys = load_api_keys()
 os.environ['OPENAI_API_KEY'] = api_keys["openai"]
-USING_OPENAI_EMBEDDER = False 
-USING_OLLAMA_EMBEDDER = True 
+USING_OPENAI_EMBEDDER = True
+USING_OLLAMA_EMBEDDER = False 
 
 
 # HUGGINGFACE SETTING
@@ -97,8 +97,8 @@ else:
 
 #%%
 
-# USE_LLM = groq_model_if_cache
-USE_LLM = ollama_model_if_cache
+USE_LLM = groq_model_if_cache
+# USE_LLM = ollama_model_if_cache
 # USE_LLM = deepseepk_model_if_cache
 
 
@@ -106,23 +106,6 @@ def remove_if_exist(file):
     if os.path.exists(file):
         os.remove(file)
 
-
-def query(question):
-    rag = GraphRAG(
-        working_dir=WORKING_DIR,
-        best_model_func=USE_LLM,
-        cheap_model_func=USE_LLM,
-        embedding_func=local_embedding,
-    )
-    print(
-        rag.query(
-            question, param=QueryParam(mode="global")
-        )
-    )
-
-
-# with open("datasets/abstract10.txt", encoding="utf-8-sig") as f:
-#     TEXT = f.read()
 
 def insert(TEXT):
     from time import time
@@ -160,18 +143,12 @@ df.text = df["RESULTS"]
 df.text = df.text.str.replace("<SEP>","\n\n")
 # df.to_csv("datasets/halftext_dataset5000.csv", index=False)
 
-question = "What are the top themes in this story?"
-question = "What is the function of the protein encoded by the gene CDK2?"
-question = "With what the gene CTLA4 is associated with?"
-question = "Tell me hypertension-associated Mutations and genes"
-question = "What is SOD and what are his main relationships in nutrition?"
-# question = "tell me to what condition are Genetic variants in DLG5 associated"
 
 #%%
 
 ########## RUN THE JOB ##########
 start_id = 0
-batch_size = 1
+batch_size = 5
 import time
 
 if __name__ == "__main__":
@@ -188,9 +165,14 @@ if __name__ == "__main__":
                 print("\n\n\n\n\nNo text...\n\n\n\n\n")
             
             print("Sleeping...")
-            time.sleep(5)
+            time.sleep(3)
     
-    # query(question)
+    
+
+from biomedical.graphml_visualize import CreateGraphVisualization
+
+CreateGraphVisualization(WORKING_DIR.split("/")[-1])
+
 
 
 #%%
@@ -203,29 +185,3 @@ InternalServerError: Error code: 503 - {'error': {'message': 'Service Unavailabl
 #%%
 df.text
 
-#%%
-print("<<< ----------------- >>>")
-
-#%%
-
-if not __name__ == "__main__":
-    GROQ_API_KEY = api_keys["groq"]
-    MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
-    # MODEL = "llama-3.1-8b-instant"
-
-    # Test Native LLM response
-    from groq import Groq
-
-    client = Groq(api_key=GROQ_API_KEY)
-
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant"},
-            {"role": "user", "content": question},
-        ],
-        stream=False
-    )
-
-    print(response.choices[0].message.content)
-# %%
