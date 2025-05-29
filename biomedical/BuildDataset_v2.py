@@ -63,14 +63,32 @@ import time
 df = pd.read_csv("pubmed_id.csv")
 
 # Define the function to get data from PubMed Central API
-for article_id in df.pubmed_id[starting_index : starting_index+batch_size]:
+def get_pmcoa_data(article_id):
+    BASE_URL = f'https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/{article_id}/unicode'
+    print(BASE_URL)
+    try:
+        response = requests.get(BASE_URL)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        # Handle potential errors (e.g., network issues, invalid article_id)
+        print(f"Failed to get data for article ID {article_id}: {e}")
+        return None
+
+
+# Initialize an empty list to store the combined texts
+articles_data = []
+starting_index = 0
+batch_size = 2000
+
+# Loop through each article ID
+for article_id in df.pubmed_id[starting_index:starting_index+batch_size]:
     data = get_pmcoa_data(article_id)
 
     if data is None:
         print(f"Failed to retrieve data for article ID {article_id}")
         # Append empty strings for each section
         articles_data.append({
-            "pubmed_id": article_id, 
             "INTRO": " ",
             'METHODS': " ",
             "RESULTS": " ",
@@ -79,7 +97,7 @@ for article_id in df.pubmed_id[starting_index : starting_index+batch_size]:
         continue  # Skip to next iteration
 
     # Initialize a dictionary to store sections for current article
-    article_sections = {"pubmed_id": article_id, "INTRO": "", 'METHODS': "", "RESULTS": "", "DISCUSS": ""}
+    article_sections = {"INTRO": "", 'METHODS': "", "RESULTS": "", "DISCUSS": ""}
 
     # Define target section types
     target_section_types = ["INTRO", 'METHODS', "RESULTS", "DISCUSS"]
@@ -91,29 +109,26 @@ for article_id in df.pubmed_id[starting_index : starting_index+batch_size]:
     for passage in passages:
         section_type = passage["infons"]["section_type"]
         if section_type in target_section_types:
-            article_sections[section_type] += "<SEP>" + passage["text"]
-
-
+            article_sections[section_type] = passage["text"]
 
     # Append the sections dictionary to the list
     articles_data.append(article_sections)
 
-    time.sleep(0.1)
+    time.sleep(0.2)
 
 # Create DataFrame with separate columns for each section
 df_sections = pd.DataFrame(articles_data)
-# df_sections["pubmed_id"] = df.pubmed_id[starting_index : starting_index+batch_size]
-result_df = df_sections
+
 
 #%%
 # Create a DataFrame with pubmed_id and merged text
-# result_df = pd.DataFrame({
-#     "pubmed_id":   df_sections.pubmed_id[0 : batch_size ],
-#     "INTRO":       df_sections.INTRO[0 : batch_size ],
-#     "METHODS":   df_sections.METHODS[0 : batch_size ],
-#     "RESULTS":   df_sections.RESULTS[0 : batch_size ],
-#     "DISCUSS":   df_sections.DISCUSS[0 : batch_size ]
-# })
+result_df = pd.DataFrame({
+    "pubmed_id": df.pubmed_id[0:batch_size],
+    "INTRO": df_sections.INTRO[0:batch_size],
+    "METHODS": df_sections.METHODS[0:batch_size],
+    "RESULTS": df_sections.RESULTS[0:batch_size],
+    "DISCUSS": df_sections.DISCUSS[0:batch_size]
+})
 #result_df["words"] = result_df.text.apply(lambda x: len(x.split(" ")))
 
 # Output the resulting DataFrame
@@ -146,7 +161,6 @@ set(section_types)
 # %%
 
 
-
 import os
 import pandas as pd
 
@@ -174,21 +188,3 @@ df = load_concat_datasets(folder_path)
 df.to_csv("fulltext_dataset.csv", index=False)
 df
 # %%
-
-# FILTERING
-
-import pandas as pd
-
-def filter_dataset(df):
-    # Calcola la somma della lunghezza dei valori in ogni riga
-    df['text_length'] = df.apply(lambda row: sum(len(str(value)) for value in row), axis=1)
-
-    # Filtra le righe dove la somma e' minore di 20
-    filtered_df = df[df['text_length'] >= 20]#.drop(columns=['row_length'])
-
-    return filtered_df
-
-# Esempio di utilizzo
-# df = pd.read_csv("your_dataset.csv")  # Carica il tuo dataset
-filtered_df = filter_dataset(df)
-display(filtered_df[["RESULTS", "DISCUSS"]])#.to_csv("filtered_dataset_resdisc.csv", index=False)
