@@ -628,6 +628,7 @@ async def generate_community_report(
         )
         prompt = community_report_prompt.format(input_text=describe)
         response = await use_llm_func(prompt, **llm_extra_kwargs)
+        # logger.info(f"Community report: {response}")
 
         data = use_string_json_convert_func(response)
         already_processed += 1
@@ -945,6 +946,8 @@ async def _map_global_communities(
 ):
     use_string_json_convert_func = global_config["convert_response_to_json_func"]
     use_model_func = global_config["best_model_func"]
+
+    ## 1. Get community groups
     community_groups = []
     while len(communities_data):
         this_group = truncate_list_by_token_size(
@@ -955,7 +958,10 @@ async def _map_global_communities(
         community_groups.append(this_group)
         communities_data = communities_data[len(this_group) :]
 
+
+    ## Def Mapping communty to query function (LLM-based)
     async def _process(community_truncated_datas: list[CommunitySchema]) -> dict:
+        ## Community selection context
         communities_section_list = [["id", "content", "rating", "importance"]]
         for i, c in enumerate(community_truncated_datas):
             communities_section_list.append(
@@ -966,7 +972,10 @@ async def _map_global_communities(
                     c["occurrence"],
                 ]
             )
+        
         community_context = list_of_list_to_csv(communities_section_list)
+
+        ## Get sys prompt for mapping
         sys_prompt_temp = PROMPTS["global_map_rag_points"]
         sys_prompt = sys_prompt_temp.format(context_data=community_context)
         response = await use_model_func(
@@ -977,10 +986,12 @@ async def _map_global_communities(
         data = use_string_json_convert_func(response)
         return data.get("points", [])
 
+    ## 2. Run all communities mapping in parallel
     logger.info(f"Grouping to {len(community_groups)} groups for global search")
     responses = await asyncio.gather(*[_process(c) for c in community_groups])
     return responses
 
+from datetime import datetime
 
 async def global_query(
     query,
@@ -991,6 +1002,8 @@ async def global_query(
     query_param: QueryParam,
     global_config: dict,
 ) -> str:
+    
+    ## Get communities
     community_schema = await knowledge_graph_inst.community_schema()
     community_schema = {
         k: v for k, v in community_schema.items() if v["level"] <= query_param.level
@@ -1021,8 +1034,13 @@ async def global_query(
         key=lambda x: (x["occurrence"], x["report_json"].get("rating", 0)),
         reverse=True,
     )
-    logger.info(f"Revtrieved {len(community_datas)} communities")
+    #logger.info(f"<<<<<<<< Community data {community_datas} >>>>>>>>>>>>")
+    # with open(f"community_data_{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}.json", "w") as f:
+    #     json.dump(community_datas, f, indent=4)
 
+    logger.info(f"Revtrieved {len(community_datas)} communities")
+    
+    ### Map communities to points with query
     map_communities_points = await _map_global_communities(
         query, community_datas, query_param, global_config
     )
