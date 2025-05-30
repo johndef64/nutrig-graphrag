@@ -6,44 +6,44 @@ Reference:
 GRAPH_FIELD_SEP = "<SEP>"
 PROMPTS = {}
 default_entity_types = ["organization", "person", "geo", "event"]
-default_entity_types_full = [
+# default_entity_types_full = [
+#     "Gene",
+#     "Genomic Variant",
+#     "Transcript",
+#     "Protein",
+#     "Nutrient",
+#     "Food",
+#     "Dietary Supplement",
+#     "Dietary Pattern",
+#     "Physiological Process",
+#     "Metabolic Pathway",
+#     "Organ",
+#     "Tissue",
+#     "Cell",
+#     "Hormone",
+#     "Disease",
+#     "Disorder",
+#     "Symptom",
+#     "Biomarker",
+#     "Biological Pathway",
+#     "Molecular Interaction",
+#     "Epigenetic Modification",
+#     "Environmental Factor",
+#     "Lifestyle Factor",
+#     "Drug",
+#     "Therapy",
+#     "Population",
+#     "Study",
+#     "Enzyme",
+#     "Metabolite"
+# ]
+default_entity_types = [
     "Gene",
-    "Genomic Variant",
+    "Genetic Variant",
     "Transcript",
     "Protein",
     "Nutrient",
     "Food",
-    "Dietary Supplement",
-    "Dietary Pattern",
-    "Physiological Process",
-    "Metabolic Pathway",
-    "Organ",
-    "Tissue",
-    "Cell",
-    "Hormone",
-    "Disease",
-    "Disorder",
-    "Symptom",
-    "Biomarker",
-    "Biological Pathway",
-    "Molecular Interaction",
-    "Epigenetic Modification",
-    "Environmental Factor",
-    "Lifestyle Factor",
-    "Drug",
-    "Therapy",
-    "Population",
-    "Study",
-    "Enzyme",
-    "Metabolite"
-]
-default_entity_types = [
-    "Gene",
-    "Genomic Variant",
-    "Transcript",
-    "Protein",
-    "Nutrient",
-    #"Food",
     "Dietary Pattern",
     "Physiological Process",
     "Metabolic Pathway",
@@ -83,7 +83,7 @@ Format each claim as (<subject_entity>{tuple_delimiter}<object_entity>{tuple_del
 
 -Examples-
 Example 1:
-Entity specification: gene
+Entity specification: GENE VARIANT
 Claim description: association with nutrient and disease risk
 Text: According to a study published on 2021/09/15, the gene variant rs12345 (located on chromosome 12) was found to be associated with an increased risk of developing cardiovascular disease when individuals consumed high levels of saturated fats. The study, conducted by Research Institute X, analyzed data from 10,000 participants over a 10-year period and identified that carriers of the rs12345 variant who followed a high-saturated-fat diet had a 2.3-fold increased risk of cardiovascular disease compared to non-carriers on the same diet. The study was funded by Health Organization Y and published in the journal *Nutrition and Genetics*.
 Output:
