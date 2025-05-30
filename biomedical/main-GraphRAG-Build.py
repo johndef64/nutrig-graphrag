@@ -3,6 +3,8 @@ import os
 import logging
 import ollama
 import numpy as np
+import pandas as pd
+import time
 from openai import AsyncOpenAI
 from nano_graphrag import GraphRAG, QueryParam
 from nano_graphrag import GraphRAG, QueryParam
@@ -11,7 +13,6 @@ from nano_graphrag._utils import compute_args_hash, wrap_embedding_func_with_att
 from sentence_transformers import SentenceTransformer
 
 
-from biomedical.llm_utils import *
 
 logging.basicConfig(level=logging.WARNING)
 logging.getLogger("nano-graphrag").setLevel(logging.INFO)
@@ -21,27 +22,82 @@ logging.getLogger("nano-graphrag").setLevel(logging.INFO)
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 print(os.getcwd())
 
+# Set working Directory
 WORKING_DIR = "./cache_groqLLAMA4scout_biobert_bioprompt_20Results_TEST"
 WORKING_DIR = "./cache_groqLLAMA4scout_openaiembed_bioprompt_20Results_TEST"
 WORKING_DIR = "./cache_groqllama4_openaiemb_50Results"  # For testing purposes, use a dummy cache directory
-WORKING_DIR = "./GAGA"  # For testing purposes, use a dummy cache directory
+WORKING_DIR = "./GAGA2"  # For testing purposes, use a dummy cache directory
 
 
-##### Choose the embedding model #####
-# embedder = openai_embedding
-# embedder = ollama_embedding
-embedder = local_embedding
 
 #### Choose the model to use for the RAG #####
-USE_LLM = groq_model_if_cache
-# USE_LLM = ollama_model_if_cache
-# USE_LLM = deepseepk_model_if_cache
+OLLAMA_MODELS = {
+    0: "deepseek-v2",
+    1: "gemma2",
+    2: "gemma2:27b",
+    3: "qwen2:7b",
+    4: "llama3.1:8b",
+    5: "qwen2.5:14b"
+}
 
-# ---> SET paremters in biomedical/llm_utils.py
+GROQ_MODELS = {
+    0: "gemma2-9b-it",
+    1: "llama-3.3-70b-versatile",
+    2: "llama-3.1-8b-instant",
+    3: "llama-guard-3-8b",
+    4: "llama3-70b-8192",
+    5: "llama3-8b-8192",
+    6: "deepseek-r1-distill-llama-70b",
+    7: "meta-llama/llama-4-maverick-17b-128e-instruct",
+    8: "meta-llama/llama-4-scout-17b-16e-instruct",
+    9: "mistral-saba-24b",
+    10: "qwen-qwq-32b"
+}
+
+DEEP_MODELS = {
+    0: "deepseek-chat"
+}
+
+# Choose a model from the GROQ_MODELS dictionary
+os.environ['MODEL'] =  GROQ_MODELS[0]  # <===== Change this to select a different model
+# os.environ['MODEL'] =  OLLAMA_MODELS[0] 
+
+print(f"Using model: {os.environ['MODEL']}")
+
+######################################################
+
+# import llm_utils after MODEL Selection !
+from biomedical.llm_utils import *
+
+##### Choose the embedding model #####
+BERT_MODELS = ["dmis-lab/biobert-v1.1",
+               "all-MiniLM-L6-v2",
+               "all-mpnet-base-v2"
+               ]
+OPENAI_EMBEDDER = "text-embedding-3-small"  
+OLLAMA_EMBEDDING_MODEL = "nomic-embed-text"
+
+embedder = openai_embedding  
+# embedder = ollama_embedding
+# embedder = local_embedding
+
+# ---> Change Default Embedding model in biomedical/llm_utils.py
+
+######################################################
 
 
 #%%
 
+# Run Script
+MODEL = os.environ['MODEL']
+if MODEL in GROQ_MODELS.values():
+    USE_LLM = groq_model_if_cache
+elif MODEL in OLLAMA_MODELS.values():
+    USE_LLM = ollama_model_if_cache
+elif MODEL in DEEP_MODELS.values(): 
+    USE_LLM = deepseepk_model_if_cache
+else: 
+    raise ValueError(f"Model {MODEL} is not recognized. Please choose a valid model from GROQ_MODELS or OLLAMA_MODELS.")
 
 
 def remove_if_exist(file):
@@ -49,7 +105,7 @@ def remove_if_exist(file):
         os.remove(file)
 
 
-def insert(TEXT):
+def insert(TEXT, ):
     from time import time
     #remove_if_exist(f"{WORKING_DIR}/vdb_entities.json")
     #remove_if_exist(f"{WORKING_DIR}/kv_store_full_docs.json")
@@ -70,7 +126,7 @@ def insert(TEXT):
 
 
 ##### LOAD DATASET #####
-import pandas as pd
+
 # df = pd.read_csv("datasets/fulltext_dataset.zip")
 df = pd.read_csv("datasets/chunks/0-3000pmc_fulltext.csv")
 
@@ -89,9 +145,9 @@ df.text = df.text.str.replace("<SEP>","\n\n")
 #%%
 
 ########## RUN THE JOB ##########
-start_id = 46
+start_id = 50
 batch_size = 1
-import time
+
 
 t1 = time.time() 
 
@@ -105,11 +161,14 @@ if __name__ == "__main__":
             # print(f"""Inserting text of len {len(df.text[i])}""")
             insert(df.text[i])
             print(f"""\n\n<<<<<<<<<<<<<<<<<<<<<  {i+1}/{batch_size+start_id}  >>>>>>>>>>>>>>>>>>\n\n """)
+
+            print("Sleeping...")
+            time.sleep(10)
+        
         else:
             print("\n\n\n\n\nNo text...\n\n\n\n\n")
         
-        print("Sleeping...")
-        time.sleep(10)
+        
     
 print(f"\033[94mBatch runtime: [{round(time.time() - t1, 2)}s]\033[0m")
 

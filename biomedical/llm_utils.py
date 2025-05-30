@@ -5,35 +5,55 @@ import logging
 import ollama
 import numpy as np
 from openai import AsyncOpenAI
-from nano_graphrag import GraphRAG, QueryParam
-from nano_graphrag import GraphRAG, QueryParam
 from nano_graphrag.base import BaseKVStorage
 from nano_graphrag._utils import compute_args_hash, wrap_embedding_func_with_attrs
 from sentence_transformers import SentenceTransformer
 
 ###### set parameters ########
 # GROQ SETTING
-GROQ_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
-# GROQ_MODEL = "llama-3.1-8b-instant"
+GROQ_MODELS = {
+    0: "gemma2-9b-it",
+    1: "llama-3.3-70b-versatile",
+    2: "llama-3.1-8b-instant",
+    3: "llama-guard-3-8b",
+    4: "llama3-70b-8192",
+    5: "llama3-8b-8192",
+    6: "deepseek-r1-distill-llama-70b",
+    7: "meta-llama/llama-4-maverick-17b-128e-instruct",
+    8: "meta-llama/llama-4-scout-17b-16e-instruct",
+    9: "mistral-saba-24b",
+    10: "qwen-qwq-32b"
+}
 
 # DEEPSEEK SETTING
-DEEP_MODEL = "deepseek-chat"
+DEEP_MODELS = {
+    0: "deepseek-chat"
+}
 
 # OLLAMA SETTING
 # !!! qwen2-7B maybe produce unparsable results and cause the extraction of graph to fail.
-OLLAMA_MODELS = ["deepseek-v2" ,"gemma2" ,"gemma2:27b" ,"qwen2:7b" ,"llama3.1:8b", "qwen2.5:14b"]
-OLLAMA_MODEL = "qwen2"
-OLLAMA_MODEL = "gemma2" 
+OLLAMA_MODELS = {
+    0: "deepseek-v2",
+    1: "gemma2",
+    2: "gemma2:27b",
+    3: "qwen2:7b",
+    4: "llama3.1:8b",
+    5: "qwen2.5:14b"
+}
 
-IP_ADDRESS = "0.0.0.0"
-PORT = 11434
-# https://ollama.com/library?sort=newest
+# Set MODEL if not set in environment variables
+if not os.environ['MODEL']:
+    os.environ['MODEL'] = GROQ_MODELS[7]  # <===== Change this to select a different model
+    print(f"Using default model: {os.environ['MODEL']}")
 
 
 # HUGGINGFACE SETTING
-BERT_MODEL = "dmis-lab/biobert-v1.1"
-BERT_MODEL = "all-MiniLM-L6-v2"
-BERT_MODEL = "all-mpnet-base-v2"
+BERT_MODELS = {
+    0: "dmis-lab/biobert-v1.1",
+    1: "all-MiniLM-L6-v2",
+    2: "all-mpnet-base-v2"
+}
+BERT_MODEL = BERT_MODELS[2]  # "all-mpnet-base-v2"
 
 # OpenAI embedding model
 OPENAI_EMBEDDER = "text-embedding-3-small"  
@@ -42,6 +62,13 @@ OPENAI_EMBEDDER = "text-embedding-3-small"
 OLLAMA_EMBEDDING_MODEL = "nomic-embed-text"
 OLLAMA_EMBEDDING_MODEL_DIM = 768
 OLLAMA_EMBEDDING_MODEL_MAX_TOKENS = 8192
+
+# Ollama Configuration
+IP_ADDRESS = "0.0.0.0"
+PORT = 11434
+# https://ollama.com/library?sort=newest
+
+
 
 ###########################################
 
@@ -120,8 +147,10 @@ OLLAMA_CLIENT = connect_ollama_server(ip_address=IP_ADDRESS, port = PORT)
 
 ######## LLM API CALLS ########
 
+MODEL = os.environ['MODEL']  # Get the model from environment variables
+
 async def deepseepk_model_if_cache(
-    prompt, system_prompt=None, history_messages=[], **kwargs
+    prompt, system_prompt=None, history_messages=[],  **kwargs
 ) -> str:
     openai_async_client = AsyncOpenAI(
         api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com"
@@ -135,20 +164,20 @@ async def deepseepk_model_if_cache(
     messages.extend(history_messages)
     messages.append({"role": "user", "content": prompt})
     if hashing_kv is not None:
-        args_hash = compute_args_hash(DEEP_MODEL, messages)
+        args_hash = compute_args_hash(MODEL, messages)
         if_cache_return = await hashing_kv.get_by_id(args_hash)
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
 
     response = await openai_async_client.chat.completions.create(
-        model=DEEP_MODEL, messages=messages, **kwargs
+        model=MODEL, messages=messages, **kwargs
     )
 
     # Cache the response if having-------------------
     if hashing_kv is not None:
         await hashing_kv.upsert(
-            {args_hash: {"return": response.choices[0].message.content, "model": DEEP_MODEL}}
+            {args_hash: {"return": response.choices[0].message.content, "model": MODEL}}
         )
     # -----------------------------------------------------
     return response.choices[0].message.content
@@ -170,20 +199,20 @@ async def groq_model_if_cache(
     messages.extend(history_messages)
     messages.append({"role": "user", "content": prompt})
     if hashing_kv is not None:
-        args_hash = compute_args_hash(GROQ_MODEL, messages)
+        args_hash = compute_args_hash(MODEL, messages)
         if_cache_return = await hashing_kv.get_by_id(args_hash)
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
 
     response = await openai_async_client.chat.completions.create(
-        model=GROQ_MODEL, messages=messages, **kwargs
+        model=MODEL, messages=messages, **kwargs
     )
 
     # Cache the response if having-------------------
     if hashing_kv is not None:
         await hashing_kv.upsert(
-            {args_hash: {"return": response.choices[0].message.content, "model": GROQ_MODEL}}
+            {args_hash: {"return": response.choices[0].message.content, "model": MODEL}}
         )
     # -----------------------------------------------------
     return response.choices[0].message.content
@@ -191,7 +220,7 @@ async def groq_model_if_cache(
 
 
 async def ollama_model_server_if_cache(
-    prompt, system_prompt=None, history_messages=[], **kwargs
+    prompt, system_prompt=None, history_messages=[],  **kwargs
 ) -> str:
     # remove kwargs that are not supported by ollama
     kwargs.pop("max_tokens", None)
@@ -208,17 +237,17 @@ async def ollama_model_server_if_cache(
     messages.extend(history_messages)
     messages.append({"role": "user", "content": prompt})
     if hashing_kv is not None:
-        args_hash = compute_args_hash(OLLAMA_MODEL, messages)
+        args_hash = compute_args_hash(MODEL, messages)
         if_cache_return = await hashing_kv.get_by_id(args_hash)
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
-    response = await ollama_client.chat(model=OLLAMA_MODEL, messages=messages, **kwargs)
+    response = await ollama_client.chat(model=MODEL, messages=messages, **kwargs)
 
     result = response["message"]["content"]
     # Cache the response if having-------------------
     if hashing_kv is not None:
-        await hashing_kv.upsert({args_hash: {"return": result, "model": OLLAMA_MODEL}})
+        await hashing_kv.upsert({args_hash: {"return": result, "model": MODEL}})
     # -----------------------------------------------------
     return result
 
@@ -240,17 +269,17 @@ async def ollama_model_if_cache(
     messages.extend(history_messages)
     messages.append({"role": "user", "content": prompt})
     if hashing_kv is not None:
-        args_hash = compute_args_hash(OLLAMA_MODEL, messages)
+        args_hash = compute_args_hash(MODEL, messages)
         if_cache_return = await hashing_kv.get_by_id(args_hash)
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
-    response = await ollama_client.chat(model=OLLAMA_MODEL, messages=messages, **kwargs)
+    response = await ollama_client.chat(model=MODEL, messages=messages, **kwargs)
 
     result = response["message"]["content"]
     # Cache the response if having-------------------
     if hashing_kv is not None:
-        await hashing_kv.upsert({args_hash: {"return": result, "model": OLLAMA_MODEL}})
+        await hashing_kv.upsert({args_hash: {"return": result, "model": MODEL}})
     # -----------------------------------------------------
     return result
 
@@ -300,3 +329,4 @@ EMBED_MODEL = SentenceTransformer(
 )
 async def local_embedding(texts: list[str]) -> np.ndarray:
     return EMBED_MODEL.encode(texts, normalize_embeddings=True)
+# %%
