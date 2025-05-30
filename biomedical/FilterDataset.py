@@ -216,21 +216,24 @@ plot_gaussian_length_distribution(filteredRESULTS_df)
 
 #%%
 
+################## WORING DATASET SELECTION ##################
+################## WORING DATASET SELECTION ##################
+################## WORING DATASET SELECTION ##################
+from biomedical.plots import *
+import pandas as pd
+import matplotlib.pyplot as plt
 filteredRESULTS_df_rsid = pd.read_csv("filterd_results_dataset.csv", index_col=0)
+filteredRESULTS_df_rsid['TOPIC_LABEL'] = filteredRESULTS_df_rsid['TOPIC_LABEL'].apply(ast.literal_eval)
+
 plot_topic_label_distribution(filteredRESULTS_df_rsid)
 plot_gaussian_length_distribution(filteredRESULTS_df_rsid)
 filteredRESULTS_df_rsid#.to_csv("filterd_results_dataset.csv")
 
 # %%
-
 plot_topic_label_and_gaussian_length_distribution(filteredRESULTS_df_rsid)
 
 
-
 # %%
-
-################## WORING DATASET SELECTION ##################
-
 
 expanded_df = filteredRESULTS_df_rsid.explode('TOPIC_LABEL')
 expanded_df
@@ -253,7 +256,7 @@ sampled_df
 #sampled_df.to_csv('sampled_200_per_topic.csv', index=False)
 
 # sampled_df['pubmed_id'].drop_duplicates()
-plot_topic_label_and_gaussian_length_distribution(sampled_df)
+
 #%%
 # sampled_df = df.groupby('TOPIC_LABEL', group_keys=False).apply(lambda x: x.sample(n=200, random_state=42)).reset_index(drop=True)
 # (40873, 980),
@@ -273,10 +276,12 @@ label_dfs = {label: group.copy() for label, group in df.groupby("TOPIC_LABEL")}
 used_pubmed_ids = set()
 
 # Campiona 200 elementi unici per ogni label
+
+num = 20
 final_samples = []
 for label, group in label_dfs.items():
     available = group[~group["pubmed_id"].isin(used_pubmed_ids)]
-    sample = available.sample(n=min(200, len(available)), random_state=92522)
+    sample = available.sample(n=min(num, len(available)), random_state=92522)
     used_pubmed_ids.update(sample["pubmed_id"])
     final_samples.append(sample)
 
@@ -288,6 +293,11 @@ sampled_df
 #plot_topic_label_and_gaussian_length_distribution(sampled_df)
 
 working_dataset = filteredRESULTS_df_rsid[filteredRESULTS_df_rsid.pubmed_id.isin(sampled_df['pubmed_id'])]
-working_dataset#.to_csv("working_dataset.csv", index=False)
-plot_topic_label_and_gaussian_length_distribution(working_dataset)
+working_dataset.to_csv(f"working_dataset_{str(num*5)}.csv", index=False)
+# plot_topic_label_and_gaussian_length_distribution(working_dataset)
+working_dataset
 
+# %%
+plot_topic_label_and_gaussian_length_distribution(working_dataset)
+working_dataset.pubmed_id.nunique()
+# %%
