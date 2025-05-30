@@ -187,3 +187,7 @@ biomedical/datasets/chunks.zip
 biomedical/datasets/fulltext_dataset.zip
 examples/
 novels/
+*api_keys.json
+biomedical/datasets/abstract*
+biomedical/datasets/RAG*
+biomedical/datasets/depreca*

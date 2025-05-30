@@ -21,85 +21,27 @@ logging.getLogger("nano-graphrag").setLevel(logging.INFO)
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 print(os.getcwd())
 
-# WORKING_DIR = "./nano_graphrag_cache_groq_biomed_TEST_300halftext_LLAMA4_BioPrompts_biobert"
-# WORKING_DIR = "./nano_graphrag_cache_groq_biomed_TEST_200Results_LLAMA4_BioPrompts_biobert"
 WORKING_DIR = "./cache_groqLLAMA4scout_biobert_bioprompt_20Results_TEST"
 WORKING_DIR = "./cache_groqLLAMA4scout_openaiembed_bioprompt_20Results_TEST"
 WORKING_DIR = "./cache_groqllama4_openaiemb_50Results"  # For testing purposes, use a dummy cache directory
+WORKING_DIR = "./GAGA"  # For testing purposes, use a dummy cache directory
 
 
-api_keys = load_api_keys()
-os.environ['OPENAI_API_KEY'] = api_keys["openai"]
-USING_OPENAI_EMBEDDER = True
-USING_OLLAMA_EMBEDDER = False 
+##### Choose the embedding model #####
+# embedder = openai_embedding
+# embedder = ollama_embedding
+embedder = local_embedding
 
+#### Choose the model to use for the RAG #####
+USE_LLM = groq_model_if_cache
+# USE_LLM = ollama_model_if_cache
+# USE_LLM = deepseepk_model_if_cache
 
-# HUGGINGFACE SETTING
-#  "sentence-transformers/all-MiniLM-L6-v2", "dmis-lab/biobert-v1.1"
-BERT_MODEL = "dmis-lab/biobert-v1.1"
-BERT_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-
-if BERT_MODEL == "dmis-lab/biobert-v1.1":
-    from huggingface_hub import login
-    login(api_keys["huggingface"])
-
-
-if USING_OPENAI_EMBEDDER:
-    @wrap_embedding_func_with_attrs(
-        embedding_dim=1536,
-        max_token_size=8191,
-    )
-    async def local_embedding(texts: list[str]) -> np.ndarray:
-        client = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
-        # Get embeddings from OpenAI API
-        response = await client.embeddings.create(
-            model="text-embedding-3-small",  # You can choose different models
-            input=texts
-        )
-        # Extract embeddings from response
-        embeddings = [resp.embedding for resp in response.data]
-        # Convert to numpy array
-        return np.array(embeddings, dtype=np.float32)
-    
-elif USING_OLLAMA_EMBEDDER:
-# Assumed embedding model settings
-    EMBEDDING_MODEL = "nomic-embed-text"
-    EMBEDDING_MODEL_DIM = 768
-    EMBEDDING_MODEL_MAX_TOKENS = 8192
-
-    # We're using Ollama to generate embeddings for the BGE model
-    @wrap_embedding_func_with_attrs(
-        embedding_dim=EMBEDDING_MODEL_DIM,
-        max_token_size=EMBEDDING_MODEL_MAX_TOKENS,
-    )
-    async def local_embedding(texts: list[str]) -> np.ndarray:
-        embed_text = []
-        for text in texts:
-            data = ollama.embeddings(model=EMBEDDING_MODEL, prompt=text)
-            embed_text.append(data["embedding"])
-
-        return embed_text
-
-else:
-    EMBED_MODEL = SentenceTransformer(
-        BERT_MODEL, cache_folder=WORKING_DIR, device="cpu"
-    )
-
-    # We're using Sentence Transformers to generate embeddings for the BGE model
-    @wrap_embedding_func_with_attrs(
-        embedding_dim=EMBED_MODEL.get_sentence_embedding_dimension(),
-        max_token_size=EMBED_MODEL.max_seq_length,
-    )
-    async def local_embedding(texts: list[str]) -> np.ndarray:
-        return EMBED_MODEL.encode(texts, normalize_embeddings=True)
-
+# ---> SET paremters in biomedical/llm_utils.py
 
 
 #%%
 
-USE_LLM = groq_model_if_cache
-# USE_LLM = ollama_model_if_cache
-# USE_LLM = deepseepk_model_if_cache
 
 
 def remove_if_exist(file):
@@ -120,7 +62,7 @@ def insert(TEXT):
         enable_llm_cache=True,
         best_model_func=USE_LLM,
         cheap_model_func=USE_LLM,
-        embedding_func=local_embedding,
+        embedding_func=embedder,
     )
     start = time()
     rag.insert(TEXT)
@@ -148,7 +90,7 @@ df.text = df.text.str.replace("<SEP>","\n\n")
 
 ########## RUN THE JOB ##########
 start_id = 46
-batch_size = 4
+batch_size = 1
 import time
 
 t1 = time.time() 

@@ -11,6 +11,40 @@ from nano_graphrag.base import BaseKVStorage
 from nano_graphrag._utils import compute_args_hash, wrap_embedding_func_with_attrs
 from sentence_transformers import SentenceTransformer
 
+###### set parameters ########
+# GROQ SETTING
+GROQ_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
+# GROQ_MODEL = "llama-3.1-8b-instant"
+
+# DEEPSEEK SETTING
+DEEP_MODEL = "deepseek-chat"
+
+# OLLAMA SETTING
+# !!! qwen2-7B maybe produce unparsable results and cause the extraction of graph to fail.
+OLLAMA_MODELS = ["deepseek-v2" ,"gemma2" ,"gemma2:27b" ,"qwen2:7b" ,"llama3.1:8b", "qwen2.5:14b"]
+OLLAMA_MODEL = "qwen2"
+OLLAMA_MODEL = "gemma2" 
+
+IP_ADDRESS = "0.0.0.0"
+PORT = 11434
+# https://ollama.com/library?sort=newest
+
+
+# HUGGINGFACE SETTING
+BERT_MODEL = "dmis-lab/biobert-v1.1"
+BERT_MODEL = "all-MiniLM-L6-v2"
+BERT_MODEL = "all-mpnet-base-v2"
+
+# OpenAI embedding model
+OPENAI_EMBEDDER = "text-embedding-3-small"  
+
+# Assumed embedding model settings
+OLLAMA_EMBEDDING_MODEL = "nomic-embed-text"
+OLLAMA_EMBEDDING_MODEL_DIM = 768
+OLLAMA_EMBEDDING_MODEL_MAX_TOKENS = 8192
+
+###########################################
+
 
 
 def load_json_from_lib(nome_file, local = False):
@@ -59,23 +93,12 @@ api_keys = load_api_keys()
 
 DEEPSEEK_API_KEY = api_keys["deepseek"]
 GROQ_API_KEY = api_keys["groq"]
+os.environ['OPENAI_API_KEY'] = api_keys["openai"]
 
+if BERT_MODEL == "dmis-lab/biobert-v1.1":
+    from huggingface_hub import login
+    login(api_keys["huggingface"])
 
-# GROQ SETTING
-GROQ_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
-# MODEL = "llama-3.1-8b-instant"
-
-# DEEPSEEK SETTING
-DEEP_MODEL = "deepseek-chat"
-
-# OLLAMA SETTING
-# !!! qwen2-7B maybe produce unparsable results and cause the extraction of graph to fail.
-OLLAMA_MODEL = "qwen2"
-OLLAMA_MODEL = "gemma2" 
-
-IP_ADDRESS = "0.0.0.0"
-PORT = 11434
-# https://ollama.com/library?sort=newest
 
 
 def connect_ollama_server(ip_address: str, port: int = 11434):
@@ -91,10 +114,7 @@ def connect_ollama_server(ip_address: str, port: int = 11434):
     return ollama_client
 
 OLLAMA_CLIENT = connect_ollama_server(ip_address=IP_ADDRESS, port = PORT)
-# OLLAMA_CLIENT = OpenAI(
-#     base_url="https://jxbwpvkneg5alo-11434.proxy.runpod.net/",
-#     api_key="ollama",
-# )
+
 
 
 
@@ -233,3 +253,50 @@ async def ollama_model_if_cache(
         await hashing_kv.upsert({args_hash: {"return": result, "model": OLLAMA_MODEL}})
     # -----------------------------------------------------
     return result
+
+
+
+####### Embedders #######
+
+@wrap_embedding_func_with_attrs(
+    embedding_dim=1536,
+    max_token_size=8191,
+)
+async def openai_embedding(texts: list[str]) -> np.ndarray:
+    client = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
+    # Get embeddings from OpenAI API
+    response = await client.embeddings.create(
+        model=OPENAI_EMBEDDER,  # You can choose different models
+        input=texts
+    )
+    # Extract embeddings from response
+    embeddings = [resp.embedding for resp in response.data]
+    # Convert to numpy array
+    return np.array(embeddings, dtype=np.float32)
+
+
+# We're using Ollama to generate embeddings for the BGE model
+@wrap_embedding_func_with_attrs(
+    embedding_dim=OLLAMA_EMBEDDING_MODEL_DIM,
+    max_token_size=OLLAMA_EMBEDDING_MODEL_MAX_TOKENS,
+)
+async def ollama_embedding(texts: list[str]) -> np.ndarray:
+    embed_text = []
+    for text in texts:
+        data = ollama.embeddings(model=OLLAMA_EMBEDDING_MODEL, prompt=text)
+        embed_text.append(data["embedding"])
+
+    return embed_text
+
+# os.mkdir(".cache_huggingface", exist_ok=True)
+EMBED_MODEL = SentenceTransformer(
+    BERT_MODEL, cache_folder= ".cache_huggingface", device="cpu"
+)
+
+# We're using Sentence Transformers to generate embeddings for the BGE model
+@wrap_embedding_func_with_attrs(
+    embedding_dim=EMBED_MODEL.get_sentence_embedding_dimension(),
+    max_token_size=EMBED_MODEL.max_seq_length,
+)
+async def local_embedding(texts: list[str]) -> np.ndarray:
+    return EMBED_MODEL.encode(texts, normalize_embeddings=True)
