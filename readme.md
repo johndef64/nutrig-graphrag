@@ -145,10 +145,10 @@ If you use this software, please cite both nano-graphrag and this repo.
 
 ```bibtex
 @misc{nutrigenetic-graphrag,
-  author = {Your Name},
+  author = {johndef64},
   title = {Nutrigenetic-GraphRAG: Biomedical GraphRAG for Nutrigenetics},
   year = {2024},
-  howpublished = {\url{https://github.com/YOUR_USERNAME/nutrigenetic-graphrag}},
+  howpublished = {\url{https://github.com/johndef64/nutrigenetic-graphrag}},
   note = {Adapted from nano-graphrag https://github.com/gusye1234/nano-graphrag}
 }
 ```
