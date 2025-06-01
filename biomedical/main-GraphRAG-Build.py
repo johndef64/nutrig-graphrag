@@ -121,15 +121,10 @@ def insert(TEXT, ):
 ##### LOAD DATASET #####
 
 # df = pd.read_csv("datasets/fulltext_dataset.zip")
-df = pd.read_csv("datasets/chunks/0-3000pmc_fulltext.csv")
+df = pd.read_csv("datasets/working_dataset_100.csv")
 
 # Filter Dataset
-df = df[~((df['INTRO'].isna() & df['METHODS'].isna() & df['RESULTS'].isna() & df['DISCUSS'].isna()))]
-df = df[~((df['RESULTS'].isna() & df['DISCUSS'].isna()))].reset_index(drop=True)
-df = df[~(df['RESULTS'].isna())].reset_index(drop=True)
-df.fillna("", inplace=True)
-
-df.text = df["RESULTS"] + "\n\n\n\n" + df["DISCUSS"]
+# df.text = df["RESULTS"] + "\n\n\n\n" + df["DISCUSS"]
 df.text = df["RESULTS"]
 df.text = df.text.str.replace("<SEP>","\n\n")
 # df.to_csv("datasets/halftext_dataset5000.csv", index=False)
@@ -153,7 +148,7 @@ if __name__ == "__main__":
         if len(df.text[i]) > 10: 
             # print(f"""Inserting text of len {len(df.text[i])}""")
             insert(df.text[i])
-            print(f"""\n\n<<<<<<<<<<<<<<<<<<<<<  {i+1}/{batch_size+start_id}  >>>>>>>>>>>>>>>>>>\n\n """)
+            print(f"""\n\n<<<<<<<<<  {i+1}/{batch_size+start_id}  >>>>>>>>>\n\n """)
 
             print("Sleeping...")
             time.sleep(10)
@@ -164,7 +159,6 @@ if __name__ == "__main__":
         
     
 print(f"\033[94mBatch runtime: [{round(time.time() - t1, 2)}s]\033[0m")
-
 
 
 from biomedical.graphml_visualize import CreateGraphVisualization
