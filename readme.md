@@ -1,0 +1,158 @@
+# Nutrigenetic-GraphRAG
+
+<div align="center">
+  <img alt="Nutrigenetic GraphRAG Logo" src="https://yourdomain.com/logo.png" width="256">
+  <p><strong>Graph-based RAG for Biomedical Nutrigenetic Applications</strong></p>
+  <p>
+    <img src="https://img.shields.io/badge/python->=3.9-blue">
+    <img src="https://img.shields.io/badge/llm-Ollama-green">
+    <img src="https://img.shields.io/badge/embedder-SBERT-blue">
+  </p>
+</div>
+
+## Overview
+
+**Nutrigenetic-GraphRAG** is an advanced, local-first retrieval augmented generation system, tailored for biomedical knowledge discovery and personalized nutrition counseling. Built on top of the excellent [nano-graphrag](https://github.com/gusye1234/nano-graphrag), this project adapts entity extraction and graph-based RAG (Retrieval Augmented Generation) to the unique linguistic and conceptual challenges of nutrigenomics.
+
+Our system empowers **customers**, **nutritionists**, and **researchers** to explore complex nutrigenetic interactions, query biomedical knowledge graphs in natural language, and receive context-rich, explainable answers.  
+All components run locally using [Ollama](https://github.com/ollama/ollama) for LLMs and [sentence-transformers](https://www.sbert.net/) for embedding, ensuring privacy, speed, and cost effectiveness.
+
+---
+
+> **Credit:** This work is deeply inspired by [nano-graphrag](https://github.com/gusye1234/nano-graphrag). We adapted and extended its architecture for the challenges of nutrigenetic counseling and biomedical entity modeling.
+
+---
+
+## Features
+
+- **Biomedical entity extraction:** Customized extraction for genes, nutrients, phenotypes, and variants.
+- **Graph-based RAG:** Graph-building and retrieval that retains biomedical relationships for nuanced responses.
+- **Ablation study**: Easily swap LLMs (via Ollama) and embedders (via sentence-transformers) for benchmarking.
+- **Multi-user design:** Suitable for consumers, domain expert nutritionists, and researchers.
+- **Privacy-first:** 100% local processing — no cloud LLMs or embeddings.
+- **Incremental updates:** Efficiently add or update documents and knowledge bases.
+- **Asynchronous API:** Fast, concurrent ingestion and query capabilities.
+
+## Installation
+
+### Prerequisites
+
+- Python 3.9+
+- [Ollama](https://github.com/ollama/ollama) installed and running
+- At least one supported local sentence-transformer model
+
+### Setup
+
+```bash
+# clone this repo
+git clone https://github.com/YOUR_USERNAME/nutrigenetic-graphrag.git
+cd nutrigenetic-graphrag
+
+# Install requirements
+pip install -r requirements.txt
+```
+
+If using under editable mode for development:
+
+```bash
+pip install -e .
+```
+
+## Quick Start
+
+1. **Prepare your biomedical corpus:** Place plain text, PDF, or .csv in the `data/` folder.
+2. **Run Ollama:**  
+   E.g., `ollama serve`
+3. **Start embedding model download:**  
+   (Refer to sentence-transformers documentation or see script in `scripts/`)
+4. **Build your graph RAG:**
+
+```python
+from nutrigenetic_graphrag import NutrigeneticGraphRAG, QueryParam
+
+# Initialize
+ngrag = NutrigeneticGraphRAG(
+    working_dir="./workspace",
+    llm_backend="ollama",
+    embedder_model="sentence-transformers/all-MiniLM-L6-v2"
+)
+
+# Ingest documents
+for doc in ["data/pubmed_1.txt", "data/pubmed_2.txt"]:
+    with open(doc) as f:
+        ngrab.insert(f.read())
+
+# Query knowledge graph
+print(ngrag.query(
+    "How does the MTHFR C677T variant affect folate metabolism?",
+    param=QueryParam(mode="local")
+))
+```
+
+## Architecture
+
+Nutrigenetic-GraphRAG extends `nano-graphrag`, modifying:
+
+- **Entity extraction prompts** for biomedical NER.
+- **Chunking** to preserve biomedical sentence/paragraph semantics.
+- **Custom embeddings** for domain adaptation.
+- **Ablation pipeline** for benchmarking various LLMs/embedders.
+
+See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md).
+
+## Benchmarking: LLM & Embedding Ablation
+
+We provide scripts for ablation experiments to compare:
+
+- Different LLMs accessible via Ollama (e.g., Llama 3, Mistral, NeuralChat)
+- Multiple sentence-transformer models
+
+Results (see [docs/RESULTS.md](./docs/RESULTS.md)):
+- Best LLM: `llama3:instruct`
+- Best Embedder: `all-MiniLM-L6-v2`
+
+## Applications
+
+- **Personalized nutrition counseling** for consumers
+- **Decision support** for clinical nutritionists
+- **Biomedical discovery** for researchers (variant-disease-nutrient links)
+
+## Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## Roadmap
+
+- Integrate gene-variant linking to dietary guidelines
+- Add graph visualization
+- Expand biomedical entity database
+- More LLM and embedder plug-ins
+
+See [ROADMAP.md](./ROADMAP.md).
+
+## Acknowledgements
+
+This project would not exist without [nano-graphrag](https://github.com/gusye1234/nano-graphrag) by [gusye1234](https://github.com/gusye1234).
+
+Also inspired by:
+- [Ollama](https://github.com/ollama/ollama)
+- [sentence-transformers](https://github.com/UKPLab/sentence-transformers)
+- Biomedical NER datasets (PubTator, BioCreative, SNOMED CT)
+
+## Citation
+
+If you use this software, please cite both nano-graphrag and this repo.
+
+```bibtex
+@misc{nutrigenetic-graphrag,
+  author = {Your Name},
+  title = {Nutrigenetic-GraphRAG: Biomedical GraphRAG for Nutrigenetics},
+  year = {2024},
+  howpublished = {\url{https://github.com/YOUR_USERNAME/nutrigenetic-graphrag}},
+  note = {Adapted from nano-graphrag https://github.com/gusye1234/nano-graphrag}
+}
+```
+
+## License
+
+MIT License. See [LICENSE](./LICENSE).
