@@ -1,0 +1,1439 @@
+{
+  "6": {
+    "report_string": "# Genetic and Lifestyle Factors in Hypertriglyceridemia\n\nThe community focuses on hypertriglyceridemia, a condition influenced by genetic variants like GCKR rs780094 SNP and dietary patterns such as the Mediterranean diet. Key entities include metabolic pathways (TAG concentration, LDL-C concentration), lifestyle factors (plant-based diet intake, regular exercise), and disease states (hypertriacylglycerolaemia). These elements are interconnected through their roles in lipid metabolism, obesity risk reduction, and cardiovascular health.\n\n## GCKR rs780094 SNP and its association with TAG levels\n\nThe GCKR rs780094 single nucleotide polymorphism is positively associated with triglyceride (TAG) levels in individuals carrying the AA genotype compared to GG genotypes. This genetic variant affects lipid metabolism, specifically increasing TAG concentrations which are a significant risk factor for hypertriacylglycerolaemia.\n\n## Mediterranean diet adherence and TAG concentration\n\nAdherence to the Mediterranean diet is inversely associated with triglyceride (TAG) concentrations. This dietary pattern not only influences lipid metabolism but also reduces the risk of hypertriacylglycerolaemia, indicating a protective role against high blood triglycerides.\n\n## Plant-based diet intake and obesity risk\n\nA high intake of plant-based foods can reduce genetic impact on obesity risk, especially in individuals with high polygenic risk scores (PRS). This dietary pattern interacts with genetic predisposition to mitigate the risk of obesity and related metabolic conditions such as hypertriacylglycerolaemia.\n\n## LDL-C concentration and GCKR rs780094 SNP\n\nThe GCKR rs780094 single nucleotide polymorphism affects LDL cholesterol concentrations similarly to its impact on triglycerides. This genetic variant influences multiple lipid metabolic pathways, highlighting the importance of considering genetic factors in lipid management and cardiovascular health.\n\n## Regular exercise and serum HDL concentration\n\nEngaging in regular physical activity tends to increase high-density lipoprotein (HDL) levels, which helps remove bad cholesterol from arteries. This lifestyle factor complements dietary interventions in reducing obesity risk through multiple pathways, including improvements in lipid profiles.",
+    "report_json": {
+      "title": "Genetic and Lifestyle Factors in Hypertriglyceridemia",
+      "summary": "The community focuses on hypertriglyceridemia, a condition influenced by genetic variants like GCKR rs780094 SNP and dietary patterns such as the Mediterranean diet. Key entities include metabolic pathways (TAG concentration, LDL-C concentration), lifestyle factors (plant-based diet intake, regular exercise), and disease states (hypertriacylglycerolaemia). These elements are interconnected through their roles in lipid metabolism, obesity risk reduction, and cardiovascular health.",
+      "rating": 7.0,
+      "rating_explanation": "The impact severity rating is high due to the significant influence of genetic variants and dietary patterns on hypertriglyceridemia risk and management.",
+      "findings": [
+        {
+          "summary": "GCKR rs780094 SNP and its association with TAG levels",
+          "explanation": "The GCKR rs780094 single nucleotide polymorphism is positively associated with triglyceride (TAG) levels in individuals carrying the AA genotype compared to GG genotypes. This genetic variant affects lipid metabolism, specifically increasing TAG concentrations which are a significant risk factor for hypertriacylglycerolaemia."
+        },
+        {
+          "summary": "Mediterranean diet adherence and TAG concentration",
+          "explanation": "Adherence to the Mediterranean diet is inversely associated with triglyceride (TAG) concentrations. This dietary pattern not only influences lipid metabolism but also reduces the risk of hypertriacylglycerolaemia, indicating a protective role against high blood triglycerides."
+        },
+        {
+          "summary": "Plant-based diet intake and obesity risk",
+          "explanation": "A high intake of plant-based foods can reduce genetic impact on obesity risk, especially in individuals with high polygenic risk scores (PRS). This dietary pattern interacts with genetic predisposition to mitigate the risk of obesity and related metabolic conditions such as hypertriacylglycerolaemia."
+        },
+        {
+          "summary": "LDL-C concentration and GCKR rs780094 SNP",
+          "explanation": "The GCKR rs780094 single nucleotide polymorphism affects LDL cholesterol concentrations similarly to its impact on triglycerides. This genetic variant influences multiple lipid metabolic pathways, highlighting the importance of considering genetic factors in lipid management and cardiovascular health."
+        },
+        {
+          "summary": "Regular exercise and serum HDL concentration",
+          "explanation": "Engaging in regular physical activity tends to increase high-density lipoprotein (HDL) levels, which helps remove bad cholesterol from arteries. This lifestyle factor complements dietary interventions in reducing obesity risk through multiple pathways, including improvements in lipid profiles."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 6",
+    "edges": [
+      [
+        "\"RS1260326 SNP\"",
+        "\"TAG CONCENTRATION\""
+      ],
+      [
+        "\"GCKR RS780094 SNP\"",
+        "\"HYPERTRIACYLGLYCEROLAEMIA\""
+      ],
+      [
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+        "\"TAG CONCENTRATION\""
+      ],
+      [
+        "\"HYPERTRIACYLGLYCEROLAEMIA\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"GCKR RS780094 SNP\"",
+        "\"LDL-C CONCENTRATION\""
+      ],
+      [
+        "\"PLANT-BASED DIET INTAKE\"",
+        "\"REGULAR EXERCISE\""
+      ],
+      [
+        "\"GCKR RS780094 SNP\"",
+        "\"TAG CONCENTRATION\""
+      ],
+      [
+        "\"REGULAR EXERCISE\"",
+        "\"SERUM HDL CONCENTRATION\""
+      ],
+      [
+        "\"OBESITY RISK\"",
+        "\"PLANT-BASED DIET INTAKE\""
+      ],
+      [
+        "\"BMI\"",
+        "\"PLANT-BASED DIET INTAKE\""
+      ]
+    ],
+    "nodes": [
+      "\"PLANT-BASED DIET INTAKE\"",
+      "\"GCKR RS780094 SNP\"",
+      "\"HYPERTRIACYLGLYCEROLAEMIA\"",
+      "\"SERUM HDL CONCENTRATION\"",
+      "\"TAG CONCENTRATION\"",
+      "\"LDL-C CONCENTRATION\"",
+      "\"RS1260326 SNP\"",
+      "\"REGULAR EXERCISE\""
+    ],
+    "chunk_ids": [
+      "chunk-c6fdc5ed25c4e17b8c421a952bb05450",
+      "chunk-fa6293a0a10f175b4aebac8e885c0d20",
+      "chunk-3ad8ef794841d749e48b3223741e91d3"
+    ],
+    "occurrence": 0.25,
+    "sub_communities": [
+      "6"
+    ]
+  },
+  "7": {
+    "report_string": "# Genetic and Lifestyle Factors Influencing Obesity\n\nThe report examines how genetic factors (such as FTO SNP, LEPR gene, MACF1 gene), lifestyle choices (like sodium intake in urine), demographic characteristics (gender), and family history of obesity contribute to BMI measurements. The Genetic Risk Score (GRS) plays a significant role in predicting obesity risk and is correlated with cognitive function tests like TMTA. Separate genome-wide association studies stratified by sex reveal distinct genetic factors contributing to BMI variations between males and females.\n\n## FTO SNP Association with BMI\n\nThe presence of FTO SNP is strongly associated with increased Body Mass Index (BMI) in individuals without university studies but not in those with higher education. This indicates that genetic factors such as the FTO gene may play a significant role in obesity risk for certain populations, underscoring the need to consider both genetic and environmental influences when assessing BMI.\n\n## Genetic Risk Score (GRS) Impact on Cognitive Function\n\nThe Genetic Risk Score (GRS), which is computed based on polymorphisms across six genomic loci, shows a significant association with performance on Trail Making Test Part A (TMTA). Survivors with higher GRS scores performed worse on TMTB compared to those with lower GRS scores. This suggests that genetic risk may influence not only physical health but also cognitive function.\n\n## Family History of Obesity and BMI\n\nHaving a family history of obesity is linked to higher BMI values due to shared genetics and environment, indicating that familial patterns can significantly impact an individual's weight status. The association between family history and obesity risk highlights the importance of considering genetic predispositions when evaluating health outcomes.\n\n## Sex Differences in Genetic Factors\n\nDistinct genetic factors contribute to variations in BMI between males and females, as revealed by separate genome-wide association studies conducted on each sex. This underscores the need for gender-specific approaches in understanding obesity risk and related health conditions such as snoring.\n\n## Sodium Intake and Urine Sodium Concentration\n\nHigher levels of sodium in urine are often associated with higher BMI values due to dietary habits and salt intake. This finding underscores the importance of monitoring dietary sodium consumption for individuals at risk of obesity, particularly those with genetic predispositions.\n\n## GRS and Cognitive Tests\n\nNo significant association was found between GRS and performance on neurocognitive tests such as CFL, DIG, PEGDH, and PEGNDH. However, a notable correlation exists between GRS and TMTA scores. This suggests that genetic risk may have differential impacts on various aspects of cognitive function.\n\n## GRS and Cumulative Methotrexate Exposure\n\nCumulative intravenous exposure to methotrexate influences the Genetic Risk Score (GRS), affecting cognitive outcomes. This finding highlights how environmental exposures can interact with genetic risk factors to influence health outcomes.\n\n## Baseline Colonic Arachidonic Acid Measurement\n\nParticipants with minor alleles in the FADS gene cluster had a lower BMI at baseline, indicating that specific genotypes may influence obesity risk. This finding suggests the importance of considering genetic variations when assessing obesity risk and related health conditions.\n\n## Association between MACF1 Gene and Obesity\n\nThe MACF1 gene's association with musculoskeletal traits also includes an influence on BMI values, linking physical structure to obesity risk. This finding highlights the complex interplay between genetic factors influencing both physical attributes and weight status.\n\n## Sex-Stratified GWAS\n\nSeparate genome-wide association studies conducted in males and females revealed distinct genetic factors contributing to variations in BMI, indicating that sex-specific approaches are necessary for a comprehensive understanding of obesity risk. This underscores the importance of considering gender differences when studying genetic predispositions.",
+    "report_json": {
+      "title": "Genetic and Lifestyle Factors Influencing Obesity",
+      "summary": "The report examines how genetic factors (such as FTO SNP, LEPR gene, MACF1 gene), lifestyle choices (like sodium intake in urine), demographic characteristics (gender), and family history of obesity contribute to BMI measurements. The Genetic Risk Score (GRS) plays a significant role in predicting obesity risk and is correlated with cognitive function tests like TMTA. Separate genome-wide association studies stratified by sex reveal distinct genetic factors contributing to BMI variations between males and females.",
+      "rating": 8,
+      "rating_explanation": "The community has high importance due to the multifaceted impact of genetic, lifestyle, and demographic factors on obesity risk and related health outcomes.",
+      "findings": [
+        {
+          "summary": "FTO SNP Association with BMI",
+          "explanation": "The presence of FTO SNP is strongly associated with increased Body Mass Index (BMI) in individuals without university studies but not in those with higher education. This indicates that genetic factors such as the FTO gene may play a significant role in obesity risk for certain populations, underscoring the need to consider both genetic and environmental influences when assessing BMI."
+        },
+        {
+          "summary": "Genetic Risk Score (GRS) Impact on Cognitive Function",
+          "explanation": "The Genetic Risk Score (GRS), which is computed based on polymorphisms across six genomic loci, shows a significant association with performance on Trail Making Test Part A (TMTA). Survivors with higher GRS scores performed worse on TMTB compared to those with lower GRS scores. This suggests that genetic risk may influence not only physical health but also cognitive function."
+        },
+        {
+          "summary": "Family History of Obesity and BMI",
+          "explanation": "Having a family history of obesity is linked to higher BMI values due to shared genetics and environment, indicating that familial patterns can significantly impact an individual's weight status. The association between family history and obesity risk highlights the importance of considering genetic predispositions when evaluating health outcomes."
+        },
+        {
+          "summary": "Sex Differences in Genetic Factors",
+          "explanation": "Distinct genetic factors contribute to variations in BMI between males and females, as revealed by separate genome-wide association studies conducted on each sex. This underscores the need for gender-specific approaches in understanding obesity risk and related health conditions such as snoring."
+        },
+        {
+          "summary": "Sodium Intake and Urine Sodium Concentration",
+          "explanation": "Higher levels of sodium in urine are often associated with higher BMI values due to dietary habits and salt intake. This finding underscores the importance of monitoring dietary sodium consumption for individuals at risk of obesity, particularly those with genetic predispositions."
+        },
+        {
+          "summary": "GRS and Cognitive Tests",
+          "explanation": "No significant association was found between GRS and performance on neurocognitive tests such as CFL, DIG, PEGDH, and PEGNDH. However, a notable correlation exists between GRS and TMTA scores. This suggests that genetic risk may have differential impacts on various aspects of cognitive function."
+        },
+        {
+          "summary": "GRS and Cumulative Methotrexate Exposure",
+          "explanation": "Cumulative intravenous exposure to methotrexate influences the Genetic Risk Score (GRS), affecting cognitive outcomes. This finding highlights how environmental exposures can interact with genetic risk factors to influence health outcomes."
+        },
+        {
+          "summary": "Baseline Colonic Arachidonic Acid Measurement",
+          "explanation": "Participants with minor alleles in the FADS gene cluster had a lower BMI at baseline, indicating that specific genotypes may influence obesity risk. This finding suggests the importance of considering genetic variations when assessing obesity risk and related health conditions."
+        },
+        {
+          "summary": "Association between MACF1 Gene and Obesity",
+          "explanation": "The MACF1 gene's association with musculoskeletal traits also includes an influence on BMI values, linking physical structure to obesity risk. This finding highlights the complex interplay between genetic factors influencing both physical attributes and weight status."
+        },
+        {
+          "summary": "Sex-Stratified GWAS",
+          "explanation": "Separate genome-wide association studies conducted in males and females revealed distinct genetic factors contributing to variations in BMI, indicating that sex-specific approaches are necessary for a comprehensive understanding of obesity risk. This underscores the importance of considering gender differences when studying genetic predispositions."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 7",
+    "edges": [
+      [
+        "\"GRS\"",
+        "\"TMTA\""
+      ],
+      [
+        "\"CUMULATIVE IV MTX EXPOSURE\"",
+        "\"GRS\""
+      ],
+      [
+        "\"GRS\"",
+        "\"PEGNDH\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"SEX-STRATIFIED GWAS (GENOME-WIDE ASSOCIATION STUDY)\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"SEX (MALE/FEMALE)\""
+      ],
+      [
+        "\"GRS\"",
+        "\"LEPR GENE\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"FAMILY HISTORY OF OBESITY\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"PGS (POLYGENIC SCORE)\""
+      ],
+      [
+        "\"CFL\"",
+        "\"GRS\""
+      ],
+      [
+        "\"BMI BASELINE AND CHANGE\"",
+        "\"GRS\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"EXTREMELY OBESE CHILDREN AND ADOLESCENTS\""
+      ],
+      [
+        "\"GRS\"",
+        "\"PEGDH\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"SODIUM IN URINE\""
+      ],
+      [
+        "\"GRS\"",
+        "\"POLYMORPHISM\""
+      ],
+      [
+        "\"GRS\"",
+        "\"TMTB\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"FTO SNP\""
+      ],
+      [
+        "\"BASELINE COLONIC ARACHIDONIC ACID (AA) MEASUREMENT IN PARTICIPANTS WITH OR WITHOUT MINOR ALLELES IN THE FADS GENE CLUSTER\"",
+        "\"BMI (BODY MASS INDEX)\""
+      ],
+      [
+        "\"DIG\"",
+        "\"GRS\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"MACF1 GENE\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"FTO GENE\""
+      ],
+      [
+        "\"APOBR\"",
+        "\"EXTREMELY OBESE CHILDREN AND ADOLESCENTS\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"GENDER\""
+      ],
+      [
+        "\"DIVERGT BATTERY\"",
+        "\"GRS\""
+      ]
+    ],
+    "nodes": [
+      "\"FAMILY HISTORY OF OBESITY\"",
+      "\"SODIUM IN URINE\"",
+      "\"PEGNDH\"",
+      "\"BMI (BODY MASS INDEX)\"",
+      "\"POLYMORPHISM\"",
+      "\"CUMULATIVE IV MTX EXPOSURE\"",
+      "\"SEX (MALE/FEMALE)\"",
+      "\"GRS\"",
+      "\"DIG\"",
+      "\"DIVERGT BATTERY\"",
+      "\"PEGDH\"",
+      "\"EXTREMELY OBESE CHILDREN AND ADOLESCENTS\"",
+      "\"MACF1 GENE\"",
+      "\"TMTA\"",
+      "\"BASELINE COLONIC ARACHIDONIC ACID (AA) MEASUREMENT IN PARTICIPANTS WITH OR WITHOUT MINOR ALLELES IN THE FADS GENE CLUSTER\"",
+      "\"CFL\"",
+      "\"SEX-STRATIFIED GWAS (GENOME-WIDE ASSOCIATION STUDY)\"",
+      "\"GENDER\""
+    ],
+    "chunk_ids": [
+      "chunk-2c178ae99eeffdddbea511cafbe4a7d5",
+      "chunk-4b6e8f78911cafc70959cfdfed786c29",
+      "chunk-9977706363cc368b3be503d07ed3ef62",
+      "chunk-fa6293a0a10f175b4aebac8e885c0d20",
+      "chunk-3135befd0c3140ad097d96ace6de86a1",
+      "chunk-7ca64f92964b051cfb1c43f967f243a5",
+      "chunk-13862d7ab74f5d4fa3f2261984d15d64",
+      "chunk-8b9890cf10c4a751a1d0ec7e9843002d",
+      "chunk-ea6355aaf22d7cdd3331602638122ed7",
+      "chunk-a34b927ed42ff0917960122b4d203f83",
+      "chunk-1fde08e52a188ac6a549e7c11d59a092"
+    ],
+    "occurrence": 0.9166666666666666,
+    "sub_communities": []
+  },
+  "11": {
+    "report_string": "# Obesity Risk and Its Modifiers\n\nThe community revolves around obesity risk, which is influenced by genetic variants (such as FTO SNP), polygenic risk scores (PRS), dietary patterns like fried food intake, and lifestyle factors such as physical activity. The interactions between these entities highlight the complex interplay of genetics and environment in determining obesity risk.\n\n## FTO SNP's role in obesity risk\n\nThe FTO gene variant (SNP) is a key factor in determining obesity risk. Educational level modifies the effect of this genetic predisposition, indicating that environmental factors such as education can influence the expression of genetic risks associated with obesity.\n\n## Polygenic risk score (PRS) and dietary patterns\n\nThe polygenic risk score for obesity interacts with dietary patterns to modulate BMI. High intake of plant-based diets can reduce the genetic impact from high PRS, emphasizing the protective role of healthy eating habits against genetic predispositions.\n\n## Role of fried food consumption\n\nHigh intake of fried foods can mitigate the genetic impact (high PRS) on obesity risk. This interaction suggests that dietary choices have a significant influence on modifying obesity risk, independent of genetic factors.\n\n## Impact of physical activity\n\nPhysical activity does not significantly change the association between FTO SNP and obesity risk in most populations but can modify this effect when education is considered as an environmental factor. This indicates that lifestyle modifications like increased physical activity can influence genetic predispositions towards obesity.\n\n## MYL2 variant's implication\n\nAlthough the MYL2 SNP does not meet statistical significance, it is implicated in regulating energy intake/expenditure pathways and thereby affecting obesity risk. This highlights the complex role of genetic variants that may influence metabolic processes without meeting traditional thresholds for significance.\n\n## TFAP2B variant's impact\n\nA genetic variation in TFAP2B influences obesity development by modulating energy intake/expenditure pathways through interaction with transcription factors. This finding underscores the importance of specific gene variants in metabolic regulation and their contribution to obesity risk.",
+    "report_json": {
+      "title": "Obesity Risk and Its Modifiers",
+      "summary": "The community revolves around obesity risk, which is influenced by genetic variants (such as FTO SNP), polygenic risk scores (PRS), dietary patterns like fried food intake, and lifestyle factors such as physical activity. The interactions between these entities highlight the complex interplay of genetics and environment in determining obesity risk.",
+      "rating": 7.5,
+      "rating_explanation": "The impact severity rating is high due to the significant influence of genetic variants and dietary patterns on obesity risk and its management.",
+      "findings": [
+        {
+          "summary": "FTO SNP's role in obesity risk",
+          "explanation": "The FTO gene variant (SNP) is a key factor in determining obesity risk. Educational level modifies the effect of this genetic predisposition, indicating that environmental factors such as education can influence the expression of genetic risks associated with obesity."
+        },
+        {
+          "summary": "Polygenic risk score (PRS) and dietary patterns",
+          "explanation": "The polygenic risk score for obesity interacts with dietary patterns to modulate BMI. High intake of plant-based diets can reduce the genetic impact from high PRS, emphasizing the protective role of healthy eating habits against genetic predispositions."
+        },
+        {
+          "summary": "Role of fried food consumption",
+          "explanation": "High intake of fried foods can mitigate the genetic impact (high PRS) on obesity risk. This interaction suggests that dietary choices have a significant influence on modifying obesity risk, independent of genetic factors."
+        },
+        {
+          "summary": "Impact of physical activity",
+          "explanation": "Physical activity does not significantly change the association between FTO SNP and obesity risk in most populations but can modify this effect when education is considered as an environmental factor. This indicates that lifestyle modifications like increased physical activity can influence genetic predispositions towards obesity."
+        },
+        {
+          "summary": "MYL2 variant's implication",
+          "explanation": "Although the MYL2 SNP does not meet statistical significance, it is implicated in regulating energy intake/expenditure pathways and thereby affecting obesity risk. This highlights the complex role of genetic variants that may influence metabolic processes without meeting traditional thresholds for significance."
+        },
+        {
+          "summary": "TFAP2B variant's impact",
+          "explanation": "A genetic variation in TFAP2B influences obesity development by modulating energy intake/expenditure pathways through interaction with transcription factors. This finding underscores the importance of specific gene variants in metabolic regulation and their contribution to obesity risk."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 11",
+    "edges": [
+      [
+        "\"MYL2_RS3782889\"",
+        "\"OBESITY RISK\""
+      ],
+      [
+        "\"OBESITY RISK\"",
+        "\"PHYSICAL ACTIVITY (PA)\""
+      ],
+      [
+        "\"FRIED-FOOD INTAKE\"",
+        "\"OBESITY RISK\""
+      ],
+      [
+        "\"OBESITY RISK\"",
+        "\"TFAP2B_RS2206277\""
+      ],
+      [
+        "\"EDUCATION LEVEL\"",
+        "\"OBESITY RISK\""
+      ],
+      [
+        "\"OBESITY RISK\"",
+        "\"PLANT-BASED DIET INTAKE\""
+      ],
+      [
+        "\"FRIED-FOOD INTAKE\"",
+        "\"PRS\""
+      ]
+    ],
+    "nodes": [
+      "\"PRS\"",
+      "\"MYL2_RS3782889\"",
+      "\"FRIED-FOOD INTAKE\"",
+      "\"TFAP2B_RS2206277\"",
+      "\"OBESITY RISK\""
+    ],
+    "chunk_ids": [
+      "chunk-3135befd0c3140ad097d96ace6de86a1",
+      "chunk-eec0b4c60ebeb28599428b3552de2d1b",
+      "chunk-3ad8ef794841d749e48b3223741e91d3"
+    ],
+    "occurrence": 0.25,
+    "sub_communities": []
+  },
+  "5": {
+    "report_string": "# Mediterranean Diet and Genetic Risk Factors in Type 2 Diabetes\n\nThe community focuses on the Mediterranean diet (MD) adherence, its impact on physiological processes such as BMI, blood pressure, and insulin resistance, and genetic risk factors for type 2 diabetes (T2D). The key entities include dietary patterns like MD, T2D, genomic variants affecting T2D risk, and metabolic pathways. Adherence to the Mediterranean diet is associated with multiple health benefits including lower BMI levels, reduced cardiovascular risk, improved insulin sensitivity, and decreased blood pressure. Genetic variants such as LIPC rs2070895 A-allele and PPARΓ RS1152003 CC-genotype are linked to a reduced incidence of T2D under intervention conditions.\n\n## Adherence to the Mediterranean diet and its impact on body mass index (BMI)\n\nHigher adherence to the Mediterranean diet is significantly associated with lower BMI levels among individuals. This relationship underscores the importance of dietary patterns in obesity risk management. The interplay between dietary practices and genetic predispositions, such as the presence of variants like ENPP1 RS1044498 diabetogenic variant, highlights the need for personalized nutrition interventions.\n\n## Mediterranean diet adherence and cardiovascular health\n\nAdherence to the Mediterranean diet is inversely associated with various indicators of cardiovascular risk such as triglyceride concentrations (TAG), apolipoprotein B to apolipoprotein A-I ratio (APOB:APOA-1), systolic blood pressure (SBP), and diastolic blood pressure (DBP). These associations suggest that the Mediterranean diet can significantly reduce cardiovascular disease risk factors.\n\n## Genetic variants linked to type 2 diabetes risk\n\nCertain genetic variants, such as LIPC rs2070895 A-allele and PPARΓ RS1152003 CC-genotype, are associated with a reduced incidence of T2D under intervention conditions. This indicates that while some genetic factors may predispose individuals to higher diabetes risk, lifestyle modifications like adherence to the Mediterranean diet can mitigate this risk.\n\n## Mediterranean diet and insulin resistance\n\nHigher adherence to the Mediterranean diet is directly associated with improved insulin sensitivity and reduced insulin resistance. This finding highlights the role of dietary patterns in metabolic health management, particularly for individuals at genetic risk for type 2 diabetes.\n\n## Impact of physical activity on Mediterranean diet adherence\n\nIndividuals who are physically active tend to have higher adherence to the Mediterranean diet. This relationship suggests that a combination of healthy dietary practices and regular physical activity can synergistically improve metabolic health outcomes, particularly for those with genetic predispositions to type 2 diabetes.",
+    "report_json": {
+      "title": "Mediterranean Diet and Genetic Risk Factors in Type 2 Diabetes",
+      "summary": "The community focuses on the Mediterranean diet (MD) adherence, its impact on physiological processes such as BMI, blood pressure, and insulin resistance, and genetic risk factors for type 2 diabetes (T2D). The key entities include dietary patterns like MD, T2D, genomic variants affecting T2D risk, and metabolic pathways. Adherence to the Mediterranean diet is associated with multiple health benefits including lower BMI levels, reduced cardiovascular risk, improved insulin sensitivity, and decreased blood pressure. Genetic variants such as LIPC rs2070895 A-allele and PPARΓ RS1152003 CC-genotype are linked to a reduced incidence of T2D under intervention conditions.",
+      "rating": 7.5,
+      "rating_explanation": "The impact severity rating is high due to the significant influence of dietary patterns like the Mediterranean diet on metabolic health and genetic risk factors for type 2 diabetes management.",
+      "findings": [
+        {
+          "summary": "Adherence to the Mediterranean diet and its impact on body mass index (BMI)",
+          "explanation": "Higher adherence to the Mediterranean diet is significantly associated with lower BMI levels among individuals. This relationship underscores the importance of dietary patterns in obesity risk management. The interplay between dietary practices and genetic predispositions, such as the presence of variants like ENPP1 RS1044498 diabetogenic variant, highlights the need for personalized nutrition interventions."
+        },
+        {
+          "summary": "Mediterranean diet adherence and cardiovascular health",
+          "explanation": "Adherence to the Mediterranean diet is inversely associated with various indicators of cardiovascular risk such as triglyceride concentrations (TAG), apolipoprotein B to apolipoprotein A-I ratio (APOB:APOA-1), systolic blood pressure (SBP), and diastolic blood pressure (DBP). These associations suggest that the Mediterranean diet can significantly reduce cardiovascular disease risk factors."
+        },
+        {
+          "summary": "Genetic variants linked to type 2 diabetes risk",
+          "explanation": "Certain genetic variants, such as LIPC rs2070895 A-allele and PPARΓ RS1152003 CC-genotype, are associated with a reduced incidence of T2D under intervention conditions. This indicates that while some genetic factors may predispose individuals to higher diabetes risk, lifestyle modifications like adherence to the Mediterranean diet can mitigate this risk."
+        },
+        {
+          "summary": "Mediterranean diet and insulin resistance",
+          "explanation": "Higher adherence to the Mediterranean diet is directly associated with improved insulin sensitivity and reduced insulin resistance. This finding highlights the role of dietary patterns in metabolic health management, particularly for individuals at genetic risk for type 2 diabetes."
+        },
+        {
+          "summary": "Impact of physical activity on Mediterranean diet adherence",
+          "explanation": "Individuals who are physically active tend to have higher adherence to the Mediterranean diet. This relationship suggests that a combination of healthy dietary practices and regular physical activity can synergistically improve metabolic health outcomes, particularly for those with genetic predispositions to type 2 diabetes."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 5",
+    "edges": [
+      [
+        "\"IFG/IGT\"",
+        "\"T2D\""
+      ],
+      [
+        "\"T2D\"",
+        "\"TNFΑ RS1800629 GG‐GENOTYPE\""
+      ],
+      [
+        "\"HDL-C CONCENTRATION\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"INSULIN RESISTANCE\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"T2D\"",
+        "\"TCF7L2 RS12255372\""
+      ],
+      [
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+        "\"TAG CONCENTRATION\""
+      ],
+      [
+        "\"PPARΓ RS1152003 CC‐GENOTYPE\"",
+        "\"T2D\""
+      ],
+      [
+        "\"BODY MASS INDEX (BMI)\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"HYPERTRIACYLGLYCEROLAEMIA\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+        "\"SYSTOLIC BLOOD PRESSURE (SBP)\""
+      ],
+      [
+        "\"ENPP1 RS1044498 DIABETOGENIC VARIANT\"",
+        "\"T2D\""
+      ],
+      [
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+        "\"PHYSICAL ACTIVITY\""
+      ],
+      [
+        "\"DIASTOLIC BLOOD PRESSURE (DBP)\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"LIPC RS2070895 A‐ALLELE\"",
+        "\"T2D\""
+      ],
+      [
+        "\"APOB:APOA-1 RATIO\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"RS7903146 RISK T‐ALLELE\"",
+        "\"T2D\""
+      ]
+    ],
+    "nodes": [
+      "\"ENPP1 RS1044498 DIABETOGENIC VARIANT\"",
+      "\"PPARΓ RS1152003 CC‐GENOTYPE\"",
+      "\"LIPC RS2070895 A‐ALLELE\"",
+      "\"HDL-C CONCENTRATION\"",
+      "\"APOB:APOA-1 RATIO\"",
+      "\"TCF7L2 RS12255372\"",
+      "\"RS7903146 RISK T‐ALLELE\"",
+      "\"BODY MASS INDEX (BMI)\"",
+      "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+      "\"DIASTOLIC BLOOD PRESSURE (DBP)\"",
+      "\"T2D\"",
+      "\"INSULIN RESISTANCE\"",
+      "\"SYSTOLIC BLOOD PRESSURE (SBP)\"",
+      "\"TNFΑ RS1800629 GG‐GENOTYPE\""
+    ],
+    "chunk_ids": [
+      "chunk-bb507a90a1f5d5ddd01a93200ff2d45e",
+      "chunk-372184452f1f9156514992455057f843",
+      "chunk-c6fdc5ed25c4e17b8c421a952bb05450",
+      "chunk-eec0b4c60ebeb28599428b3552de2d1b",
+      "chunk-180ca3d6d27d84b30ebf5d20f135de18"
+    ],
+    "occurrence": 0.4166666666666667,
+    "sub_communities": [
+      "5"
+    ]
+  },
+  "9": {
+    "report_string": "# FTO SNP and Educational Influence on Obesity Risk\n\nThis report focuses on the interaction between the FTO single nucleotide polymorphism (SNP) and educational level in determining obesity risk. Key entities include the FTO SNP, various levels of education, and BMI as a physiological measure. The community highlights how genetic variants can be moderated by environmental factors such as education to influence health outcomes like obesity.\n\n## FTO SNP's impact on BMI varies with education\n\nThe presence of the FTO SNP is associated with increased BMI in individuals without university-level education but not in those who have pursued higher educational attainment. This interaction underscores the importance of considering environmental factors like education when assessing genetic risks for obesity.\n\n## Education level modifies the effect of FTO SNP on obesity risk\n\nEducational background interacts significantly with the FTO rs9939609 polymorphism to determine BMI and obesity risk, showing an inverse relationship between higher education and obesity prevalence. This gene-environment interaction suggests that individuals with university studies exhibit a lower association between the FTO SNP and anthropometric variables.\n\n## Role of physical activity in moderating FTO SNP effects\n\nThe level of physical activity interacts with the presence of the FTO SNP to influence BMI, particularly among certain educational groups. This finding highlights that lifestyle factors such as physical activity can modify genetic influences on obesity risk.\n\n## Impact of intrathecal MTX exposure on cognitive performance\n\nIntrathecal methotrexate administration affects cognitive performance as measured by Trail Making Test Part B (TMTB). This environmental factor, while not directly related to obesity, illustrates the complex interplay between genetic and environmental factors in determining health outcomes.\n\n## Genetic risk score (GRS) influences cognitive flexibility\n\nSurvivors with higher GRS scores performed significantly worse on Trail Making Test Part B (TMTB) than those with lower GRS scores, indicating an association between genetic risk and cognitive flexibility. This insight suggests that genetic predispositions can have broader implications beyond metabolic health.",
+    "report_json": {
+      "title": "FTO SNP and Educational Influence on Obesity Risk",
+      "summary": "This report focuses on the interaction between the FTO single nucleotide polymorphism (SNP) and educational level in determining obesity risk. Key entities include the FTO SNP, various levels of education, and BMI as a physiological measure. The community highlights how genetic variants can be moderated by environmental factors such as education to influence health outcomes like obesity.",
+      "rating": 7.5,
+      "rating_explanation": "The impact severity rating is high due to the significant role educational level plays in mitigating or exacerbating the effects of the FTO SNP on obesity risk, indicating a substantial influence on public health interventions and personalized medicine strategies.",
+      "findings": [
+        {
+          "summary": "FTO SNP's impact on BMI varies with education",
+          "explanation": "The presence of the FTO SNP is associated with increased BMI in individuals without university-level education but not in those who have pursued higher educational attainment. This interaction underscores the importance of considering environmental factors like education when assessing genetic risks for obesity."
+        },
+        {
+          "summary": "Education level modifies the effect of FTO SNP on obesity risk",
+          "explanation": "Educational background interacts significantly with the FTO rs9939609 polymorphism to determine BMI and obesity risk, showing an inverse relationship between higher education and obesity prevalence. This gene-environment interaction suggests that individuals with university studies exhibit a lower association between the FTO SNP and anthropometric variables."
+        },
+        {
+          "summary": "Role of physical activity in moderating FTO SNP effects",
+          "explanation": "The level of physical activity interacts with the presence of the FTO SNP to influence BMI, particularly among certain educational groups. This finding highlights that lifestyle factors such as physical activity can modify genetic influences on obesity risk."
+        },
+        {
+          "summary": "Impact of intrathecal MTX exposure on cognitive performance",
+          "explanation": "Intrathecal methotrexate administration affects cognitive performance as measured by Trail Making Test Part B (TMTB). This environmental factor, while not directly related to obesity, illustrates the complex interplay between genetic and environmental factors in determining health outcomes."
+        },
+        {
+          "summary": "Genetic risk score (GRS) influences cognitive flexibility",
+          "explanation": "Survivors with higher GRS scores performed significantly worse on Trail Making Test Part B (TMTB) than those with lower GRS scores, indicating an association between genetic risk and cognitive flexibility. This insight suggests that genetic predispositions can have broader implications beyond metabolic health."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 9",
+    "edges": [
+      [
+        "\"EDUCATION\"",
+        "\"UNIVERSITY STUDIES\""
+      ],
+      [
+        "\"GRS\"",
+        "\"TMTB\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"FTO SNP\""
+      ],
+      [
+        "\"EDUCATION LEVEL\"",
+        "\"FTO SNP\""
+      ],
+      [
+        "\"INTRATHECAL MTX EXPOSURE\"",
+        "\"TMTB\""
+      ],
+      [
+        "\"EDUCATION LEVEL\"",
+        "\"OBESITY RISK\""
+      ],
+      [
+        "\"EDUCATION\"",
+        "\"FTO SNP\""
+      ],
+      [
+        "\"FTO SNP\"",
+        "\"PHYSICAL ACTIVITY (PA)\""
+      ],
+      [
+        "\"FTO SNP\"",
+        "\"UNIVERSITY STUDIES EDUCATION LEVEL\""
+      ],
+      [
+        "\"FTO GENE\"",
+        "\"FTO SNP\""
+      ]
+    ],
+    "nodes": [
+      "\"INTRATHECAL MTX EXPOSURE\"",
+      "\"EDUCATION LEVEL\"",
+      "\"EDUCATION\"",
+      "\"FTO SNP\"",
+      "\"TMTB\"",
+      "\"UNIVERSITY STUDIES\"",
+      "\"UNIVERSITY STUDIES EDUCATION LEVEL\""
+    ],
+    "chunk_ids": [
+      "chunk-63d0b5be485a69f44e2799ccc9510487",
+      "chunk-ea6355aaf22d7cdd3331602638122ed7",
+      "chunk-3135befd0c3140ad097d96ace6de86a1",
+      "chunk-4b6e8f78911cafc70959cfdfed786c29"
+    ],
+    "occurrence": 0.3333333333333333,
+    "sub_communities": []
+  },
+  "10": {
+    "report_string": "# FTO SNP and Physical Activity in Diabetes Prevention\n\nThis report focuses on the interaction between physical activity, FTO genetic variants, and type 2 diabetes prevention. The key entities include the FTO SNP, physical activity as a lifestyle factor, and an intensive lifestyle intervention group used in RCTs like the Finish Diabetes Prevention Study (DPS). These entities are interconnected through their roles in modifying obesity risk and reducing the likelihood of developing type 2 diabetes when combined with dietary interventions.\n\n## Interaction between FTO SNP and physical activity\n\nThe FTO single nucleotide polymorphism (SNP) interacts with physical activity levels to influence body mass index (BMI). According to the provided data, adjusting for physical activity does not change the significant association between the FTO SNP and obesity risk in most populations but modifies this effect when education is considered as an environmental factor. This interaction highlights the importance of considering lifestyle factors alongside genetic predispositions in managing obesity.\n\n## Impact of intensive lifestyle interventions\n\nAn intensive lifestyle intervention group, which includes increased physical activity and dietary modifications, helps reduce weight and lower type 2 diabetes risk. The Finish Diabetes Prevention Study (DPS) uses such an intervention group to assess the impact of these changes on reducing diabetes risk compared to usual care. This underscores the effectiveness of combined interventions in modifying genetic risks associated with lifestyle factors.\n\n## Role of physical activity in genetic modification\n\nPhysical activity is a critical factor that modifies genetic effects on obesity risk, particularly when considering environmental factors like education level. The interaction between physical activity and the FTO SNP suggests that lifestyle interventions can mitigate genetic predispositions to obesity, providing insights into personalized health strategies.\n\n## Environmental modifiers in genetic impact\n\nEducation level is an important environmental factor that modifies the interaction between the FTO SNP and obesity risk. The data provided indicates that while physical activity generally does not change the association between the FTO SNP and obesity, this effect can be altered when education is considered. This highlights the complexity of genetic-environment interactions in health outcomes.\n\n## Application of intensive lifestyle interventions\n\nThe use of an intensive lifestyle intervention group within RCTs like the Finish Diabetes Prevention Study (DPS) demonstrates its effectiveness in reducing type 2 diabetes risk. These interventions, which include increased physical activity and dietary modifications, are pivotal in modifying genetic risks associated with obesity and diabetes.",
+    "report_json": {
+      "title": "FTO SNP and Physical Activity in Diabetes Prevention",
+      "summary": "This report focuses on the interaction between physical activity, FTO genetic variants, and type 2 diabetes prevention. The key entities include the FTO SNP, physical activity as a lifestyle factor, and an intensive lifestyle intervention group used in RCTs like the Finish Diabetes Prevention Study (DPS). These entities are interconnected through their roles in modifying obesity risk and reducing the likelihood of developing type 2 diabetes when combined with dietary interventions.",
+      "rating": 7.5,
+      "rating_explanation": "The impact severity rating is high due to the significant influence of physical activity and genetic factors on type 2 diabetes prevention and obesity management.",
+      "findings": [
+        {
+          "summary": "Interaction between FTO SNP and physical activity",
+          "explanation": "The FTO single nucleotide polymorphism (SNP) interacts with physical activity levels to influence body mass index (BMI). According to the provided data, adjusting for physical activity does not change the significant association between the FTO SNP and obesity risk in most populations but modifies this effect when education is considered as an environmental factor. This interaction highlights the importance of considering lifestyle factors alongside genetic predispositions in managing obesity."
+        },
+        {
+          "summary": "Impact of intensive lifestyle interventions",
+          "explanation": "An intensive lifestyle intervention group, which includes increased physical activity and dietary modifications, helps reduce weight and lower type 2 diabetes risk. The Finish Diabetes Prevention Study (DPS) uses such an intervention group to assess the impact of these changes on reducing diabetes risk compared to usual care. This underscores the effectiveness of combined interventions in modifying genetic risks associated with lifestyle factors."
+        },
+        {
+          "summary": "Role of physical activity in genetic modification",
+          "explanation": "Physical activity is a critical factor that modifies genetic effects on obesity risk, particularly when considering environmental factors like education level. The interaction between physical activity and the FTO SNP suggests that lifestyle interventions can mitigate genetic predispositions to obesity, providing insights into personalized health strategies."
+        },
+        {
+          "summary": "Environmental modifiers in genetic impact",
+          "explanation": "Education level is an important environmental factor that modifies the interaction between the FTO SNP and obesity risk. The data provided indicates that while physical activity generally does not change the association between the FTO SNP and obesity, this effect can be altered when education is considered. This highlights the complexity of genetic-environment interactions in health outcomes."
+        },
+        {
+          "summary": "Application of intensive lifestyle interventions",
+          "explanation": "The use of an intensive lifestyle intervention group within RCTs like the Finish Diabetes Prevention Study (DPS) demonstrates its effectiveness in reducing type 2 diabetes risk. These interventions, which include increased physical activity and dietary modifications, are pivotal in modifying genetic risks associated with obesity and diabetes."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 10",
+    "edges": [
+      [
+        "\"FTO SNP\"",
+        "\"PHYSICAL ACTIVITY (PA)\""
+      ],
+      [
+        "\"FINISH DIABETES PREVENTION STUDY (DPS)\"",
+        "\"INTENSIVE LIFESTYLE INTERVENTION GROUP\""
+      ],
+      [
+        "\"INTENSIVE LIFESTYLE INTERVENTION GROUP\"",
+        "\"PHYSICAL ACTIVITY (PA)\""
+      ],
+      [
+        "\"OBESITY RISK\"",
+        "\"PHYSICAL ACTIVITY (PA)\""
+      ]
+    ],
+    "nodes": [
+      "\"FINISH DIABETES PREVENTION STUDY (DPS)\"",
+      "\"INTENSIVE LIFESTYLE INTERVENTION GROUP\"",
+      "\"PHYSICAL ACTIVITY (PA)\""
+    ],
+    "chunk_ids": [
+      "chunk-63d0b5be485a69f44e2799ccc9510487",
+      "chunk-0d8bc9a093c56fefc8b7af3fb9bc2862",
+      "chunk-3135befd0c3140ad097d96ace6de86a1"
+    ],
+    "occurrence": 0.25,
+    "sub_communities": []
+  },
+  "8": {
+    "report_string": "# Polygenic and Genomic Factors in Obesity\n\nThis community focuses on genetic factors, including polygenic scores (PGS) and single nucleotide polymorphisms (SNPs), that influence obesity-related physiological processes such as BMI at baseline. Key entities include PGS, SNPS, BMI baseline and change, GWAS analysis, and top hits from GWAS studies. These entities interact to predict genetic predisposition to obesity and recent snoring.\n\n## Polygenic Score (PGS) and recent snoring\n\nThe PGS, derived from GWAS summary statistics, is a strong predictor of the likelihood of recent snoring in an independent sample. This highlights the genetic predisposition to snoring influenced by multiple genes rather than a single variant.\n\n## BMI baseline and genetic risk\n\nThe baseline BMI and changes in BMI over time are significant physiological processes studied for their association with obesity SNPs and GRS. This indicates that both current BMI status and genetic predisposition contribute to obesity risk.\n\n## SNPs associated with TCF7L2 gene\n\nThe TCF7L2 gene contains SNPs significantly associated with baseline BMI, indicating its role in the genetic predisposition to obesity. This underscores the importance of specific genes and their variants in predicting obesity risk.\n\n## SNPs associated with TAL1 gene\n\nThe TAL1 gene also has SNPs significantly linked to baseline BMI, suggesting that multiple genes contribute to genetic predisposition for obesity. This reinforces the polygenic nature of obesity risk factors.\n\n## Sex-stratified GWAS analysis impact\n\nGWAS analysis stratified by sex helps identify genetic variants associated with snoring in males and females, highlighting the importance of considering gender differences in genetic predisposition to certain traits or conditions.",
+    "report_json": {
+      "title": "Polygenic and Genomic Factors in Obesity",
+      "summary": "This community focuses on genetic factors, including polygenic scores (PGS) and single nucleotide polymorphisms (SNPs), that influence obesity-related physiological processes such as BMI at baseline. Key entities include PGS, SNPS, BMI baseline and change, GWAS analysis, and top hits from GWAS studies. These entities interact to predict genetic predisposition to obesity and recent snoring.",
+      "rating": 7.5,
+      "rating_explanation": "The impact severity rating is high due to the significant influence of polygenic scores and SNPs on obesity-related physiological processes and disease risk.",
+      "findings": [
+        {
+          "summary": "Polygenic Score (PGS) and recent snoring",
+          "explanation": "The PGS, derived from GWAS summary statistics, is a strong predictor of the likelihood of recent snoring in an independent sample. This highlights the genetic predisposition to snoring influenced by multiple genes rather than a single variant."
+        },
+        {
+          "summary": "BMI baseline and genetic risk",
+          "explanation": "The baseline BMI and changes in BMI over time are significant physiological processes studied for their association with obesity SNPs and GRS. This indicates that both current BMI status and genetic predisposition contribute to obesity risk."
+        },
+        {
+          "summary": "SNPs associated with TCF7L2 gene",
+          "explanation": "The TCF7L2 gene contains SNPs significantly associated with baseline BMI, indicating its role in the genetic predisposition to obesity. This underscores the importance of specific genes and their variants in predicting obesity risk."
+        },
+        {
+          "summary": "SNPs associated with TAL1 gene",
+          "explanation": "The TAL1 gene also has SNPs significantly linked to baseline BMI, suggesting that multiple genes contribute to genetic predisposition for obesity. This reinforces the polygenic nature of obesity risk factors."
+        },
+        {
+          "summary": "Sex-stratified GWAS analysis impact",
+          "explanation": "GWAS analysis stratified by sex helps identify genetic variants associated with snoring in males and females, highlighting the importance of considering gender differences in genetic predisposition to certain traits or conditions."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 8",
+    "edges": [
+      [
+        "\"BMI BASELINE AND CHANGE\"",
+        "\"SNPS\""
+      ],
+      [
+        "\"PGS (POLYGENIC SCORE)\"",
+        "\"TOP HITS IN GWAS\""
+      ],
+      [
+        "\"BMI BASELINE AND CHANGE\"",
+        "\"GRS\""
+      ],
+      [
+        "\"SNPS\"",
+        "\"TAL1 GENE\""
+      ],
+      [
+        "\"PGS (POLYGENIC SCORE)\"",
+        "\"SEX-STRATIFIED GWAS ANALYSIS\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"PGS (POLYGENIC SCORE)\""
+      ],
+      [
+        "\"SNPS\"",
+        "\"TCF7L2 GENE\""
+      ]
+    ],
+    "nodes": [
+      "\"PGS (POLYGENIC SCORE)\"",
+      "\"TOP HITS IN GWAS\"",
+      "\"BMI BASELINE AND CHANGE\"",
+      "\"SNPS\"",
+      "\"SEX-STRATIFIED GWAS ANALYSIS\""
+    ],
+    "chunk_ids": [
+      "chunk-a34b927ed42ff0917960122b4d203f83",
+      "chunk-1fde08e52a188ac6a549e7c11d59a092"
+    ],
+    "occurrence": 0.16666666666666666,
+    "sub_communities": []
+  },
+  "2": {
+    "report_string": "# BMI and Genetic Factors in Obesity\n\nThe community revolves around Body Mass Index (BMI) as a central biomarker of obesity, with significant genetic influences from variants like FTO SNP and MACF1 gene. The interplay between BMI and dietary patterns, physical activity, and family history of obesity highlights the complexity of genetic and environmental factors in obesity risk. Key insights include the role of polygenic scores (PGS) in predicting snoring predisposition and the impact of gender on BMI-related health outcomes.\n\n## FTO SNP and BMI association\n\nThe FTO gene variant (SNP) has been associated with increased BMI in individuals without higher education levels but not in those with university studies. This finding underscores the importance of genetic predisposition alongside educational background in determining obesity risk.\n\n## MACF1 gene and BMI\n\nThe MACF1 gene, known for its association with musculoskeletal traits such as height and heel bone mineral density, also influences BMI values. This suggests a complex genetic contribution to obesity risk beyond metabolic factors alone.\n\n## Family history of obesity and BMI\n\nA family history of obesity is linked to higher BMI values due to shared genetics and environmental factors. Individuals with familial obesity tend to have a greater predisposition to weight gain and related health conditions, highlighting the importance of genetic risk assessment.\n\n## Polygenic score (PGS) in predicting snoring\n\nThe polygenic score derived from genome-wide association studies (GWAS) can predict recent snoring based on genetic risk factors. This finding emphasizes the role of multiple genetic variants contributing to complex health outcomes such as obesity and related complications.\n\n## Gender differences in BMI-related health outcomes\n\nBoth males and females experience a positive correlation between BMI and increased snoring, though mechanisms may vary by sex. The Nurses' Health Study (NHS) has provided insights into how dietary patterns influence long-term health outcomes such as type 2 diabetes risk.",
+    "report_json": {
+      "title": "BMI and Genetic Factors in Obesity",
+      "summary": "The community revolves around Body Mass Index (BMI) as a central biomarker of obesity, with significant genetic influences from variants like FTO SNP and MACF1 gene. The interplay between BMI and dietary patterns, physical activity, and family history of obesity highlights the complexity of genetic and environmental factors in obesity risk. Key insights include the role of polygenic scores (PGS) in predicting snoring predisposition and the impact of gender on BMI-related health outcomes.",
+      "rating": 7.5,
+      "rating_explanation": "The community's high impact is due to its significant influence on obesity risk, metabolic health, and lifestyle factors such as physical activity and dietary patterns.",
+      "findings": [
+        {
+          "summary": "FTO SNP and BMI association",
+          "explanation": "The FTO gene variant (SNP) has been associated with increased BMI in individuals without higher education levels but not in those with university studies. This finding underscores the importance of genetic predisposition alongside educational background in determining obesity risk."
+        },
+        {
+          "summary": "MACF1 gene and BMI",
+          "explanation": "The MACF1 gene, known for its association with musculoskeletal traits such as height and heel bone mineral density, also influences BMI values. This suggests a complex genetic contribution to obesity risk beyond metabolic factors alone."
+        },
+        {
+          "summary": "Family history of obesity and BMI",
+          "explanation": "A family history of obesity is linked to higher BMI values due to shared genetics and environmental factors. Individuals with familial obesity tend to have a greater predisposition to weight gain and related health conditions, highlighting the importance of genetic risk assessment."
+        },
+        {
+          "summary": "Polygenic score (PGS) in predicting snoring",
+          "explanation": "The polygenic score derived from genome-wide association studies (GWAS) can predict recent snoring based on genetic risk factors. This finding emphasizes the role of multiple genetic variants contributing to complex health outcomes such as obesity and related complications."
+        },
+        {
+          "summary": "Gender differences in BMI-related health outcomes",
+          "explanation": "Both males and females experience a positive correlation between BMI and increased snoring, though mechanisms may vary by sex. The Nurses' Health Study (NHS) has provided insights into how dietary patterns influence long-term health outcomes such as type 2 diabetes risk."
+        }
+      ]
+    },
+    "level": 0,
+    "title": "Cluster 2",
+    "edges": [
+      [
+        "\"DIETARY PATTERN\"",
+        "\"TCF7L2 GENE\""
+      ],
+      [
+        "\"PGS (POLYGENIC SCORE)\"",
+        "\"SEX-STRATIFIED GWAS ANALYSIS\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"SEX-STRATIFIED GWAS (GENOME-WIDE ASSOCIATION STUDY)\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"SEX (MALE/FEMALE)\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"FAMILY HISTORY OF OBESITY\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"PGS (POLYGENIC SCORE)\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"PHYSICAL ACTIVITY\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"EXTREMELY OBESE CHILDREN AND ADOLESCENTS\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"SODIUM IN URINE\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"FTO SNP\""
+      ],
+      [
+        "\"BASELINE COLONIC ARACHIDONIC ACID (AA) MEASUREMENT IN PARTICIPANTS WITH OR WITHOUT MINOR ALLELES IN THE FADS GENE CLUSTER\"",
+        "\"BMI (BODY MASS INDEX)\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"NURSES' HEALTH STUDY (NHS)\""
+      ],
+      [
+        "\"PGS (POLYGENIC SCORE)\"",
+        "\"TOP HITS IN GWAS\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"MACF1 GENE\""
+      ],
+      [
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+        "\"PHYSICAL ACTIVITY\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"GENE-DIET INTERACTION\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"FTO GENE\""
+      ],
+      [
+        "\"APOBR\"",
+        "\"EXTREMELY OBESE CHILDREN AND ADOLESCENTS\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"GENDER\""
+      ]
+    ],
+    "nodes": [
+      "\"NURSES' HEALTH STUDY (NHS)\"",
+      "\"FAMILY HISTORY OF OBESITY\"",
+      "\"GENE-DIET INTERACTION\"",
+      "\"SODIUM IN URINE\"",
+      "\"PGS (POLYGENIC SCORE)\"",
+      "\"BMI (BODY MASS INDEX)\"",
+      "\"SEX (MALE/FEMALE)\"",
+      "\"PHYSICAL ACTIVITY\"",
+      "\"EXTREMELY OBESE CHILDREN AND ADOLESCENTS\"",
+      "\"MACF1 GENE\"",
+      "\"SEX-STRATIFIED GWAS (GENOME-WIDE ASSOCIATION STUDY)\"",
+      "\"BASELINE COLONIC ARACHIDONIC ACID (AA) MEASUREMENT IN PARTICIPANTS WITH OR WITHOUT MINOR ALLELES IN THE FADS GENE CLUSTER\"",
+      "\"TOP HITS IN GWAS\"",
+      "\"GENDER\"",
+      "\"DIETARY PATTERN\"",
+      "\"SEX-STRATIFIED GWAS ANALYSIS\""
+    ],
+    "chunk_ids": [
+      "chunk-2c178ae99eeffdddbea511cafbe4a7d5",
+      "chunk-f2e122f964bade37f487049bd69a3f9f",
+      "chunk-9977706363cc368b3be503d07ed3ef62",
+      "chunk-e0d9c2e8ae2160bad4ae90ab6e8a12f6",
+      "chunk-0d8bc9a093c56fefc8b7af3fb9bc2862",
+      "chunk-fa6293a0a10f175b4aebac8e885c0d20",
+      "chunk-3135befd0c3140ad097d96ace6de86a1",
+      "chunk-7ca64f92964b051cfb1c43f967f243a5",
+      "chunk-13862d7ab74f5d4fa3f2261984d15d64",
+      "chunk-8b9890cf10c4a751a1d0ec7e9843002d",
+      "chunk-c6fdc5ed25c4e17b8c421a952bb05450",
+      "chunk-a34b927ed42ff0917960122b4d203f83"
+    ],
+    "occurrence": 1.0,
+    "sub_communities": []
+  },
+  "3": {
+    "report_string": "# Genetic and Environmental Factors in Obesity Risk\n\nThis community focuses on the interplay between genetic factors, such as SNPs in FTO, TAL1, and TCF7L2 genes, and environmental variables like education level, physical activity, and dietary patterns in determining obesity risk. Key relationships include how educational attainment mitigates the impact of certain gene variants on BMI and obesity risk.\n\n## Education Level Mitigates Genetic Impact of FTO SNP\n\nIndividuals with higher education levels exhibit lower associations between the FTO rs9939609 polymorphism and anthropometric variables, indicating that educational attainment can mitigate genetic predispositions to obesity. This finding underscores the importance of environmental factors in modifying genetic risks.\n\n## Plant-Based Diet Intake Reduces Genetic Risk\n\nA high intake of plant-based diet reduces the genetic impact from a high polygenic risk score (PRS) on BMI, highlighting the protective role of dietary patterns against genetic predisposition. This interaction suggests that dietary choices can significantly modify obesity risk independent of genetic factors.\n\n## Physical Activity Modifies FTO SNP Impact\n\nThe level of physical activity interacts with the presence of the FTO SNP to influence BMI, especially among certain educational groups. Adjusting for physical activity does not change the significant association between the FTO SNP and obesity risk in most populations but modifies this effect when education is considered as an environmental factor.\n\n## TCF7L2 Gene Variants and Type 2 Diabetes Risk\n\nThe rs7903146 variant within the TCF7L2 gene modulates the association between other genetic factors and type 2 diabetes risk. Genetic analysis shows that adjusting for this genomic variant removes significant associations with type 2 diabetes, underscoring its critical role in disease susceptibility.\n\n## Dietary Patterns Influence Type 2 Diabetes Risk\n\nThe TCF7L2 gene interacts with various dietary patterns to influence type 2 diabetes risk. For instance, high consumption of fried foods can mitigate the genetic impact on BMI from a high PRS, indicating that diet plays a crucial role in modifying obesity and diabetes risk independent of genetic predisposition.\n\n## University Studies Lower Obesity Risk\n\nIndividuals engaged in university studies exhibit lower associations between the FTO rs9939609 polymorphism and anthropometric measures, suggesting that higher education levels can act as a mitigating factor against genetic risks. This finding highlights the broader impact of educational attainment on health outcomes.\n\n## TAL1 Gene Variants Linked to Obesity\n\nThe TAL1 gene contains SNPs associated with baseline BMI, indicating its role in obesity predisposition. The SNP rs2984618 within the TAL1 gene is another significant obesity predisposing variant associated with BMI at baseline, further supporting the genetic basis of obesity risk.\n\n## Impact of Myosin Light Chain-2 (MYL2) Variants\n\nThe MYL2_rs3782889 variant in myosin light chain-2 affects obesity risk but does not meet statistical criteria, suggesting that while it may have an influence on energy intake/expenditure pathways, further research is needed to confirm its significance.\n\n## TFAP2B Gene Variants Affect Obesity Risk\n\nThe TFAP2B_rs2206277 genetic variant influences obesity risk by modulating energy intake/expenditure pathways through interaction with transcription factors. This finding underscores the importance of transcriptional regulation in determining obesity susceptibility.\n\n## DPS Study on Lifestyle Interventions\n\nThe Finish Diabetes Prevention Study (DPS) evaluates lifestyle interventions against standard care for reducing type 2 diabetes risk in high-risk individuals. Increased physical activity as part of an intervention group helps reduce weight and lower type 2 diabetes risk, emphasizing the effectiveness of lifestyle changes in mitigating disease risks.",
+    "report_json": {
+      "title": "Genetic and Environmental Factors in Obesity Risk",
+      "summary": "This community focuses on the interplay between genetic factors, such as SNPs in FTO, TAL1, and TCF7L2 genes, and environmental variables like education level, physical activity, and dietary patterns in determining obesity risk. Key relationships include how educational attainment mitigates the impact of certain gene variants on BMI and obesity risk.",
+      "rating": 8.5,
+      "rating_explanation": "The community highlights significant interactions between genetic predispositions and lifestyle factors that substantially influence obesity prevalence and health outcomes.",
+      "findings": [
+        {
+          "summary": "Education Level Mitigates Genetic Impact of FTO SNP",
+          "explanation": "Individuals with higher education levels exhibit lower associations between the FTO rs9939609 polymorphism and anthropometric variables, indicating that educational attainment can mitigate genetic predispositions to obesity. This finding underscores the importance of environmental factors in modifying genetic risks."
+        },
+        {
+          "summary": "Plant-Based Diet Intake Reduces Genetic Risk",
+          "explanation": "A high intake of plant-based diet reduces the genetic impact from a high polygenic risk score (PRS) on BMI, highlighting the protective role of dietary patterns against genetic predisposition. This interaction suggests that dietary choices can significantly modify obesity risk independent of genetic factors."
+        },
+        {
+          "summary": "Physical Activity Modifies FTO SNP Impact",
+          "explanation": "The level of physical activity interacts with the presence of the FTO SNP to influence BMI, especially among certain educational groups. Adjusting for physical activity does not change the significant association between the FTO SNP and obesity risk in most populations but modifies this effect when education is considered as an environmental factor."
+        },
+        {
+          "summary": "TCF7L2 Gene Variants and Type 2 Diabetes Risk",
+          "explanation": "The rs7903146 variant within the TCF7L2 gene modulates the association between other genetic factors and type 2 diabetes risk. Genetic analysis shows that adjusting for this genomic variant removes significant associations with type 2 diabetes, underscoring its critical role in disease susceptibility."
+        },
+        {
+          "summary": "Dietary Patterns Influence Type 2 Diabetes Risk",
+          "explanation": "The TCF7L2 gene interacts with various dietary patterns to influence type 2 diabetes risk. For instance, high consumption of fried foods can mitigate the genetic impact on BMI from a high PRS, indicating that diet plays a crucial role in modifying obesity and diabetes risk independent of genetic predisposition."
+        },
+        {
+          "summary": "University Studies Lower Obesity Risk",
+          "explanation": "Individuals engaged in university studies exhibit lower associations between the FTO rs9939609 polymorphism and anthropometric measures, suggesting that higher education levels can act as a mitigating factor against genetic risks. This finding highlights the broader impact of educational attainment on health outcomes."
+        },
+        {
+          "summary": "TAL1 Gene Variants Linked to Obesity",
+          "explanation": "The TAL1 gene contains SNPs associated with baseline BMI, indicating its role in obesity predisposition. The SNP rs2984618 within the TAL1 gene is another significant obesity predisposing variant associated with BMI at baseline, further supporting the genetic basis of obesity risk."
+        },
+        {
+          "summary": "Impact of Myosin Light Chain-2 (MYL2) Variants",
+          "explanation": "The MYL2_rs3782889 variant in myosin light chain-2 affects obesity risk but does not meet statistical criteria, suggesting that while it may have an influence on energy intake/expenditure pathways, further research is needed to confirm its significance."
+        },
+        {
+          "summary": "TFAP2B Gene Variants Affect Obesity Risk",
+          "explanation": "The TFAP2B_rs2206277 genetic variant influences obesity risk by modulating energy intake/expenditure pathways through interaction with transcription factors. This finding underscores the importance of transcriptional regulation in determining obesity susceptibility."
+        },
+        {
+          "summary": "DPS Study on Lifestyle Interventions",
+          "explanation": "The Finish Diabetes Prevention Study (DPS) evaluates lifestyle interventions against standard care for reducing type 2 diabetes risk in high-risk individuals. Increased physical activity as part of an intervention group helps reduce weight and lower type 2 diabetes risk, emphasizing the effectiveness of lifestyle changes in mitigating disease risks."
+        }
+      ]
+    },
+    "level": 0,
+    "title": "Cluster 3",
+    "edges": [
+      [
+        "\"OBESITY RISK\"",
+        "\"PHYSICAL ACTIVITY (PA)\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"TCF7L2 GENE\""
+      ],
+      [
+        "\"OBESITY RISK\"",
+        "\"TFAP2B_RS2206277\""
+      ],
+      [
+        "\"OBESITY RISK\"",
+        "\"PLANT-BASED DIET INTAKE\""
+      ],
+      [
+        "\"MYL2_RS3782889\"",
+        "\"OBESITY RISK\""
+      ],
+      [
+        "\"RS7903146\"",
+        "\"TCF7L2 GENE\""
+      ],
+      [
+        "\"FTO SNP\"",
+        "\"PHYSICAL ACTIVITY (PA)\""
+      ],
+      [
+        "\"FRIED-FOOD INTAKE\"",
+        "\"PRS\""
+      ],
+      [
+        "\"EDUCATION\"",
+        "\"UNIVERSITY STUDIES\""
+      ],
+      [
+        "\"INTENSIVE LIFESTYLE INTERVENTION GROUP\"",
+        "\"PHYSICAL ACTIVITY (PA)\""
+      ],
+      [
+        "\"FRIED-FOOD INTAKE\"",
+        "\"OBESITY RISK\""
+      ],
+      [
+        "\"SNPS\"",
+        "\"TAL1 GENE\""
+      ],
+      [
+        "\"EDUCATION LEVEL\"",
+        "\"OBESITY RISK\""
+      ],
+      [
+        "\"FTO SNP\"",
+        "\"UNIVERSITY STUDIES EDUCATION LEVEL\""
+      ],
+      [
+        "\"FTO GENE\"",
+        "\"FTO SNP\""
+      ],
+      [
+        "\"SNPS IN FTO, TAL1, AND TCF7L2 GENES\"",
+        "\"TAL1 GENE\""
+      ],
+      [
+        "\"SNPS\"",
+        "\"TCF7L2 GENE\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"FTO SNP\""
+      ],
+      [
+        "\"EDUCATION LEVEL\"",
+        "\"FTO SNP\""
+      ],
+      [
+        "\"SNPS IN FTO, TAL1, AND TCF7L2 GENES\"",
+        "\"TCF7L2 GENE\""
+      ],
+      [
+        "\"FINISH DIABETES PREVENTION STUDY (DPS)\"",
+        "\"INTENSIVE LIFESTYLE INTERVENTION GROUP\""
+      ],
+      [
+        "\"RS7903146\"",
+        "\"TYPE 7 DIABETES RISK ANALYSIS\""
+      ],
+      [
+        "\"EDUCATION\"",
+        "\"FTO SNP\""
+      ]
+    ],
+    "nodes": [
+      "\"INTENSIVE LIFESTYLE INTERVENTION GROUP\"",
+      "\"PRS\"",
+      "\"MYL2_RS3782889\"",
+      "\"FRIED-FOOD INTAKE\"",
+      "\"TFAP2B_RS2206277\"",
+      "\"EDUCATION LEVEL\"",
+      "\"RS7903146\"",
+      "\"TYPE 7 DIABETES RISK ANALYSIS\"",
+      "\"EDUCATION\"",
+      "\"FTO SNP\"",
+      "\"SNPS IN FTO, TAL1, AND TCF7L2 GENES\"",
+      "\"PHYSICAL ACTIVITY (PA)\"",
+      "\"TAL1 GENE\"",
+      "\"UNIVERSITY STUDIES\"",
+      "\"TCF7L2 GENE\"",
+      "\"FINISH DIABETES PREVENTION STUDY (DPS)\"",
+      "\"UNIVERSITY STUDIES EDUCATION LEVEL\"",
+      "\"OBESITY RISK\""
+    ],
+    "chunk_ids": [
+      "chunk-63d0b5be485a69f44e2799ccc9510487",
+      "chunk-f9a60d3cf951d77afa115859755dac43",
+      "chunk-6a7c69534e11aa2fc4bd948484aa81c4",
+      "chunk-0d8bc9a093c56fefc8b7af3fb9bc2862",
+      "chunk-3135befd0c3140ad097d96ace6de86a1",
+      "chunk-3ad8ef794841d749e48b3223741e91d3",
+      "chunk-eec0b4c60ebeb28599428b3552de2d1b",
+      "chunk-1fde08e52a188ac6a549e7c11d59a092"
+    ],
+    "occurrence": 0.6666666666666666,
+    "sub_communities": [
+      "10",
+      "11"
+    ]
+  },
+  "0": {
+    "report_string": "# Mediterranean Diet and Genetic Factors in Obesity and Metabolic Health\n\nThe community explores the impact of adherence to the Mediterranean diet on metabolic health markers such as body mass index (BMI), insulin resistance, blood pressure levels, and lipid concentrations. Additionally, it examines genetic variants in APOBR and their association with obesity risk among extremely obese children and adolescents. The relationships between these factors are intricate, with significant implications for understanding the interplay between dietary patterns, genetics, and metabolic health.\n\n## Adherence to the Mediterranean Diet is inversely associated with TAG concentration levels.\n\nIndividuals who adhere more closely to the Mediterranean diet exhibit lower triglyceride (TAG) concentrations compared to those with lesser adherence. This relationship underscores the diet's role in regulating lipid metabolism and its potential for reducing cardiovascular risk factors.\n\n## Higher adherence to the Mediterranean Diet is associated with reduced insulin resistance.\n\nThe study highlights that individuals with higher adherence to the Mediterranean diet show improved insulin sensitivity, leading to a reduction in insulin resistance. This effect suggests that the dietary pattern may play a crucial role in managing metabolic syndrome and preventing type 2 diabetes.\n\n## Mediterranean Diet adherence is inversely associated with hypertriacylglycerolaemia risk.\n\nIndividuals who adhere more closely to the Mediterranean diet have a lower risk of developing hypertriacylglycerolaemia, a condition characterized by high levels of triglycerides in the blood. This finding indicates that dietary patterns can significantly influence lipid profiles and metabolic health.\n\n## APOBR gene variants are associated with obesity risk.\n\nSpecific genetic variants within the APOBR gene have been identified as risk factors for obesity, particularly among extremely obese children and adolescents. These findings suggest that certain alleles in APOBR may predispose individuals to increased body fat accumulation and other metabolic disorders.\n\n## GCKR rs780094 SNP impacts TAG concentration and LDL-C concentration.\n\nThe GCKR rs780094 single nucleotide polymorphism (SNP) is associated with elevated triglyceride concentrations, particularly in individuals carrying the AA genotype compared to GG genotypes. Additionally, this SNP affects low-density lipoprotein cholesterol (LDL-C) levels, indicating a genetic influence on lipid metabolism and cardiovascular health.\n\n## Mediterranean Diet adherence influences HDL-C concentration.\n\nHigher adherence to the Mediterranean diet is directly associated with increased high-density lipoprotein cholesterol (HDL-C) concentrations. This finding emphasizes the diet's positive impact on lipid profiles and cardiovascular health, as higher HDL levels are generally considered beneficial for heart disease prevention.\n\n## Mediterranean Diet adherence influences blood pressure.\n\nAdherence to the Mediterranean diet correlates with reduced systolic and diastolic blood pressure levels. This relationship suggests that dietary patterns can play a significant role in managing hypertension, a major risk factor for cardiovascular disease.\n\n## APOBR gene variants do not necessarily alter amino acid sequences but may influence gene expression or regulation.\n\nSeveral additional sequence variants within the APOBR gene were identified that do not affect amino acid sequences. However, these genetic variations may still impact gene expression or regulatory mechanisms, potentially contributing to obesity risk and other metabolic disorders.",
+    "report_json": {
+      "title": "Mediterranean Diet and Genetic Factors in Obesity and Metabolic Health",
+      "summary": "The community explores the impact of adherence to the Mediterranean diet on metabolic health markers such as body mass index (BMI), insulin resistance, blood pressure levels, and lipid concentrations. Additionally, it examines genetic variants in APOBR and their association with obesity risk among extremely obese children and adolescents. The relationships between these factors are intricate, with significant implications for understanding the interplay between dietary patterns, genetics, and metabolic health.",
+      "rating": 8.5,
+      "rating_explanation": "The community has a high impact due to its comprehensive examination of how adherence to the Mediterranean diet influences various metabolic health markers and genetic risk factors for obesity.",
+      "findings": [
+        {
+          "summary": "Adherence to the Mediterranean Diet is inversely associated with TAG concentration levels.",
+          "explanation": "Individuals who adhere more closely to the Mediterranean diet exhibit lower triglyceride (TAG) concentrations compared to those with lesser adherence. This relationship underscores the diet's role in regulating lipid metabolism and its potential for reducing cardiovascular risk factors."
+        },
+        {
+          "summary": "Higher adherence to the Mediterranean Diet is associated with reduced insulin resistance.",
+          "explanation": "The study highlights that individuals with higher adherence to the Mediterranean diet show improved insulin sensitivity, leading to a reduction in insulin resistance. This effect suggests that the dietary pattern may play a crucial role in managing metabolic syndrome and preventing type 2 diabetes."
+        },
+        {
+          "summary": "Mediterranean Diet adherence is inversely associated with hypertriacylglycerolaemia risk.",
+          "explanation": "Individuals who adhere more closely to the Mediterranean diet have a lower risk of developing hypertriacylglycerolaemia, a condition characterized by high levels of triglycerides in the blood. This finding indicates that dietary patterns can significantly influence lipid profiles and metabolic health."
+        },
+        {
+          "summary": "APOBR gene variants are associated with obesity risk.",
+          "explanation": "Specific genetic variants within the APOBR gene have been identified as risk factors for obesity, particularly among extremely obese children and adolescents. These findings suggest that certain alleles in APOBR may predispose individuals to increased body fat accumulation and other metabolic disorders."
+        },
+        {
+          "summary": "GCKR rs780094 SNP impacts TAG concentration and LDL-C concentration.",
+          "explanation": "The GCKR rs780094 single nucleotide polymorphism (SNP) is associated with elevated triglyceride concentrations, particularly in individuals carrying the AA genotype compared to GG genotypes. Additionally, this SNP affects low-density lipoprotein cholesterol (LDL-C) levels, indicating a genetic influence on lipid metabolism and cardiovascular health."
+        },
+        {
+          "summary": "Mediterranean Diet adherence influences HDL-C concentration.",
+          "explanation": "Higher adherence to the Mediterranean diet is directly associated with increased high-density lipoprotein cholesterol (HDL-C) concentrations. This finding emphasizes the diet's positive impact on lipid profiles and cardiovascular health, as higher HDL levels are generally considered beneficial for heart disease prevention."
+        },
+        {
+          "summary": "Mediterranean Diet adherence influences blood pressure.",
+          "explanation": "Adherence to the Mediterranean diet correlates with reduced systolic and diastolic blood pressure levels. This relationship suggests that dietary patterns can play a significant role in managing hypertension, a major risk factor for cardiovascular disease."
+        },
+        {
+          "summary": "APOBR gene variants do not necessarily alter amino acid sequences but may influence gene expression or regulation.",
+          "explanation": "Several additional sequence variants within the APOBR gene were identified that do not affect amino acid sequences. However, these genetic variations may still impact gene expression or regulatory mechanisms, potentially contributing to obesity risk and other metabolic disorders."
+        }
+      ]
+    },
+    "level": 0,
+    "title": "Cluster 0",
+    "edges": [
+      [
+        "\"BODY MASS INDEX (BMI)\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"GCKR RS780094 SNP\"",
+        "\"HYPERTRIACYLGLYCEROLAEMIA\""
+      ],
+      [
+        "\"APOB:APOA-1 RATIO\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"HDL-C CONCENTRATION\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+        "\"TAG CONCENTRATION\""
+      ],
+      [
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+        "\"SYSTOLIC BLOOD PRESSURE (SBP)\""
+      ],
+      [
+        "\"GCKR RS780094 SNP\"",
+        "\"LDL-C CONCENTRATION\""
+      ],
+      [
+        "\"APOBR\"",
+        "\"RS151233, RS149271, RS180744, RS151174, RS40831, RS61738759, RS200751685, RS40833, AND RS142786317\""
+      ],
+      [
+        "\"GCKR RS780094 SNP\"",
+        "\"TAG CONCENTRATION\""
+      ],
+      [
+        "\"DIASTOLIC BLOOD PRESSURE (DBP)\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"RS1260326 SNP\"",
+        "\"TAG CONCENTRATION\""
+      ],
+      [
+        "\"INSULIN RESISTANCE\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"APOBR\"",
+        "\"RS3833080: P.GLY369_ASP370DEL9\""
+      ],
+      [
+        "\"APOBR\"",
+        "\"GENETIC VARIANT RISK ALLELES\""
+      ],
+      [
+        "\"HYPERTRIACYLGLYCEROLAEMIA\"",
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\""
+      ],
+      [
+        "\"APOBR\"",
+        "\"RS180743: P.PRO428ALA\""
+      ],
+      [
+        "\"APOBR\"",
+        "\"RS180743 G-ALLELE AND RS3833080 DELETION ALLELE\""
+      ],
+      [
+        "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+        "\"PHYSICAL ACTIVITY\""
+      ],
+      [
+        "\"APOBR\"",
+        "\"EXTREMELY OBESE CHILDREN AND ADOLESCENTS\""
+      ]
+    ],
+    "nodes": [
+      "\"GCKR RS780094 SNP\"",
+      "\"HDL-C CONCENTRATION\"",
+      "\"APOB:APOA-1 RATIO\"",
+      "\"TAG CONCENTRATION\"",
+      "\"HYPERTRIACYLGLYCEROLAEMIA\"",
+      "\"RS3833080: P.GLY369_ASP370DEL9\"",
+      "\"MEDITERRANEAN DIET ADHERENCE (MD)\"",
+      "\"BODY MASS INDEX (BMI)\"",
+      "\"APOBR\"",
+      "\"RS180743: P.PRO428ALA\"",
+      "\"LDL-C CONCENTRATION\"",
+      "\"GENETIC VARIANT RISK ALLELES\"",
+      "\"RS151233, RS149271, RS180744, RS151174, RS40831, RS61738759, RS200751685, RS40833, AND RS142786317\"",
+      "\"DIASTOLIC BLOOD PRESSURE (DBP)\"",
+      "\"RS1260326 SNP\"",
+      "\"RS180743 G-ALLELE AND RS3833080 DELETION ALLELE\"",
+      "\"INSULIN RESISTANCE\"",
+      "\"SYSTOLIC BLOOD PRESSURE (SBP)\""
+    ],
+    "chunk_ids": [
+      "chunk-7ca64f92964b051cfb1c43f967f243a5",
+      "chunk-c6fdc5ed25c4e17b8c421a952bb05450",
+      "chunk-eec0b4c60ebeb28599428b3552de2d1b"
+    ],
+    "occurrence": 0.25,
+    "sub_communities": []
+  },
+  "4": {
+    "report_string": "# Genetic and Physiological Factors in Pre-Diabetes\n\nThe community revolves around pre-diabetic conditions such as Impaired Fasting Glucose/Impaired Glucose Tolerance (IFG/IGT) and their association with genetic factors, body mass index (BMI), fasting plasma glucose (FPG), and ethnic background. Key entities include the LEPR gene and its variant rs1011527 SNP, which interact with FPG to influence BMI levels. The community also highlights the protective role of a plant-based diet in mitigating genetic impacts on obesity risk and the unique characteristics of Native North American populations in pre-diabetes prevalence.\n\n## BMI's role in pre-diabetes risk\n\nHigher levels of BMI are positively associated with an increased likelihood of developing IFG/IGT, which is a critical step towards the development of type 2 diabetes (T2D). This relationship underscores the importance of maintaining healthy body weight as part of preventive measures against metabolic diseases.\n\n## Interaction between FPG and LEPR gene\n\nThe interaction between fasting plasma glucose (FPG) and the rs1011527 SNP in the leptin receptor gene (LEPR) has a significant impact on baseline BMI levels. This genetic variant modulates the effect of glycemic status traits on obesity risk, highlighting the complex interplay between genetics and metabolic health.\n\n## Impact of genomic variants on IFG/IGT\n\nCertain genomic variants (SNPs) contribute to susceptibility towards IFG/IGT by influencing baseline BMI levels. This genetic predisposition can lead to the progression from normal glucose tolerance (NGT) to pre-diabetic conditions, thereby increasing the risk of developing T2D over time.\n\n## Role of a plant-based diet in mitigating genetic effects\n\nA high intake of plant-based foods can counteract the influence of obesity predisposing SNPs on BMI, suggesting that dietary patterns play a protective role against obesity risk when combined with genetic factors. This insight highlights the importance of personalized nutritional recommendations to manage genetic susceptibilities.\n\n## Ethnic disparities in pre-diabetes prevalence\n\nNative North American populations exhibit lower rates of IFG/IGT compared to other ethnic groups, indicating potential protective genetic or environmental factors unique to this demographic. Understanding these differences can inform targeted preventive strategies for diverse populations.",
+    "report_json": {
+      "title": "Genetic and Physiological Factors in Pre-Diabetes",
+      "summary": "The community revolves around pre-diabetic conditions such as Impaired Fasting Glucose/Impaired Glucose Tolerance (IFG/IGT) and their association with genetic factors, body mass index (BMI), fasting plasma glucose (FPG), and ethnic background. Key entities include the LEPR gene and its variant rs1011527 SNP, which interact with FPG to influence BMI levels. The community also highlights the protective role of a plant-based diet in mitigating genetic impacts on obesity risk and the unique characteristics of Native North American populations in pre-diabetes prevalence.",
+      "rating": 6.5,
+      "rating_explanation": "The impact severity rating is moderate-high due to the significant influence of genetic factors, BMI, and dietary patterns on the progression from normal glucose tolerance (NGT) to IFG/IGT and eventually type 2 diabetes (T2D).",
+      "findings": [
+        {
+          "summary": "BMI's role in pre-diabetes risk",
+          "explanation": "Higher levels of BMI are positively associated with an increased likelihood of developing IFG/IGT, which is a critical step towards the development of type 2 diabetes (T2D). This relationship underscores the importance of maintaining healthy body weight as part of preventive measures against metabolic diseases."
+        },
+        {
+          "summary": "Interaction between FPG and LEPR gene",
+          "explanation": "The interaction between fasting plasma glucose (FPG) and the rs1011527 SNP in the leptin receptor gene (LEPR) has a significant impact on baseline BMI levels. This genetic variant modulates the effect of glycemic status traits on obesity risk, highlighting the complex interplay between genetics and metabolic health."
+        },
+        {
+          "summary": "Impact of genomic variants on IFG/IGT",
+          "explanation": "Certain genomic variants (SNPs) contribute to susceptibility towards IFG/IGT by influencing baseline BMI levels. This genetic predisposition can lead to the progression from normal glucose tolerance (NGT) to pre-diabetic conditions, thereby increasing the risk of developing T2D over time."
+        },
+        {
+          "summary": "Role of a plant-based diet in mitigating genetic effects",
+          "explanation": "A high intake of plant-based foods can counteract the influence of obesity predisposing SNPs on BMI, suggesting that dietary patterns play a protective role against obesity risk when combined with genetic factors. This insight highlights the importance of personalized nutritional recommendations to manage genetic susceptibilities."
+        },
+        {
+          "summary": "Ethnic disparities in pre-diabetes prevalence",
+          "explanation": "Native North American populations exhibit lower rates of IFG/IGT compared to other ethnic groups, indicating potential protective genetic or environmental factors unique to this demographic. Understanding these differences can inform targeted preventive strategies for diverse populations."
+        }
+      ]
+    },
+    "level": 0,
+    "title": "Cluster 4",
+    "edges": [
+      [
+        "\"IFG/IGT\"",
+        "\"T2D\""
+      ],
+      [
+        "\"IFG/IGT\"",
+        "\"NGT\""
+      ],
+      [
+        "\"GENOMIC VARIANT (SNPS)\"",
+        "\"IFG/IGT\""
+      ],
+      [
+        "\"FPG (FASTING PLASMA GLUCOSE)\"",
+        "\"LEPR GENE\""
+      ],
+      [
+        "\"BMI\"",
+        "\"MEDIATOR OF PLEIOTROPIC EFFECTS\""
+      ],
+      [
+        "\"IFG/IGT\"",
+        "\"NATIVE NORTH AMERICAN\""
+      ],
+      [
+        "\"BMI\"",
+        "\"IFG/IGT\""
+      ],
+      [
+        "\"GRS\"",
+        "\"LEPR GENE\""
+      ],
+      [
+        "\"FPG (FASTING PLASMA GLUCOSE)\"",
+        "\"RS1011527 SNP IN LEPR\""
+      ],
+      [
+        "\"BMI\"",
+        "\"PLANT-BASED DIET INTAKE\""
+      ]
+    ],
+    "nodes": [
+      "\"RS1011527 SNP IN LEPR\"",
+      "\"NGT\"",
+      "\"IFG/IGT\"",
+      "\"BMI\"",
+      "\"MEDIATOR OF PLEIOTROPIC EFFECTS\"",
+      "\"GENOMIC VARIANT (SNPS)\"",
+      "\"LEPR GENE\"",
+      "\"NATIVE NORTH AMERICAN\"",
+      "\"FPG (FASTING PLASMA GLUCOSE)\""
+    ],
+    "chunk_ids": [
+      "chunk-f9a60d3cf951d77afa115859755dac43",
+      "chunk-bb507a90a1f5d5ddd01a93200ff2d45e",
+      "chunk-372184452f1f9156514992455057f843",
+      "chunk-3ad8ef794841d749e48b3223741e91d3",
+      "chunk-1fde08e52a188ac6a549e7c11d59a092"
+    ],
+    "occurrence": 0.4166666666666667,
+    "sub_communities": []
+  },
+  "1": {
+    "report_string": "# Genetic Risk and Obesity: GRS, FTO Gene, and BMI\n\nThis community focuses on the genetic risk associated with obesity, primarily through the Genetic Risk Score (GRS), the FTO gene, and baseline Body Mass Index (BMI). The entities are interconnected, showing how genetic variations influence obesity risk and cognitive performance. The GRS is a significant predictor of BMI at baseline and interacts with other genes like LEPR in relation to glycemic status traits. The FTO gene variant influences various anthropometric measurements and CRP levels, highlighting its role in systemic inflammation.\n\n## GRS is a significant predictor of baseline BMI\n\nThe Genetic Risk Score (GRS) is computed based on polymorphisms across multiple genomic loci and serves as a significant predictor for increased baseline Body Mass Index (BMI). This indicates that cumulative genetic risk plays a crucial role in obesity predisposition. The GRS also interacts with the LEPR gene in relation to glycemic status traits like fasting plasma glucose (FPG), suggesting an interplay between genetic risks and metabolic conditions.\n\n## FTO Gene Variants Influence Obesity Risk\n\nThe FTO gene contains a specific single nucleotide polymorphism (SNP) that significantly influences obesity risk. The variant rs9939609 within the FTO gene is associated with various anthropometric measurements, indicating its role in obesity predisposition. Additionally, another SNP (rs1558902) within FTO shows a significant association with CRP levels, highlighting gene-specific impacts on systemic inflammation markers.\n\n## Baseline BMI and FM% Context\n\nThe baseline Body Mass Index (BMI) provides essential context for measuring the impact of genetic variants such as those in the FTO gene on body mass over time. The initial Fat Mass Percentage (FM%) also provides insight into how genetic factors and dietary interventions can influence body fat percentage over time, underscoring the importance of environmental and genetic interactions in obesity management.\n\n## GRS Impacts Cognitive Performance\n\nSurvivors with higher Genetic Risk Scores (GRS) performed significantly worse on Trail Making Test Part B (TMTB), indicating an association between genetic risk and cognitive flexibility. Additionally, GRS is associated with performance on Trail Making Test Part A (TMTA), a measure of visual search speed and processing speed. These findings suggest that genetic predispositions not only influence obesity but also have implications for cognitive function.\n\n## SNPs in TCF7L2 Gene Influence BMI\n\nThe TCF7L2 gene contains SNPs that are significantly associated with baseline Body Mass Index (BMI), indicating its role in obesity predisposition. This highlights the genetic architecture underlying obesity risk, where specific variants within key genes like TCF7L2 contribute to an individual's susceptibility to obesity.",
+    "report_json": {
+      "title": "Genetic Risk and Obesity: GRS, FTO Gene, and BMI",
+      "summary": "This community focuses on the genetic risk associated with obesity, primarily through the Genetic Risk Score (GRS), the FTO gene, and baseline Body Mass Index (BMI). The entities are interconnected, showing how genetic variations influence obesity risk and cognitive performance. The GRS is a significant predictor of BMI at baseline and interacts with other genes like LEPR in relation to glycemic status traits. The FTO gene variant influences various anthropometric measurements and CRP levels, highlighting its role in systemic inflammation.",
+      "rating": 8,
+      "rating_explanation": "The community has high impact due to the strong association between genetic risk scores and obesity-related factors like BMI and cognitive performance.",
+      "findings": [
+        {
+          "summary": "GRS is a significant predictor of baseline BMI",
+          "explanation": "The Genetic Risk Score (GRS) is computed based on polymorphisms across multiple genomic loci and serves as a significant predictor for increased baseline Body Mass Index (BMI). This indicates that cumulative genetic risk plays a crucial role in obesity predisposition. The GRS also interacts with the LEPR gene in relation to glycemic status traits like fasting plasma glucose (FPG), suggesting an interplay between genetic risks and metabolic conditions."
+        },
+        {
+          "summary": "FTO Gene Variants Influence Obesity Risk",
+          "explanation": "The FTO gene contains a specific single nucleotide polymorphism (SNP) that significantly influences obesity risk. The variant rs9939609 within the FTO gene is associated with various anthropometric measurements, indicating its role in obesity predisposition. Additionally, another SNP (rs1558902) within FTO shows a significant association with CRP levels, highlighting gene-specific impacts on systemic inflammation markers."
+        },
+        {
+          "summary": "Baseline BMI and FM% Context",
+          "explanation": "The baseline Body Mass Index (BMI) provides essential context for measuring the impact of genetic variants such as those in the FTO gene on body mass over time. The initial Fat Mass Percentage (FM%) also provides insight into how genetic factors and dietary interventions can influence body fat percentage over time, underscoring the importance of environmental and genetic interactions in obesity management."
+        },
+        {
+          "summary": "GRS Impacts Cognitive Performance",
+          "explanation": "Survivors with higher Genetic Risk Scores (GRS) performed significantly worse on Trail Making Test Part B (TMTB), indicating an association between genetic risk and cognitive flexibility. Additionally, GRS is associated with performance on Trail Making Test Part A (TMTA), a measure of visual search speed and processing speed. These findings suggest that genetic predispositions not only influence obesity but also have implications for cognitive function."
+        },
+        {
+          "summary": "SNPs in TCF7L2 Gene Influence BMI",
+          "explanation": "The TCF7L2 gene contains SNPs that are significantly associated with baseline Body Mass Index (BMI), indicating its role in obesity predisposition. This highlights the genetic architecture underlying obesity risk, where specific variants within key genes like TCF7L2 contribute to an individual's susceptibility to obesity."
+        }
+      ]
+    },
+    "level": 0,
+    "title": "Cluster 1",
+    "edges": [
+      [
+        "\"GRS\"",
+        "\"TMTA\""
+      ],
+      [
+        "\"CUMULATIVE IV MTX EXPOSURE\"",
+        "\"GRS\""
+      ],
+      [
+        "\"GRS\"",
+        "\"PEGNDH\""
+      ],
+      [
+        "\"GRS\"",
+        "\"LEPR GENE\""
+      ],
+      [
+        "\"BMI BASELINE AND CHANGE\"",
+        "\"SNPS\""
+      ],
+      [
+        "\"FTO GENE\"",
+        "\"RS1558902 SNP\""
+      ],
+      [
+        "\"CFL\"",
+        "\"GRS\""
+      ],
+      [
+        "\"BMI BASELINE AND CHANGE\"",
+        "\"GRS\""
+      ],
+      [
+        "\"BASELINE BMI\"",
+        "\"FTO GENE\""
+      ],
+      [
+        "\"SNPS\"",
+        "\"TAL1 GENE\""
+      ],
+      [
+        "\"INTRATHECAL MTX EXPOSURE\"",
+        "\"TMTB\""
+      ],
+      [
+        "\"FTO GENE\"",
+        "\"FTO SNP\""
+      ],
+      [
+        "\"SNPS\"",
+        "\"TCF7L2 GENE\""
+      ],
+      [
+        "\"GRS\"",
+        "\"PEGDH\""
+      ],
+      [
+        "\"GRS\"",
+        "\"POLYMORPHISM\""
+      ],
+      [
+        "\"GRS\"",
+        "\"TMTB\""
+      ],
+      [
+        "\"DIG\"",
+        "\"GRS\""
+      ],
+      [
+        "\"ANTHROPOMETRIC MEASUREMENTS\"",
+        "\"FTO GENE\""
+      ],
+      [
+        "\"BASELINE BMI\"",
+        "\"FM%\""
+      ],
+      [
+        "\"BMI (BODY MASS INDEX)\"",
+        "\"FTO GENE\""
+      ],
+      [
+        "\"DIVERGT BATTERY\"",
+        "\"GRS\""
+      ]
+    ],
+    "nodes": [
+      "\"INTRATHECAL MTX EXPOSURE\"",
+      "\"PEGNDH\"",
+      "\"CUMULATIVE IV MTX EXPOSURE\"",
+      "\"POLYMORPHISM\"",
+      "\"RS1558902 SNP\"",
+      "\"GRS\"",
+      "\"DIG\"",
+      "\"FM%\"",
+      "\"PEGDH\"",
+      "\"DIVERGT BATTERY\"",
+      "\"ANTHROPOMETRIC MEASUREMENTS\"",
+      "\"TMTA\"",
+      "\"TMTB\"",
+      "\"CFL\"",
+      "\"FTO GENE\"",
+      "\"SNPS\"",
+      "\"BASELINE BMI\"",
+      "\"BMI BASELINE AND CHANGE\""
+    ],
+    "chunk_ids": [
+      "chunk-63d0b5be485a69f44e2799ccc9510487",
+      "chunk-2926e6216bf945b12ea4daa6345cad1f",
+      "chunk-4b6e8f78911cafc70959cfdfed786c29",
+      "chunk-3135befd0c3140ad097d96ace6de86a1",
+      "chunk-ad609cb10e900d42a6901eea1591d8ba",
+      "chunk-13862d7ab74f5d4fa3f2261984d15d64",
+      "chunk-ea6355aaf22d7cdd3331602638122ed7",
+      "chunk-1fde08e52a188ac6a549e7c11d59a092"
+    ],
+    "occurrence": 0.6666666666666666,
+    "sub_communities": []
+  }
+}
