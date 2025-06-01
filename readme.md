@@ -68,13 +68,14 @@ pip install -e .
 4. **Build your graph RAG:**
 
 ```python
-from nutrigenetic_graphrag import NutrigeneticGraphRAG, QueryParam
+from nutrig-graphrag/nano_graphrag import GraphRAG, QueryParam
+from nutrig-graphrag/biomedical.llm_utils import NutrigGraphRAG
 
 # Initialize
-ngrag = NutrigeneticGraphRAG(
-    working_dir="./workspace",
-    llm_backend="ollama",
-    embedder_model="sentence-transformers/all-MiniLM-L6-v2"
+ngrag = NutrigGraphRAG(
+    working_dir="nutrig-graphrag/biomedical/nutrig-graphrag",
+    MODEL="gemma2-9b-it",
+    embedding_model="all-MiniLM-L6-v2",
 )
 
 # Ingest documents
@@ -85,7 +86,7 @@ for doc in ["data/pubmed_1.txt", "data/pubmed_2.txt"]:
 # Query knowledge graph
 print(ngrag.query(
     "How does the MTHFR C677T variant affect folate metabolism?",
-    param=QueryParam(mode="local")
+    param=QueryParam(mode="global")
 ))
 ```
 

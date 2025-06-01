@@ -42,7 +42,8 @@ OLLAMA_MODELS = {
 }
 
 # Set MODEL if not set in environment variables
-if not os.environ['MODEL']:
+# if not os.environ['MODEL']:
+if 'MODEL' not in os.environ or not os.environ['MODEL']:
     os.environ['MODEL'] = GROQ_MODELS[7]  # <===== Change this to select a different model
     print(f"Using default model: {os.environ['MODEL']}")
 
@@ -73,7 +74,6 @@ PORT = 11434
 ###########################################
 
 
-
 def load_json_from_lib(nome_file, local = False):
     # Usa __file__ per ottenere il percorso della directory del file corrente
     if not local:
@@ -102,9 +102,6 @@ def load_api_keys():
             api_keys = {
                 "openai":   "miss",
                 "deepseek": "miss",
-                #"grok":     "miss",
-                #"gemini":   "miss",
-                #"aimlapi":   "miss",
                 "groq":   "miss",
                 "huggingface": "miss",
             }
@@ -146,8 +143,8 @@ OLLAMA_CLIENT = connect_ollama_server(ip_address=IP_ADDRESS, port = PORT)
 
 
 ######## LLM API CALLS ########
-
-MODEL = os.environ['MODEL']  # Get the model from environment variables
+if not os.environ.get('MODEL'):
+    os.environ['MODEL'] = OLLAMA_MODELS[1] # Get the model from environment variables
 
 async def deepseepk_model_if_cache(
     prompt, system_prompt=None, history_messages=[],  **kwargs
@@ -164,20 +161,20 @@ async def deepseepk_model_if_cache(
     messages.extend(history_messages)
     messages.append({"role": "user", "content": prompt})
     if hashing_kv is not None:
-        args_hash = compute_args_hash(MODEL, messages)
+        args_hash = compute_args_hash(os.environ['MODEL'], messages)
         if_cache_return = await hashing_kv.get_by_id(args_hash)
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
 
     response = await openai_async_client.chat.completions.create(
-        model=MODEL, messages=messages, **kwargs
+        model=os.environ['MODEL'], messages=messages, **kwargs
     )
 
     # Cache the response if having-------------------
     if hashing_kv is not None:
         await hashing_kv.upsert(
-            {args_hash: {"return": response.choices[0].message.content, "model": MODEL}}
+            {args_hash: {"return": response.choices[0].message.content, "model": os.environ['MODEL']}}
         )
     # -----------------------------------------------------
     return response.choices[0].message.content
@@ -199,20 +196,20 @@ async def groq_model_if_cache(
     messages.extend(history_messages)
     messages.append({"role": "user", "content": prompt})
     if hashing_kv is not None:
-        args_hash = compute_args_hash(MODEL, messages)
+        args_hash = compute_args_hash(os.environ['MODEL'], messages)
         if_cache_return = await hashing_kv.get_by_id(args_hash)
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
 
     response = await openai_async_client.chat.completions.create(
-        model=MODEL, messages=messages, **kwargs
+        model=os.environ['MODEL'], messages=messages, **kwargs
     )
 
     # Cache the response if having-------------------
     if hashing_kv is not None:
         await hashing_kv.upsert(
-            {args_hash: {"return": response.choices[0].message.content, "model": MODEL}}
+            {args_hash: {"return": response.choices[0].message.content, "model": os.environ['MODEL']}}
         )
     # -----------------------------------------------------
     return response.choices[0].message.content
@@ -237,17 +234,17 @@ async def ollama_model_server_if_cache(
     messages.extend(history_messages)
     messages.append({"role": "user", "content": prompt})
     if hashing_kv is not None:
-        args_hash = compute_args_hash(MODEL, messages)
+        args_hash = compute_args_hash(os.environ['MODEL'], messages)
         if_cache_return = await hashing_kv.get_by_id(args_hash)
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
-    response = await ollama_client.chat(model=MODEL, messages=messages, **kwargs)
+    response = await ollama_client.chat(model=os.environ['MODEL'], messages=messages, **kwargs)
 
     result = response["message"]["content"]
     # Cache the response if having-------------------
     if hashing_kv is not None:
-        await hashing_kv.upsert({args_hash: {"return": result, "model": MODEL}})
+        await hashing_kv.upsert({args_hash: {"return": result, "model": os.environ['MODEL']}})
     # -----------------------------------------------------
     return result
 
@@ -269,17 +266,17 @@ async def ollama_model_if_cache(
     messages.extend(history_messages)
     messages.append({"role": "user", "content": prompt})
     if hashing_kv is not None:
-        args_hash = compute_args_hash(MODEL, messages)
+        args_hash = compute_args_hash(os.environ['MODEL'], messages)
         if_cache_return = await hashing_kv.get_by_id(args_hash)
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
-    response = await ollama_client.chat(model=MODEL, messages=messages, **kwargs)
+    response = await ollama_client.chat(model=os.environ['MODEL'], messages=messages, **kwargs)
 
     result = response["message"]["content"]
     # Cache the response if having-------------------
     if hashing_kv is not None:
-        await hashing_kv.upsert({args_hash: {"return": result, "model": MODEL}})
+        await hashing_kv.upsert({args_hash: {"return": result, "model": os.environ['MODEL']}})
     # -----------------------------------------------------
     return result
 
@@ -287,46 +284,135 @@ async def ollama_model_if_cache(
 
 ####### Embedders #######
 
-@wrap_embedding_func_with_attrs(
-    embedding_dim=1536,
-    max_token_size=8191,
-)
-async def openai_embedding(texts: list[str]) -> np.ndarray:
-    client = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
-    # Get embeddings from OpenAI API
-    response = await client.embeddings.create(
-        model=OPENAI_EMBEDDER,  # You can choose different models
-        input=texts
-    )
-    # Extract embeddings from response
-    embeddings = [resp.embedding for resp in response.data]
-    # Convert to numpy array
-    return np.array(embeddings, dtype=np.float32)
+# @wrap_embedding_func_with_attrs(
+#     embedding_dim=1536,
+#     max_token_size=8191,
+# )
+# async def openai_embedding(texts: list[str]) -> np.ndarray:
+#     client = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
+#     # Get embeddings from OpenAI API
+#     response = await client.embeddings.create(
+#         model=OPENAI_EMBEDDER,  # You can choose different models
+#         input=texts
+#     )
+#     # Extract embeddings from response
+#     embeddings = [resp.embedding for resp in response.data]
+#     # Convert to numpy array
+#     return np.array(embeddings, dtype=np.float32)
 
 
-# We're using Ollama to generate embeddings for the BGE model
-@wrap_embedding_func_with_attrs(
-    embedding_dim=OLLAMA_EMBEDDING_MODEL_DIM,
-    max_token_size=OLLAMA_EMBEDDING_MODEL_MAX_TOKENS,
-)
-async def ollama_embedding(texts: list[str]) -> np.ndarray:
-    embed_text = []
-    for text in texts:
-        data = ollama.embeddings(model=OLLAMA_EMBEDDING_MODEL, prompt=text)
-        embed_text.append(data["embedding"])
+# # We're using Ollama to generate embeddings for the BGE model
+# @wrap_embedding_func_with_attrs(
+#     embedding_dim=OLLAMA_EMBEDDING_MODEL_DIM,
+#     max_token_size=OLLAMA_EMBEDDING_MODEL_MAX_TOKENS,
+# )
+# async def ollama_embedding(texts: list[str]) -> np.ndarray:
+#     embed_text = []
+#     for text in texts:
+#         data = ollama.embeddings(model=OLLAMA_EMBEDDING_MODEL, prompt=text)
+#         embed_text.append(data["embedding"])
 
-    return embed_text
+#     return embed_text
 
-# os.mkdir(".cache_huggingface", exist_ok=True)
-EMBED_MODEL = SentenceTransformer(
-    BERT_MODEL, cache_folder= ".cache_huggingface", device="cpu"
-)
+# # os.mkdir(".cache_huggingface", exist_ok=True)
+# EMBED_MODEL = SentenceTransformer(
+#     BERT_MODEL, cache_folder= ".cache_huggingface", device="cpu"
+# )
 
-# We're using Sentence Transformers to generate embeddings for the BGE model
-@wrap_embedding_func_with_attrs(
-    embedding_dim=EMBED_MODEL.get_sentence_embedding_dimension(),
-    max_token_size=EMBED_MODEL.max_seq_length,
-)
-async def local_embedding(texts: list[str]) -> np.ndarray:
-    return EMBED_MODEL.encode(texts, normalize_embeddings=True)
+# # We're using Sentence Transformers to generate embeddings for the BGE model
+# @wrap_embedding_func_with_attrs(
+#     embedding_dim=EMBED_MODEL.get_sentence_embedding_dimension(),
+#     max_token_size=EMBED_MODEL.max_seq_length,
+# )
+# async def local_embedding(texts: list[str]) -> np.ndarray:
+#     return EMBED_MODEL.encode(texts, normalize_embeddings=True)
+
 # %%
+
+
+# Initialize
+
+def NutrigGraphRAG(GraphRAG,
+    working_dir="./workspace",
+    MODEL="gemma2-9b-it",
+    embedding_model="all-MiniLM-L6-v2",
+    **kwargs
+    ):
+
+    os.environ['MODEL'] = MODEL  # Set the model in environment variables
+    print(f"\n\n --Using model: {os.environ['MODEL']}   \n\n")
+
+    if MODEL in GROQ_MODELS.values():
+        USE_LLM = groq_model_if_cache
+    elif MODEL in OLLAMA_MODELS.values():
+        USE_LLM = ollama_model_if_cache
+    elif MODEL in DEEP_MODELS.values(): 
+        USE_LLM = deepseepk_model_if_cache
+    else: 
+        raise ValueError(f"Model {MODEL} is not recognized. Please choose a valid model from GROQ_MODELS or OLLAMA_MODELS.")
+
+    ### Def Embedders ###
+    # os.mkdir(".cache_huggingface", exist_ok=True)
+    if embedding_model in BERT_MODELS.values():
+        EMBED_MODEL = SentenceTransformer(
+            embedding_model, cache_folder= ".cache_huggingface", device="cpu"
+        )
+
+        # We're using Sentence Transformers to generate embeddings for the BGE model
+        @wrap_embedding_func_with_attrs(
+            embedding_dim=EMBED_MODEL.get_sentence_embedding_dimension(),
+            max_token_size=EMBED_MODEL.max_seq_length,
+        )
+        async def local_embedding(texts: list[str]) -> np.ndarray:
+            return EMBED_MODEL.encode(texts, normalize_embeddings=True)
+    else:
+        local_embedding = None
+
+    # We're using Ollama to generate embeddings for the BGE model
+    @wrap_embedding_func_with_attrs(
+        embedding_dim=OLLAMA_EMBEDDING_MODEL_DIM,
+        max_token_size=OLLAMA_EMBEDDING_MODEL_MAX_TOKENS,
+    )
+    async def ollama_embedding(texts: list[str]) -> np.ndarray:
+        embed_text = []
+        for text in texts:
+            data = ollama.embeddings(model=OLLAMA_EMBEDDING_MODEL, prompt=text)
+            embed_text.append(data["embedding"])
+
+        return embed_text
+
+
+    @wrap_embedding_func_with_attrs(
+        embedding_dim=1536,
+        max_token_size=8191,
+    )
+    async def openai_embedding(texts: list[str]) -> np.ndarray:
+        client = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        # Get embeddings from OpenAI API
+        response = await client.embeddings.create(
+            model=OPENAI_EMBEDDER,  # You can choose different models
+            input=texts
+        )
+        # Extract embeddings from response
+        embeddings = [resp.embedding for resp in response.data]
+        # Convert to numpy array
+        return np.array(embeddings, dtype=np.float32)
+
+
+    if embedding_model in BERT_MODELS.values():
+        embedder = local_embedding
+    elif embedding_model == OPENAI_EMBEDDER:
+        embedder = openai_embedding
+    elif embedding_model == OLLAMA_EMBEDDING_MODEL:
+        embedder = ollama_embedding
+    else:
+        raise ValueError(f"Embedding model {embedding_model} is not recognized. Please choose a valid embedding model from BERT_MODELS, OPENAI_EMBEDDER, or OLLAMA_EMBEDDING_MODEL.")
+
+    return GraphRAG(
+        working_dir=working_dir,
+        enable_llm_cache=True,
+        best_model_func=USE_LLM,
+        cheap_model_func=USE_LLM,
+        embedding_func=embedder,
+        **kwargs
+    )

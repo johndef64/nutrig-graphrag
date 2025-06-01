@@ -7,12 +7,11 @@ import pandas as pd
 import time
 from openai import AsyncOpenAI
 from nano_graphrag import GraphRAG, QueryParam
-from nano_graphrag import GraphRAG, QueryParam
 from nano_graphrag.base import BaseKVStorage
 from nano_graphrag._utils import compute_args_hash, wrap_embedding_func_with_attrs
 from sentence_transformers import SentenceTransformer
 
-
+from biomedical.llm_utils import *
 
 logging.basicConfig(level=logging.WARNING)
 logging.getLogger("nano-graphrag").setLevel(logging.INFO)
@@ -21,13 +20,6 @@ logging.getLogger("nano-graphrag").setLevel(logging.INFO)
 # os.chdir(r"/root/projects/nano-graphrag/biomedical")
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 print(os.getcwd())
-
-# Set working Directory
-WORKING_DIR = "./cache_groqLLAMA4scout_biobert_bioprompt_20Results_TEST"
-WORKING_DIR = "./cache_groqLLAMA4scout_openaiembed_bioprompt_20Results_TEST"
-WORKING_DIR = "./cache_groqllama4_openaiemb_50Results"  # For testing purposes, use a dummy cache directory
-WORKING_DIR = "./GAGA2"  # For testing purposes, use a dummy cache directory
-
 
 
 #### Choose the model to use for the RAG #####
@@ -59,45 +51,52 @@ DEEP_MODELS = {
 }
 
 # Choose a model from the GROQ_MODELS dictionary
-os.environ['MODEL'] =  GROQ_MODELS[0]  # <===== Change this to select a different model
+os.environ['MODEL'] =  GROQ_MODELS[8]  # <===== Change this to select a different model
 # os.environ['MODEL'] =  OLLAMA_MODELS[0] 
 
 print(f"Using model: {os.environ['MODEL']}")
 
 ######################################################
 
-# import llm_utils after MODEL Selection !
-from biomedical.llm_utils import *
 
 ##### Choose the embedding model #####
-BERT_MODELS = ["dmis-lab/biobert-v1.1",
-               "all-MiniLM-L6-v2",
-               "all-mpnet-base-v2"
-               ]
+BERT_MODELS = {
+    0: "dmis-lab/biobert-v1.1",
+    1: "all-MiniLM-L6-v2",
+    2: "all-mpnet-base-v2"
+}
+               
 OPENAI_EMBEDDER = "text-embedding-3-small"  
 OLLAMA_EMBEDDING_MODEL = "nomic-embed-text"
 
-embedder = openai_embedding  
-# embedder = ollama_embedding
-# embedder = local_embedding
+EMBEDDER = BERT_MODELS[2]  # <===== Change this to select a different embedding model
 
-# ---> Change Default Embedding model in biomedical/llm_utils.py
 
 ######################################################
+
+
+
+# Set working Directory
+project = "nutrig-graphrag"
+model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
+WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  # For testing purposes, use a dummy cache directory
+
+print(f"Working Directory: {WORKING_DIR}")
+
 
 
 #%%
 
 # Run Script
-MODEL = os.environ['MODEL']
-if MODEL in GROQ_MODELS.values():
-    USE_LLM = groq_model_if_cache
-elif MODEL in OLLAMA_MODELS.values():
-    USE_LLM = ollama_model_if_cache
-elif MODEL in DEEP_MODELS.values(): 
-    USE_LLM = deepseepk_model_if_cache
-else: 
-    raise ValueError(f"Model {MODEL} is not recognized. Please choose a valid model from GROQ_MODELS or OLLAMA_MODELS.")
+# MODEL = os.environ['MODEL']
+# if MODEL in GROQ_MODELS.values():
+#     USE_LLM = groq_model_if_cache
+# elif MODEL in OLLAMA_MODELS.values():
+#     USE_LLM = ollama_model_if_cache
+# elif MODEL in DEEP_MODELS.values(): 
+#     USE_LLM = deepseepk_model_if_cache
+# else: 
+#     raise ValueError(f"Model {MODEL} is not recognized. Please choose a valid model from GROQ_MODELS or OLLAMA_MODELS.")
 
 
 def remove_if_exist(file):
@@ -113,13 +112,18 @@ def insert(TEXT, ):
     #remove_if_exist(f"{WORKING_DIR}/kv_store_community_reports.json")
     #remove_if_exist(f"{WORKING_DIR}/graph_chunk_entity_relation.graphml")
 
-    rag = GraphRAG(
+    # rag = GraphRAG(
+    #    working_dir=WORKING_DIR,
+    #    enable_llm_cache=True,
+    #    best_model_func=USE_LLM,
+    #    cheap_model_func=USE_LLM,
+    #    embedding_func=embedder,
+    # )
+    rag = NutrigGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
-        enable_llm_cache=True,
-        best_model_func=USE_LLM,
-        cheap_model_func=USE_LLM,
-        embedding_func=embedder,
-    )
+        MODEL=os.environ['MODEL'],
+        embedding_model=EMBEDDER,
+        )
     start = time()
     rag.insert(TEXT)
     print("indexing time:", time() - start)
@@ -145,7 +149,7 @@ df.text = df.text.str.replace("<SEP>","\n\n")
 #%%
 
 ########## RUN THE JOB ##########
-start_id = 50
+start_id = 51
 batch_size = 1
 
 
