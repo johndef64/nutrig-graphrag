@@ -1,7 +1,7 @@
 # Nutrigenetic-GraphRAG
 
 <div align="center">
-  <img alt="Nutrigenetic GraphRAG Logo" src="https://yourdomain.com/logo.png" width="256">
+  <img alt="Nutrigenetic GraphRAG Logo" src="biomedical/misc/logo.png" width="256">
   <p><strong>Graph-based RAG for Biomedical Nutrigenetic Applications</strong></p>
   <p>
     <img src="https://img.shields.io/badge/python->=3.9-blue">
@@ -137,7 +137,7 @@ This project would not exist without [nano-graphrag](https://github.com/gusye123
 Also inspired by:
 - [Ollama](https://github.com/ollama/ollama)
 - [sentence-transformers](https://github.com/UKPLab/sentence-transformers)
-- Biomedical NER datasets (PubTator, BioCreative, SNOMED CT)
+- Biomedical GRPM datasets (https://doi.org/10.1016/j.jbi.2025.104845)
 
 ## Citation
 
