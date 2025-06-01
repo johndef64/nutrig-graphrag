@@ -1,7 +1,7 @@
 # Nutrigenetic-GraphRAG
 
 <div align="center">
-  <img alt="Nutrigenetic GraphRAG Logo" src="biomedical/misc/logo.png" width="256">
+  <img alt="Nutrigenetic GraphRAG Logo" src="biomedical/misc/logo.png" width="200">
   <p><strong>Graph-based RAG for Biomedical Nutrigenetic Applications</strong></p>
   <p>
     <img src="https://img.shields.io/badge/python->=3.9-blue">

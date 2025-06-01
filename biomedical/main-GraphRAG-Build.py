@@ -23,6 +23,11 @@ print(os.getcwd())
 
 
 #### Choose the model to use for the RAG #####
+
+DEEP_MODELS = {
+    0: "deepseek-chat"
+}
+
 OLLAMA_MODELS = {
     0: "deepseek-v2",
     1: "gemma2",
@@ -44,10 +49,6 @@ GROQ_MODELS = {
     8: "meta-llama/llama-4-scout-17b-16e-instruct",
     9: "mistral-saba-24b",
     10: "qwen-qwq-32b"
-}
-
-DEEP_MODELS = {
-    0: "deepseek-chat"
 }
 
 # Choose a model from the GROQ_MODELS dictionary
