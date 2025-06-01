@@ -150,7 +150,7 @@ This project would not exist without [nano-graphrag](https://github.com/gusye123
 Also inspired by:
 - [Ollama](https://github.com/ollama/ollama)
 - [sentence-transformers](https://github.com/UKPLab/sentence-transformers)
-- Biomedical GRPM datasets (https://doi.org/10.1016/j.jbi.2025.104845)
+- GRPM dataset (De Filippis et. al. 2025) (https://doi.org/10.1016/j.jbi.2025.104845)
 
 ## Citation
 
