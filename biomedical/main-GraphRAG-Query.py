@@ -103,7 +103,7 @@ def query(question):
     # )
     rag = NutrigGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
-        MODEL=os.environ['MODEL'],
+        llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
         )
     print(
@@ -122,7 +122,7 @@ def query_naive(question):
     # )
     rag = NutrigGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
-        MODEL=os.environ['MODEL'],
+        llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
         enable_naive_rag =True,
         )

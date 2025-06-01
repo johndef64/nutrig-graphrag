@@ -334,22 +334,22 @@ async def ollama_model_if_cache(
 
 def NutrigGraphRAG(GraphRAG,
     working_dir="./workspace",
-    MODEL="gemma2-9b-it",
+    llm_model="gemma2-9b-it",
     embedding_model="all-MiniLM-L6-v2",
     **kwargs
     ):
 
-    os.environ['MODEL'] = MODEL  # Set the model in environment variables
+    os.environ['MODEL'] = llm_model  # Set the model in environment variables
     print(f"\n\n --Using model: {os.environ['MODEL']}   \n\n")
 
-    if MODEL in GROQ_MODELS.values():
+    if llm_model in GROQ_MODELS.values():
         USE_LLM = groq_model_if_cache
-    elif MODEL in OLLAMA_MODELS.values():
+    elif llm_model in OLLAMA_MODELS.values():
         USE_LLM = ollama_model_if_cache
-    elif MODEL in DEEP_MODELS.values(): 
+    elif llm_model in DEEP_MODELS.values(): 
         USE_LLM = deepseepk_model_if_cache
     else: 
-        raise ValueError(f"Model {MODEL} is not recognized. Please choose a valid model from GROQ_MODELS or OLLAMA_MODELS.")
+        raise ValueError(f"Model {llm_model} is not recognized. Please choose a valid model from GROQ_MODELS or OLLAMA_MODELS.")
 
     ### Def Embedders ###
     # os.mkdir(".cache_huggingface", exist_ok=True)

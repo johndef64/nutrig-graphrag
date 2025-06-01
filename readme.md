@@ -74,7 +74,7 @@ from nutrig-graphrag/biomedical.llm_utils import NutrigGraphRAG
 # Initialize
 ngrag = NutrigGraphRAG(
     working_dir="nutrig-graphrag/biomedical/nutrig-graphrag",
-    MODEL="gemma2-9b-it",
+    llm_model="gemma2-9b-it",
     embedding_model="all-MiniLM-L6-v2",
 )
 

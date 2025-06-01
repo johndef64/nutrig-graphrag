@@ -87,17 +87,6 @@ print(f"Working Directory: {WORKING_DIR}")
 
 #%%
 
-# Run Script
-# MODEL = os.environ['MODEL']
-# if MODEL in GROQ_MODELS.values():
-#     USE_LLM = groq_model_if_cache
-# elif MODEL in OLLAMA_MODELS.values():
-#     USE_LLM = ollama_model_if_cache
-# elif MODEL in DEEP_MODELS.values(): 
-#     USE_LLM = deepseepk_model_if_cache
-# else: 
-#     raise ValueError(f"Model {MODEL} is not recognized. Please choose a valid model from GROQ_MODELS or OLLAMA_MODELS.")
-
 
 def remove_if_exist(file):
     if os.path.exists(file):
@@ -121,7 +110,7 @@ def insert(TEXT, ):
     # )
     rag = NutrigGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
-        MODEL=os.environ['MODEL'],
+        llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
         )
     start = time()
