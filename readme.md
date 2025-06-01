@@ -105,12 +105,27 @@ See [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md).
 
 We provide scripts for ablation experiments to compare:
 
-- Different LLMs accessible via Ollama (e.g., Llama 3, Mistral, NeuralChat)
+- Different LLMs accessible via Ollama (e.g., Deepseek-v2, Gemma 2, Qwen2.5)
 - Multiple sentence-transformer models
 
+Models evaluated:
+
+**Embedders:**
+- `all-mpnet-base-v2`
+- `dmis-lab/biobert-v1.1`
+
+**LLMs:**
+
+- `gemma2:9b`
+- `gemma2:27b`
+- `llama3.1:8b`
+- `qwen2:7b`
+- `qwen2.5:14b`
+- `deepseek-v2:16b`
+
 Results (see [docs/RESULTS.md](./docs/RESULTS.md)):
-- Best LLM: `llama3:instruct`
-- Best Embedder: `all-MiniLM-L6-v2`
+- Best LLM: _[update this with your result]_
+- Best Embedder: _[update this with your result]_
 
 ## Applications
 
