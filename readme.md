@@ -133,9 +133,6 @@ Results (see [docs/RESULTS.md](./docs/RESULTS.md)):
 - **Decision support** for clinical nutritionists
 - **Biomedical discovery** for researchers (variant-disease-nutrient links)
 
-## Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Roadmap
 
