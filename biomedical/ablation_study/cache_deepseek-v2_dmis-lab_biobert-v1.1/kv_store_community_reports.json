@@ -1,0 +1,1169 @@
+{
+  "6": {
+    "report_string": "# Genetic and Nutrient Impact on Cardiovascular Health\n\nThis community focuses on cardiovascular health, influenced by genetic variants such as those in HFE related to iron metabolism and NOS1 associated with hypertension. Key entities include genes like CYP2C9 linked to warfarin metabolism and proteins regulating nitric oxide production. These interactions highlight the complex interplay between genetics and dietary patterns.\n\n## Impact of Genetic Variants on Cardiovascular Health\n\nGenetic variants such as those in HFE gene are known to influence iron metabolism, which can affect cardiovascular health. Similarly, NOS1 alleles associated with hypertension indicate the role of genetic factors in modulating disease risk. These findings underscore the importance of considering genetics when assessing individual health risks.\n\n## Role of Nutrient Absorption and Metabolism\n\nThe relationship between dietary patterns, particularly nutrient absorption and metabolism, is crucial for cardiovascular health. Genes like CYP2C9 influence drug metabolism and can impact cardiovascular health through their effects on medication efficacy.\n\n## Impact of Genetic Variants on Disease Risk\n\nEvidence from genomic studies such as GWAS highlights the significant influence of genetic variants on disease risk. For instance, the rs1444988703 variant in GIPR gene is associated with obesity and increased cardiovascular risk.\n\n## Genetic Determinants of Drug Response\n\nThe influence of genetic variants on drug response has significant implications for cardiovascular health. Variants like those in TCF7L2 can modify the effects of incretins on insulin secretion, indicating a critical role for genetics in medication efficacy.\n\n## Impact of Environmental Factors\n\nWhile genetic factors play a significant role in cardiovascular health, environmental influences such as dietary patterns also have substantial impacts. The interaction between these two levels is crucial to understanding disease risk comprehensively.\n\n## Future Directions for Research and Treatment\n\nUnderstanding the complex interplay of genetics with environmental factors offers promising directions for future research in personalized medicine, particularly in developing targeted treatments based on individual genetic profiles. This could potentially revolutionize approaches to preventing and managing cardiovascular diseases.",
+    "report_json": {
+      "title": "Genetic and Nutrient Impact on Cardiovascular Health",
+      "summary": "This community focuses on cardiovascular health, influenced by genetic variants such as those in HFE related to iron metabolism and NOS1 associated with hypertension. Key entities include genes like CYP2C9 linked to warfarin metabolism and proteins regulating nitric oxide production. These interactions highlight the complex interplay between genetics and dietary patterns.",
+      "rating": 7.5,
+      "rating_explanation": "The impact severity rating is moderate due to the clear linkages between genetic factors and cardiovascular health outcomes like hypertension and diabetes risk.",
+      "findings": [
+        {
+          "summary": "Impact of Genetic Variants on Cardiovascular Health",
+          "explanation": "Genetic variants such as those in HFE gene are known to influence iron metabolism, which can affect cardiovascular health. Similarly, NOS1 alleles associated with hypertension indicate the role of genetic factors in modulating disease risk. These findings underscore the importance of considering genetics when assessing individual health risks."
+        },
+        {
+          "summary": "Role of Nutrient Absorption and Metabolism",
+          "explanation": "The relationship between dietary patterns, particularly nutrient absorption and metabolism, is crucial for cardiovascular health. Genes like CYP2C9 influence drug metabolism and can impact cardiovascular health through their effects on medication efficacy."
+        },
+        {
+          "summary": "Impact of Genetic Variants on Disease Risk",
+          "explanation": "Evidence from genomic studies such as GWAS highlights the significant influence of genetic variants on disease risk. For instance, the rs1444988703 variant in GIPR gene is associated with obesity and increased cardiovascular risk."
+        },
+        {
+          "summary": "Genetic Determinants of Drug Response",
+          "explanation": "The influence of genetic variants on drug response has significant implications for cardiovascular health. Variants like those in TCF7L2 can modify the effects of incretins on insulin secretion, indicating a critical role for genetics in medication efficacy."
+        },
+        {
+          "summary": "Impact of Environmental Factors",
+          "explanation": "While genetic factors play a significant role in cardiovascular health, environmental influences such as dietary patterns also have substantial impacts. The interaction between these two levels is crucial to understanding disease risk comprehensively."
+        },
+        {
+          "summary": "Future Directions for Research and Treatment",
+          "explanation": "Understanding the complex interplay of genetics with environmental factors offers promising directions for future research in personalized medicine, particularly in developing targeted treatments based on individual genetic profiles. This could potentially revolutionize approaches to preventing and managing cardiovascular diseases."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 6",
+    "edges": [
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"RS1444988703\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"TCF7L2 GENE\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"TRANSCRIPT\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"NITRIC OXIDE PRODUCTION\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"SLC30A8\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"GENOTYPE\""
+      ],
+      [
+        "\"GENOTYPE\"",
+        "\"LOW-PROTEIN DIET\""
+      ],
+      [
+        "\"CYP2C9\"",
+        "\"GENOMIC VARIANT\""
+      ],
+      [
+        "\"CARDIOVASCULAR DISEASE\"",
+        "\"GENOMIC VARIANT\""
+      ]
+    ],
+    "nodes": [
+      "\"GENOMIC VARIANT\"",
+      "\"RS1444988703\"",
+      "\"TCF7L2 GENE\"",
+      "\"GENOTYPE\"",
+      "\"CARDIOVASCULAR DISEASE\"",
+      "\"SLC30A8\"",
+      "\"NITRIC OXIDE PRODUCTION\"",
+      "\"LOW-PROTEIN DIET\""
+    ],
+    "chunk_ids": [
+      "chunk-8f23bd741f82dc8ca1e2600d790b690f",
+      "chunk-938d8bf2e56584de9dd556be5eb70964",
+      "chunk-047f259db19cbb4de945706a1bd1b450",
+      "chunk-8276370dea9f12d2b305c355f74c7f6e",
+      "chunk-cc528af98598e1adb4684c0166430cf4",
+      "chunk-fa32a208a2f004c10c1b6777c3be13f2",
+      "chunk-41c7131af28e2a745ef6b88b8601860f",
+      "chunk-84ec948f22126cef7d93b1d7465b79db",
+      "chunk-2c395e2fed68f9267c06e9fcee853aae",
+      "chunk-6a7c69534e11aa2fc4bd948484aa81c4",
+      "chunk-6cb127717713bd0ab5be9436fc0c7568",
+      "chunk-a321a6d63755366a1fc3eafbd9fbce83",
+      "chunk-eaf655c4dd9244523b048a122e232be4",
+      "chunk-45a965c3c3013c70d0fa0f1680283083",
+      "chunk-e323b0d4f82733a78f687e51f47b500a",
+      "chunk-ba82b7eb40cf9eea561d839b20584f91",
+      "chunk-f921f48a406901d82ec2e32af99485bf",
+      "chunk-4b6e8f78911cafc70959cfdfed786c29",
+      "chunk-257a38a8ce6582c434f31b023b4a9704",
+      "chunk-bdeb2c0c1ba80048874f6dedb2c2b619",
+      "chunk-f7bf38c7a21b86ad85fa360a21bfb447",
+      "chunk-0d155c005072e55d94179ce7952bf5a9",
+      "chunk-03962ffc6066ee5da582bdc89310b1d6",
+      "chunk-2b81371954b99facae9a0056e70aa7bd",
+      "chunk-2c91cdebb36ef064eb01a7021a961302",
+      "chunk-f02653cb486dbf68cc259f74ea8b2b2e",
+      "chunk-6135f8baf39fe26dcea3d987aa6100ac",
+      "chunk-2fb95100a1290b27baae869c6560419a",
+      "chunk-e1b4f4dac52e806f19c580640a50c729",
+      "chunk-1fde08e52a188ac6a549e7c11d59a092",
+      "chunk-9977706363cc368b3be503d07ed3ef62",
+      "chunk-089bcdf055eb2f007db49dbe2409429b",
+      "chunk-d0476488384aadcae4630e94d982d2e0",
+      "chunk-dc5e8cc04a1b16b1e00f3a4120e004c4",
+      "chunk-1b40d071abac0ba432a9fb0096796f45",
+      "chunk-9e14f9bdee02839e4a6b12cff2020a5a",
+      "chunk-380a8a6e0d08cd28068a146ae5e00ce4",
+      "chunk-d311ac0182b37003c75c0005b4337fa6",
+      "chunk-eec0b4c60ebeb28599428b3552de2d1b",
+      "chunk-6600322cc75094b1c57707e4b9c85954",
+      "chunk-fde6653b9d9013ed054505cfe4cd1455",
+      "chunk-c63d60b991cd7442f690dcc364af47dd",
+      "chunk-54c4fede216a6c4183b95ee1a2edcb17",
+      "chunk-d4e04dd6cd6ea28f04fd72d964574ec1",
+      "chunk-ab449d4ec9f3baa290d63f09fdbd3fbc"
+    ],
+    "occurrence": 0.75,
+    "sub_communities": []
+  },
+  "9": {
+    "report_string": "# Community of Genes and Nutrients in Type 2 Diabetes\n\nThe broader context of physiological processes\n\n## [\n\n\n\n## \n\n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n## {\n\n\n\n## \n\n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n## \"\n\n\n\n## s\n\n\n\n## u\n\n\n\n## m\n\n\n\n## m\n\n\n\n## a\n\n\n\n## r\n\n\n\n## y\n\n\n\n## \"\n\n\n\n## :\n\n\n\n##  \n\n\n\n## \"\n\n\n\n## P\n\n\n\n## H\n\n\n\n## Y\n\n\n\n## S\n\n\n\n## I\n\n\n\n## O\n\n\n\n## L\n\n\n\n## O\n\n\n\n## G\n\n\n\n## I\n\n\n\n## C\n\n\n\n## A\n\n\n\n## L\n\n\n\n##  \n\n\n\n## P\n\n\n\n## R\n\n\n\n## O\n\n\n\n## C\n\n\n\n## E\n\n\n\n## S\n\n\n\n## S\n\n\n\n## '\n\n\n\n## s\n\n\n\n##  \n\n\n\n## r\n\n\n\n## o\n\n\n\n## l\n\n\n\n## e\n\n\n\n##  \n\n\n\n## i\n\n\n\n## n\n\n\n\n##  \n\n\n\n## g\n\n\n\n## l\n\n\n\n## u\n\n\n\n## c\n\n\n\n## o\n\n\n\n## s\n\n\n\n## e\n\n\n\n##  \n\n\n\n## m\n\n\n\n## e\n\n\n\n## t\n\n\n\n## a\n\n\n\n## b\n\n\n\n## o\n\n\n\n## l\n\n\n\n## i\n\n\n\n## s\n\n\n\n## m\n\n",
+    "report_json": {
+      "title": "Community of Genes and Nutrients in Type 2 Diabetes",
+      "summary": "The broader context of physiological processes",
+      "rating": 7.5,
+      "rating_explanation": "The Impact Severity Rating reflects the substantial influence of genetic factors and physiological processes on disease states like type 2 diabetes, emphasizing the importance of personalized approaches to health management.",
+      "findings": "[\n        {\n            \"summary\": \"PHYSIOLOGICAL PROCESS's role in glucose metabolism",
+      "explanation": "Understanding how genes interact with environmental factors such as developmental context and dietary patterns highlights the complexity of human physiology. This knowledge is crucial for developing targeted health interventions that can adapt to individual genetic profiles."
+    },
+    "level": 1,
+    "title": "Cluster 9",
+    "edges": [
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"TREG SUPPRESSIVE CAPACITY\""
+      ],
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"VASCULAR ENDOTHELIAL GROWTH FACTOR (VEGF)\""
+      ],
+      [
+        "\"LIFESTYLE FACTORS\"",
+        "\"PHYSIOLOGICAL PROCESS\""
+      ],
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"STUDY SELECTION\",\"QUALITY ASSESSMENT\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"ENVIRONMENTAL FACTOR\"",
+        "\"PHYSIOLOGICAL PROCESS\""
+      ],
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"PROTEIN\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"NUTRIENT\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"MOLECULAR INTERACTION\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"FOLATE METABOLISM PHYSIOLOGICAL PROCESS\"",
+        "\"PHYSIOLOGICAL PROCESS\""
+      ],
+      [
+        "\"INTERLEUKIN 2\"",
+        "\"PHYSIOLOGICAL PROCESS\""
+      ],
+      [
+        "\"METABOLIC PATHWAY\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ]
+    ],
+    "nodes": [
+      "\"VASCULAR ENDOTHELIAL GROWTH FACTOR (VEGF)\"",
+      "\"TREG SUPPRESSIVE CAPACITY\"",
+      "\"LIFESTYLE FACTORS\"",
+      "\"INTERLEUKIN 2\"",
+      "\"STUDY SELECTION\",\"QUALITY ASSESSMENT\"",
+      "\"TUFM GENOMIC VARIANTS\"",
+      "\"FOLATE METABOLISM PHYSIOLOGICAL PROCESS\"",
+      "\"PHYSIOLOGICAL PROCESS\""
+    ],
+    "chunk_ids": [
+      "chunk-8f23bd741f82dc8ca1e2600d790b690f",
+      "chunk-41c7131af28e2a745ef6b88b8601860f",
+      "chunk-84ec948f22126cef7d93b1d7465b79db",
+      "chunk-6a7c69534e11aa2fc4bd948484aa81c4",
+      "chunk-dcbd547f8218e7097805720fd6ea43ba",
+      "chunk-6cb127717713bd0ab5be9436fc0c7568",
+      "chunk-a321a6d63755366a1fc3eafbd9fbce83",
+      "chunk-9a35876dc1aaf7342f023cab4f5b9914",
+      "chunk-f921f48a406901d82ec2e32af99485bf",
+      "chunk-c6fdc5ed25c4e17b8c421a952bb05450",
+      "chunk-257a38a8ce6582c434f31b023b4a9704",
+      "chunk-fed46d4ab6d22b3530c4c06a4b7def46",
+      "chunk-2c91cdebb36ef064eb01a7021a961302",
+      "chunk-dee0a8a550579bff19f48d41446e842d",
+      "chunk-089bcdf055eb2f007db49dbe2409429b",
+      "chunk-814fe155e9cb953da61f6a79d1d25784",
+      "chunk-d0476488384aadcae4630e94d982d2e0",
+      "chunk-dc5e8cc04a1b16b1e00f3a4120e004c4",
+      "chunk-4964b2db9e3ddddb4967fb7150e4404d",
+      "chunk-380a8a6e0d08cd28068a146ae5e00ce4",
+      "chunk-183db5c908df609bb5289896b4ba09d0",
+      "chunk-fde6653b9d9013ed054505cfe4cd1455",
+      "chunk-c63d60b991cd7442f690dcc364af47dd",
+      "chunk-54c4fede216a6c4183b95ee1a2edcb17"
+    ],
+    "occurrence": 0.4,
+    "sub_communities": []
+  },
+  "7": {
+    "report_string": "# Regulating Metabolism and Inflammation in Health\n\nThe community focuses on metabolic processes and inflammation, with key entities such as proteins involved in glucose regulation, nitric oxide signaling, autoimmune diseases, and genetic variants influencing these functions. The impact severity is moderate due to the indirect influences of these factors on health outcomes.\n\n## Protein roles in glucose regulation\n\nKey proteins such as those encoded by ABCC8, TAG72, IRF1, STAT1, STAT3, and STAT5B are involved in maintaining normal glucose levels. Their interactions with genetic variants like those in HMGA2 and BMP4 suggest complex influences on metabolic health.\n\n## Nitric oxide signaling proteins\n\nProteins such as NOS1, which interact directly with folate metabolism through its association with the NHS and HPFS studies, highlight a significant pathway in vascular function. Variants like SLC40A1 rs744653 may further modulate these interactions.\n\n## Proteins influencing autoimmune processes\n\nAutoimmune proteins such as PTPN2 and PTPN1 are involved in regulating inflammation and gene expression. Their roles suggest a broader impact on maintaining homeostasis, potentially affecting diseases like ovarian cancer.\n\n## Protein functions in CAR-T therapy\n\nThe encoding proteins for therapies such as the CAR-T cells against specific targets are crucial in targeting malignancies. Understanding their function is essential in developing targeted treatments for diseases like ovarian cancer.\n\n## Proteins responding to interferon signaling\n\nBoth IRF1 and STAT1 proteins play significant roles in response to interferon signaling, suggesting a critical role in immune regulation. The missense SNP rs181206 at the IL27 locus may influence these processes through transcription modulation.",
+    "report_json": {
+      "title": "Regulating Metabolism and Inflammation in Health",
+      "summary": "The community focuses on metabolic processes and inflammation, with key entities such as proteins involved in glucose regulation, nitric oxide signaling, autoimmune diseases, and genetic variants influencing these functions. The impact severity is moderate due to the indirect influences of these factors on health outcomes.",
+      "rating": 4.5,
+      "rating_explanation": "The community's influence is significant but largely secondary, affecting metabolic pathways through gene regulation and protein function rather than direct causation in disease onset or management.",
+      "findings": [
+        {
+          "summary": "Protein roles in glucose regulation",
+          "explanation": "Key proteins such as those encoded by ABCC8, TAG72, IRF1, STAT1, STAT3, and STAT5B are involved in maintaining normal glucose levels. Their interactions with genetic variants like those in HMGA2 and BMP4 suggest complex influences on metabolic health."
+        },
+        {
+          "summary": "Nitric oxide signaling proteins",
+          "explanation": "Proteins such as NOS1, which interact directly with folate metabolism through its association with the NHS and HPFS studies, highlight a significant pathway in vascular function. Variants like SLC40A1 rs744653 may further modulate these interactions."
+        },
+        {
+          "summary": "Proteins influencing autoimmune processes",
+          "explanation": "Autoimmune proteins such as PTPN2 and PTPN1 are involved in regulating inflammation and gene expression. Their roles suggest a broader impact on maintaining homeostasis, potentially affecting diseases like ovarian cancer."
+        },
+        {
+          "summary": "Protein functions in CAR-T therapy",
+          "explanation": "The encoding proteins for therapies such as the CAR-T cells against specific targets are crucial in targeting malignancies. Understanding their function is essential in developing targeted treatments for diseases like ovarian cancer."
+        },
+        {
+          "summary": "Proteins responding to interferon signaling",
+          "explanation": "Both IRF1 and STAT1 proteins play significant roles in response to interferon signaling, suggesting a critical role in immune regulation. The missense SNP rs181206 at the IL27 locus may influence these processes through transcription modulation."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 7",
+    "edges": [
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"NITRIC OXIDE SYNTHASE (NOS)\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"PROTEIN\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"NHS AND HPFS PARTICIPANTS\"",
+        "\"PROTEIN\""
+      ]
+    ],
+    "nodes": [
+      "\"NITRIC OXIDE SYNTHASE (NOS)\"",
+      "\"PROTEIN\"",
+      "\"NHS AND HPFS PARTICIPANTS\""
+    ],
+    "chunk_ids": [
+      "chunk-8f23bd741f82dc8ca1e2600d790b690f",
+      "chunk-29025895ac187b8e88dec5cea9478842",
+      "chunk-37088dc7c337929125b7fb31c9bf64cf",
+      "chunk-41c7131af28e2a745ef6b88b8601860f",
+      "chunk-84ec948f22126cef7d93b1d7465b79db",
+      "chunk-2c395e2fed68f9267c06e9fcee853aae",
+      "chunk-6a7c69534e11aa2fc4bd948484aa81c4",
+      "chunk-e323b0d4f82733a78f687e51f47b500a",
+      "chunk-6cb127717713bd0ab5be9436fc0c7568",
+      "chunk-45a965c3c3013c70d0fa0f1680283083",
+      "chunk-ba82b7eb40cf9eea561d839b20584f91",
+      "chunk-f921f48a406901d82ec2e32af99485bf",
+      "chunk-4b6e8f78911cafc70959cfdfed786c29",
+      "chunk-257a38a8ce6582c434f31b023b4a9704",
+      "chunk-bdeb2c0c1ba80048874f6dedb2c2b619",
+      "chunk-f7bf38c7a21b86ad85fa360a21bfb447",
+      "chunk-2c91cdebb36ef064eb01a7021a961302",
+      "chunk-6135f8baf39fe26dcea3d987aa6100ac",
+      "chunk-2fb95100a1290b27baae869c6560419a",
+      "chunk-089bcdf055eb2f007db49dbe2409429b",
+      "chunk-d0476488384aadcae4630e94d982d2e0",
+      "chunk-1b40d071abac0ba432a9fb0096796f45",
+      "chunk-380a8a6e0d08cd28068a146ae5e00ce4",
+      "chunk-fde6653b9d9013ed054505cfe4cd1455",
+      "chunk-c63d60b991cd7442f690dcc364af47dd",
+      "chunk-54c4fede216a6c4183b95ee1a2edcb17",
+      "chunk-d4e04dd6cd6ea28f04fd72d964574ec1"
+    ],
+    "occurrence": 0.45,
+    "sub_communities": []
+  },
+  "8": {
+    "report_string": "# Genetic and Nutrient Interactions in Type 2 Diabetes\n\nThe community focuses on genetic factors influencing nutrient metabolism, specifically how genes such as MTHFR, SLC30A8, FADS1 affect individuals' susceptibility to type 2 diabetes. This involves understanding molecular interactions at the cellular level and their impact on disease development.\n\n## MTHFR gene's influence on folate levels\n\nMTHFR is a key gene involved in the conversion of amino acids, with its variants affecting homocysteine metabolism. High homocysteine levels are associated with an increased risk of type 2 diabetes and cardiovascular disease.\n\n## SLC30A8 gene's role in zinc transport\n\nZinc plays a critical role in insulin secretion, and variants affecting SLC30A8 can impair this process leading to impaired glucose control and diabetes risk. This underscores the importance of zinc balance for metabolic health.\n\n## FADS1 gene's impact on omega-3 fatty acid levels\n\nVariants in FADS1 affect the production of essential fatty acids like EPA and DHA, which are crucial for regulating inflammation. This relationship is particularly relevant in understanding how dietary choices can influence inflammatory diseases such as type 2 diabetes.\n\n## The complex interplay between genes and environmental factors\n\nUnderstanding the interaction between genetic variants like those in MTHFR, SLC30A8, and FADS1 with environmental influences like diet is crucial for developing personalized health interventions. For instance, dietary adjustments can compensate for some of the effects of these gene-diet interactions.\n\n## The role of stress in modulating molecular responses\n\nMolecular mechanisms such as those involving CRHR1 SNPs show how environmental factors like psychological stress can also influence physiological processes related to disease risk. This suggests that holistic approaches are needed to address health issues.\n\n## Impact of dietary patterns on gene expression\n\nDietary patterns not only affect the expression of genes but also modulate inflammatory cytokines, influencing cardiovascular health. This highlights how diet can be a potent tool for managing genetic susceptibility to diseases like type 2 diabetes.\n\n## The influence of genetic variants on age at first tooth and number of teeth\n\nUnderstanding the interactions between dietary factors, such as nutritional intake during pregnancy, and genetic variants in Cdx-2 can provide insights into early childhood health outcomes including dental development.",
+    "report_json": {
+      "title": "Genetic and Nutrient Interactions in Type 2 Diabetes",
+      "summary": "The community focuses on genetic factors influencing nutrient metabolism, specifically how genes such as MTHFR, SLC30A8, FADS1 affect individuals' susceptibility to type 2 diabetes. This involves understanding molecular interactions at the cellular level and their impact on disease development.",
+      "rating": 7.5,
+      "rating_explanation": "The high rating reflects the significant health implications of these genetic variants in nutrient metabolism and their role in influencing metabolic disorders like type 2 diabetes.",
+      "findings": [
+        {
+          "summary": "MTHFR gene's influence on folate levels",
+          "explanation": "MTHFR is a key gene involved in the conversion of amino acids, with its variants affecting homocysteine metabolism. High homocysteine levels are associated with an increased risk of type 2 diabetes and cardiovascular disease."
+        },
+        {
+          "summary": "SLC30A8 gene's role in zinc transport",
+          "explanation": "Zinc plays a critical role in insulin secretion, and variants affecting SLC30A8 can impair this process leading to impaired glucose control and diabetes risk. This underscores the importance of zinc balance for metabolic health."
+        },
+        {
+          "summary": "FADS1 gene's impact on omega-3 fatty acid levels",
+          "explanation": "Variants in FADS1 affect the production of essential fatty acids like EPA and DHA, which are crucial for regulating inflammation. This relationship is particularly relevant in understanding how dietary choices can influence inflammatory diseases such as type 2 diabetes."
+        },
+        {
+          "summary": "The complex interplay between genes and environmental factors",
+          "explanation": "Understanding the interaction between genetic variants like those in MTHFR, SLC30A8, and FADS1 with environmental influences like diet is crucial for developing personalized health interventions. For instance, dietary adjustments can compensate for some of the effects of these gene-diet interactions."
+        },
+        {
+          "summary": "The role of stress in modulating molecular responses",
+          "explanation": "Molecular mechanisms such as those involving CRHR1 SNPs show how environmental factors like psychological stress can also influence physiological processes related to disease risk. This suggests that holistic approaches are needed to address health issues."
+        },
+        {
+          "summary": "Impact of dietary patterns on gene expression",
+          "explanation": "Dietary patterns not only affect the expression of genes but also modulate inflammatory cytokines, influencing cardiovascular health. This highlights how diet can be a potent tool for managing genetic susceptibility to diseases like type 2 diabetes."
+        },
+        {
+          "summary": "The influence of genetic variants on age at first tooth and number of teeth",
+          "explanation": "Understanding the interactions between dietary factors, such as nutritional intake during pregnancy, and genetic variants in Cdx-2 can provide insights into early childhood health outcomes including dental development."
+        }
+      ]
+    },
+    "level": 1,
+    "title": "Cluster 8",
+    "edges": [
+      [
+        "\"DIETARY PATTERN\"",
+        "\"ENVIRONMENTAL FACTOR\""
+      ],
+      [
+        "\"ENVIRONMENTAL FACTOR\"",
+        "\"PHYSIOLOGICAL PROCESS\""
+      ],
+      [
+        "\"MOLECULAR INTERACTION\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"MOLECULAR INTERACTION\"",
+        "\"TCRS\""
+      ],
+      [
+        "\"ENVIRONMENTAL FACTOR\"",
+        "\"MOLECULAR INTERACTION\""
+      ],
+      [
+        "\"MOLECULAR INTERACTION\"",
+        "\"TCF7L2 PROTEIN\""
+      ],
+      [
+        "\"MOLECULAR INTERACTION\"",
+        "\"STRESS CONDITION VS. NO-STRESS CONDITION\""
+      ]
+    ],
+    "nodes": [
+      "\"STRESS CONDITION VS. NO-STRESS CONDITION\"",
+      "\"MOLECULAR INTERACTION\"",
+      "\"ENVIRONMENTAL FACTOR\"",
+      "\"TCRS\"",
+      "\"TCF7L2 PROTEIN\""
+    ],
+    "chunk_ids": [
+      "chunk-8f23bd741f82dc8ca1e2600d790b690f",
+      "chunk-dc5e8cc04a1b16b1e00f3a4120e004c4",
+      "chunk-f921f48a406901d82ec2e32af99485bf",
+      "chunk-2c91cdebb36ef064eb01a7021a961302",
+      "chunk-f02653cb486dbf68cc259f74ea8b2b2e",
+      "chunk-4964b2db9e3ddddb4967fb7150e4404d",
+      "chunk-fde6653b9d9013ed054505cfe4cd1455",
+      "chunk-c63d60b991cd7442f690dcc364af47dd",
+      "chunk-8fb20f873daf79a9b7d6e8d25c8889d6",
+      "chunk-41c7131af28e2a745ef6b88b8601860f",
+      "chunk-5e709975097a773fb3d31e265d76a71b",
+      "chunk-614333487e4b92705503909d34155179",
+      "chunk-6a7c69534e11aa2fc4bd948484aa81c4",
+      "chunk-54c4fede216a6c4183b95ee1a2edcb17",
+      "chunk-6cb127717713bd0ab5be9436fc0c7568",
+      "chunk-089bcdf055eb2f007db49dbe2409429b"
+    ],
+    "occurrence": 0.26666666666666666,
+    "sub_communities": []
+  },
+  "2": {
+    "report_string": "# Community of Biomedical Research on Genes and Nutrients\n\nImpact of Transcription Factors\n\n## [\n\n\n\n## \n\n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n## {\n\n\n\n## \n\n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n## \"\n\n\n\n## s\n\n\n\n## u\n\n\n\n## m\n\n\n\n## m\n\n\n\n## a\n\n\n\n## r\n\n\n\n## y\n\n\n\n## \"\n\n\n\n## :\n\n\n\n##  \n\n\n\n## \"\n\n\n\n## G\n\n\n\n## e\n\n\n\n## n\n\n\n\n## e\n\n\n\n## s\n\n\n\n##  \n\n\n\n## a\n\n\n\n## n\n\n\n\n## d\n\n\n\n##  \n\n\n\n## N\n\n\n\n## u\n\n\n\n## t\n\n\n\n## r\n\n\n\n## i\n\n\n\n## e\n\n\n\n## n\n\n\n\n## t\n\n\n\n##  \n\n\n\n## M\n\n\n\n## e\n\n\n\n## t\n\n\n\n## a\n\n\n\n## b\n\n\n\n## o\n\n\n\n## l\n\n\n\n## i\n\n\n\n## s\n\n\n\n## m\n\n",
+    "report_json": {
+      "title": "Community of Biomedical Research on Genes and Nutrients",
+      "summary": "Impact of Transcription Factors",
+      "rating": 8.5,
+      "rating_explanation": "The severity of impact posed by the entities in this community is significant due to their direct involvement in key physiological functions including those relevant to human health such as nutrient metabolism influencing gene expression associated with cardiovascular health.",
+      "findings": "[\n        {\n            \"summary\": \"Genes and Nutrient Metabolism",
+      "explanation": "Understanding the impact of transcription factors like STAT5B provides insights into how gene expression can be regulated at a molecular level. This knowledge is critical for understanding complex biological processes and their influence on health outcomes."
+    },
+    "level": 0,
+    "title": "Cluster 2",
+    "edges": [
+      [
+        "\"GENE\"",
+        "\"TRAFF3\""
+      ],
+      [
+        "\"T CELLS\"",
+        "\"TRANSCRIPT\""
+      ],
+      [
+        "\"CYP2C9\"",
+        "\"TRANSCRIPT\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"TRANSCRIPT\""
+      ],
+      [
+        "\"METABOLIC PATHWAY\"",
+        "\"NUTRIENT\""
+      ],
+      [
+        "\"NUTRIENT\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"GENE\"",
+        "\"TRANSCRIPT\""
+      ],
+      [
+        "\"CHOLINE\"",
+        "\"NUTRIENT\""
+      ],
+      [
+        "\"DIETARY PATTERN VS. FOLATE METABOLISM\"",
+        "\"NUTRIENT\""
+      ],
+      [
+        "\"NUTRIENT\"",
+        "\"TRANSCRIPT\""
+      ],
+      [
+        "\"GENE\"",
+        "\"TUFM\""
+      ],
+      [
+        "\"FOLATE\"",
+        "\"NUTRIENT\""
+      ]
+    ],
+    "nodes": [
+      "\"DIETARY PATTERN VS. FOLATE METABOLISM\"",
+      "\"GENE\"",
+      "\"TRANSCRIPT\"",
+      "\"NUTRIENT\"",
+      "\"CHOLINE\"",
+      "\"T CELLS\"",
+      "\"FOLATE\"",
+      "\"TRAFF3\"",
+      "\"TUFM\""
+    ],
+    "chunk_ids": [
+      "chunk-512b044cf65a4e519d519c6239959c6c",
+      "chunk-22216738ccbae0a6276bb4499018c434",
+      "chunk-8f23bd741f82dc8ca1e2600d790b690f",
+      "chunk-938d8bf2e56584de9dd556be5eb70964",
+      "chunk-047f259db19cbb4de945706a1bd1b450",
+      "chunk-29025895ac187b8e88dec5cea9478842",
+      "chunk-8276370dea9f12d2b305c355f74c7f6e",
+      "chunk-37088dc7c337929125b7fb31c9bf64cf",
+      "chunk-fa32a208a2f004c10c1b6777c3be13f2",
+      "chunk-41c7131af28e2a745ef6b88b8601860f",
+      "chunk-bc2193bd869a06007022e1aa75877336",
+      "chunk-84ec948f22126cef7d93b1d7465b79db",
+      "chunk-6a7c69534e11aa2fc4bd948484aa81c4",
+      "chunk-e323b0d4f82733a78f687e51f47b500a",
+      "chunk-dcbd547f8218e7097805720fd6ea43ba",
+      "chunk-5e709975097a773fb3d31e265d76a71b",
+      "chunk-b89ac7c0c243e0d9dcdcf4ebf07b538f",
+      "chunk-01cd90d27130aab1a096ad616e05f182",
+      "chunk-50e07db177a6a08799261934e8e71ac4",
+      "chunk-2c395e2fed68f9267c06e9fcee853aae",
+      "chunk-ba82b7eb40cf9eea561d839b20584f91",
+      "chunk-6cb127717713bd0ab5be9436fc0c7568",
+      "chunk-eaf655c4dd9244523b048a122e232be4",
+      "chunk-45a965c3c3013c70d0fa0f1680283083",
+      "chunk-f921f48a406901d82ec2e32af99485bf",
+      "chunk-f433e179cd5e32035a0303b9a14da3f1",
+      "chunk-4b6e8f78911cafc70959cfdfed786c29",
+      "chunk-257a38a8ce6582c434f31b023b4a9704",
+      "chunk-fed46d4ab6d22b3530c4c06a4b7def46",
+      "chunk-bdeb2c0c1ba80048874f6dedb2c2b619",
+      "chunk-f7bf38c7a21b86ad85fa360a21bfb447",
+      "chunk-0d155c005072e55d94179ce7952bf5a9",
+      "chunk-2c91cdebb36ef064eb01a7021a961302",
+      "chunk-f02653cb486dbf68cc259f74ea8b2b2e",
+      "chunk-6135f8baf39fe26dcea3d987aa6100ac",
+      "chunk-2fb95100a1290b27baae869c6560419a",
+      "chunk-1c470c93632f3704d6f3566de7a1dd0c",
+      "chunk-9977706363cc368b3be503d07ed3ef62",
+      "chunk-1d2a8d3ce4f9baae7e1c9c14410045d0",
+      "chunk-a9cd8765fac3ebb933c3fade561bc42e",
+      "chunk-c27a7b63e450810a5d9f9e0f70b73a7a",
+      "chunk-af413a33fae8d27bdb15cd18447dfad4",
+      "chunk-089bcdf055eb2f007db49dbe2409429b",
+      "chunk-d0476488384aadcae4630e94d982d2e0",
+      "chunk-dc5e8cc04a1b16b1e00f3a4120e004c4",
+      "chunk-1b40d071abac0ba432a9fb0096796f45",
+      "chunk-4964b2db9e3ddddb4967fb7150e4404d",
+      "chunk-380a8a6e0d08cd28068a146ae5e00ce4",
+      "chunk-bb351b97d99fce93d17df522db92dda7",
+      "chunk-159d4c797dae6eb825c74067af703228",
+      "chunk-eec0b4c60ebeb28599428b3552de2d1b",
+      "chunk-6600322cc75094b1c57707e4b9c85954",
+      "chunk-fde6653b9d9013ed054505cfe4cd1455",
+      "chunk-8fb20f873daf79a9b7d6e8d25c8889d6",
+      "chunk-c63d60b991cd7442f690dcc364af47dd",
+      "chunk-c7872499c2a84b16c506a135d8033bb7",
+      "chunk-54c4fede216a6c4183b95ee1a2edcb17",
+      "chunk-d4e04dd6cd6ea28f04fd72d964574ec1",
+      "chunk-36d70bb8409856300dd77669e7c1f9ed",
+      "chunk-ab449d4ec9f3baa290d63f09fdbd3fbc"
+    ],
+    "occurrence": 1.0,
+    "sub_communities": []
+  },
+  "0": {
+    "report_string": "# Community of High-Protein Diet and Genotype Analysis\n\nThe community consists primarily of individuals with a specific genetic trait, known as 'AA genotype', which influences their response to high-protein diets differently compared to those without this trait. This influence is observed in various physiological processes such as fat distribution, body composition changes, and dietary interventions.\n\n## Impact of Genotype on Diet Response\n\nThe AA genotype has a profound impact on how individuals respond to high-protein diets. This response is evident in both the physiological processes such as fat distribution and body composition changes, as well as dietary interventions where these individuals show different responses compared to those without the 'AA' trait.\n\n## Influence on Nitric Oxide Production\n\nThe AA genotype also influences nitric oxide production in a significant manner. This is demonstrated by how individuals with this genetic profile have different responses to low and high protein diets, influencing fat distribution and loss differently.\n\n## Relationship with Dietary Patterns\n\nThe AA genotype has notable effects on dietary patterns as well. For instance, participants with the AA genotype showed greater decreases in body fat when compared to non-AA individuals undergoing high-protein diets.\n\n## Cardiovascular Implications of Genotype\n\nThere are also clear implications for cardiovascular health as demonstrated by the relationship between the AA genotype and nitric oxide production. This highlights a significant link between genetic factors, dietary patterns, and overall vascular health.\n\n## Impact on Vascular Function\n\nThe interaction of the AA genotype with vascular function is further illustrated by its relationship to endothelial nitric oxide synthase (eNOS) which plays a critical role in maintaining vascular health. The genetic influence over this process shows how even within dietary interventions, individuals can have varying responses.\n\n## Association with Disease Risk\n\nIn addition to its effects on diet and physiological processes, the AA genotype is also associated with increased risk of certain diseases such as cardiovascular disease. This association underscores how even at a genetic level, individuals can be predisposed towards health risks under specific conditions.\n\n## Future Research Directions\n\nMoving forward, further research will likely focus on understanding the complex interplay between genetics and diet in influencing various physiological outcomes. Additionally, exploring how this knowledge could potentially inform personalized dietary approaches for better health outcomes is an area of significant interest.",
+    "report_json": {
+      "title": "Community of High-Protein Diet and Genotype Analysis",
+      "summary": "The community consists primarily of individuals with a specific genetic trait, known as 'AA genotype', which influences their response to high-protein diets differently compared to those without this trait. This influence is observed in various physiological processes such as fat distribution, body composition changes, and dietary interventions.",
+      "rating": 9.2,
+      "rating_explanation": "The impact of the AA genotype on diet responses and related physiological processes is highly significant due to its extensive effects across multiple areas including cardiovascular health, nitric oxide production, and dietary patterns.",
+      "findings": [
+        {
+          "summary": "Impact of Genotype on Diet Response",
+          "explanation": "The AA genotype has a profound impact on how individuals respond to high-protein diets. This response is evident in both the physiological processes such as fat distribution and body composition changes, as well as dietary interventions where these individuals show different responses compared to those without the 'AA' trait."
+        },
+        {
+          "summary": "Influence on Nitric Oxide Production",
+          "explanation": "The AA genotype also influences nitric oxide production in a significant manner. This is demonstrated by how individuals with this genetic profile have different responses to low and high protein diets, influencing fat distribution and loss differently."
+        },
+        {
+          "summary": "Relationship with Dietary Patterns",
+          "explanation": "The AA genotype has notable effects on dietary patterns as well. For instance, participants with the AA genotype showed greater decreases in body fat when compared to non-AA individuals undergoing high-protein diets."
+        },
+        {
+          "summary": "Cardiovascular Implications of Genotype",
+          "explanation": "There are also clear implications for cardiovascular health as demonstrated by the relationship between the AA genotype and nitric oxide production. This highlights a significant link between genetic factors, dietary patterns, and overall vascular health."
+        },
+        {
+          "summary": "Impact on Vascular Function",
+          "explanation": "The interaction of the AA genotype with vascular function is further illustrated by its relationship to endothelial nitric oxide synthase (eNOS) which plays a critical role in maintaining vascular health. The genetic influence over this process shows how even within dietary interventions, individuals can have varying responses."
+        },
+        {
+          "summary": "Association with Disease Risk",
+          "explanation": "In addition to its effects on diet and physiological processes, the AA genotype is also associated with increased risk of certain diseases such as cardiovascular disease. This association underscores how even at a genetic level, individuals can be predisposed towards health risks under specific conditions."
+        },
+        {
+          "summary": "Future Research Directions",
+          "explanation": "Moving forward, further research will likely focus on understanding the complex interplay between genetics and diet in influencing various physiological outcomes. Additionally, exploring how this knowledge could potentially inform personalized dietary approaches for better health outcomes is an area of significant interest."
+        }
+      ]
+    },
+    "level": 0,
+    "title": "Cluster 0",
+    "edges": [
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"RS1444988703\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"TCF7L2 GENE\""
+      ],
+      [
+        "\"NITRIC OXIDE SYNTHASE (NOS)\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"TRANSCRIPT\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"NITRIC OXIDE PRODUCTION\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"SLC30A8\""
+      ],
+      [
+        "\"GENOMIC VARIANT\"",
+        "\"GENOTYPE\""
+      ],
+      [
+        "\"GENOTYPE\"",
+        "\"LOW-PROTEIN DIET\""
+      ],
+      [
+        "\"NHS AND HPFS PARTICIPANTS\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"PROTEIN\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"AA GENOTYPE\"",
+        "\"HIGH-PROTEIN DIET\""
+      ],
+      [
+        "\"CYP2C9\"",
+        "\"GENOMIC VARIANT\""
+      ],
+      [
+        "\"CARDIOVASCULAR DISEASE\"",
+        "\"GENOMIC VARIANT\""
+      ],
+      [
+        "\"AA GENOTYPE\"",
+        "\"ENDOTHELIAL NITRIC OXIDE SYNTHASE (ENOS)\""
+      ]
+    ],
+    "nodes": [
+      "\"GENOMIC VARIANT\"",
+      "\"ENDOTHELIAL NITRIC OXIDE SYNTHASE (ENOS)\"",
+      "\"RS1444988703\"",
+      "\"TCF7L2 GENE\"",
+      "\"GENOTYPE\"",
+      "\"CARDIOVASCULAR DISEASE\"",
+      "\"SLC30A8\"",
+      "\"NITRIC OXIDE PRODUCTION\"",
+      "\"NITRIC OXIDE SYNTHASE (NOS)\"",
+      "\"LOW-PROTEIN DIET\"",
+      "\"AA GENOTYPE\"",
+      "\"NHS AND HPFS PARTICIPANTS\"",
+      "\"PROTEIN\"",
+      "\"HIGH-PROTEIN DIET\""
+    ],
+    "chunk_ids": [
+      "chunk-8f23bd741f82dc8ca1e2600d790b690f",
+      "chunk-938d8bf2e56584de9dd556be5eb70964",
+      "chunk-047f259db19cbb4de945706a1bd1b450",
+      "chunk-29025895ac187b8e88dec5cea9478842",
+      "chunk-8276370dea9f12d2b305c355f74c7f6e",
+      "chunk-cc528af98598e1adb4684c0166430cf4",
+      "chunk-fa32a208a2f004c10c1b6777c3be13f2",
+      "chunk-37088dc7c337929125b7fb31c9bf64cf",
+      "chunk-41c7131af28e2a745ef6b88b8601860f",
+      "chunk-84ec948f22126cef7d93b1d7465b79db",
+      "chunk-2c395e2fed68f9267c06e9fcee853aae",
+      "chunk-6a7c69534e11aa2fc4bd948484aa81c4",
+      "chunk-6cb127717713bd0ab5be9436fc0c7568",
+      "chunk-a321a6d63755366a1fc3eafbd9fbce83",
+      "chunk-eaf655c4dd9244523b048a122e232be4",
+      "chunk-45a965c3c3013c70d0fa0f1680283083",
+      "chunk-e323b0d4f82733a78f687e51f47b500a",
+      "chunk-ba82b7eb40cf9eea561d839b20584f91",
+      "chunk-f921f48a406901d82ec2e32af99485bf",
+      "chunk-4b6e8f78911cafc70959cfdfed786c29",
+      "chunk-257a38a8ce6582c434f31b023b4a9704",
+      "chunk-bdeb2c0c1ba80048874f6dedb2c2b619",
+      "chunk-f7bf38c7a21b86ad85fa360a21bfb447",
+      "chunk-0d155c005072e55d94179ce7952bf5a9",
+      "chunk-03962ffc6066ee5da582bdc89310b1d6",
+      "chunk-2b81371954b99facae9a0056e70aa7bd",
+      "chunk-2c91cdebb36ef064eb01a7021a961302",
+      "chunk-f02653cb486dbf68cc259f74ea8b2b2e",
+      "chunk-6135f8baf39fe26dcea3d987aa6100ac",
+      "chunk-2fb95100a1290b27baae869c6560419a",
+      "chunk-e1b4f4dac52e806f19c580640a50c729",
+      "chunk-1fde08e52a188ac6a549e7c11d59a092",
+      "chunk-9977706363cc368b3be503d07ed3ef62",
+      "chunk-089bcdf055eb2f007db49dbe2409429b",
+      "chunk-d0476488384aadcae4630e94d982d2e0",
+      "chunk-dc5e8cc04a1b16b1e00f3a4120e004c4",
+      "chunk-1b40d071abac0ba432a9fb0096796f45",
+      "chunk-9e14f9bdee02839e4a6b12cff2020a5a",
+      "chunk-380a8a6e0d08cd28068a146ae5e00ce4",
+      "chunk-d311ac0182b37003c75c0005b4337fa6",
+      "chunk-eec0b4c60ebeb28599428b3552de2d1b",
+      "chunk-6600322cc75094b1c57707e4b9c85954",
+      "chunk-fde6653b9d9013ed054505cfe4cd1455",
+      "chunk-c63d60b991cd7442f690dcc364af47dd",
+      "chunk-54c4fede216a6c4183b95ee1a2edcb17",
+      "chunk-d4e04dd6cd6ea28f04fd72d964574ec1",
+      "chunk-ab449d4ec9f3baa290d63f09fdbd3fbc"
+    ],
+    "occurrence": 0.7833333333333333,
+    "sub_communities": [
+      "7",
+      "6"
+    ]
+  },
+  "4": {
+    "report_string": "# Community Name - Key Insights on Entity Relationships\n\nPotential Molecular Interactions Mediating Disease Susceptibility\n\n## [\n\n\n\n## \n\n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n## {\n\n\n\n## \n\n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n##  \n\n\n\n## \"\n\n\n\n## s\n\n\n\n## u\n\n\n\n## m\n\n\n\n## m\n\n\n\n## a\n\n\n\n## r\n\n\n\n## y\n\n\n\n## \"\n\n\n\n## :\n\n\n\n##  \n\n\n\n## \"\n\n\n\n## I\n\n\n\n## m\n\n\n\n## p\n\n\n\n## a\n\n\n\n## c\n\n\n\n## t\n\n\n\n##  \n\n\n\n## o\n\n\n\n## f\n\n\n\n##  \n\n\n\n## D\n\n\n\n## i\n\n\n\n## e\n\n\n\n## t\n\n\n\n## a\n\n\n\n## r\n\n\n\n## y\n\n\n\n##  \n\n\n\n## P\n\n\n\n## a\n\n\n\n## t\n\n\n\n## t\n\n\n\n## e\n\n\n\n## r\n\n\n\n## n\n\n\n\n## s\n\n\n\n##  \n\n\n\n## o\n\n\n\n## n\n\n\n\n##  \n\n\n\n## I\n\n\n\n## n\n\n\n\n## f\n\n\n\n## l\n\n\n\n## a\n\n\n\n## m\n\n\n\n## m\n\n\n\n## a\n\n\n\n## t\n\n\n\n## o\n\n\n\n## r\n\n\n\n## y\n\n\n\n##  \n\n\n\n## C\n\n\n\n## y\n\n\n\n## t\n\n\n\n## o\n\n\n\n## k\n\n\n\n## i\n\n\n\n## n\n\n\n\n## e\n\n\n\n## s\n\n",
+    "report_json": {
+      "title": "Community Name - Key Insights on Entity Relationships",
+      "summary": "Potential Molecular Interactions Mediating Disease Susceptibility",
+      "rating": 8.5,
+      "rating_explanation": "The community's entities have a significant impact on understanding complex physiological processes related to disease susceptibility and risk factors.",
+      "findings": "[\n        {\n            \"summary\": \"Impact of Dietary Patterns on Inflammatory Cytokines",
+      "explanation": "Overexpressed LYP variants affect Treg suppressive capacity. The risk variant potentially enhances suppressive function, indicating a complex relationship between genetic factors and immune system regulation in disease susceptibility."
+    },
+    "level": 0,
+    "title": "Cluster 4",
+    "edges": [
+      [
+        "\"DIETARY PATTERN\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"ENVIRONMENTAL FACTOR\"",
+        "\"PHYSIOLOGICAL PROCESS\""
+      ],
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"NUTRIENT\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"FOLATE METABOLISM PHYSIOLOGICAL PROCESS\"",
+        "\"PHYSIOLOGICAL PROCESS\""
+      ],
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"TREG SUPPRESSIVE CAPACITY\""
+      ],
+      [
+        "\"PROTEIN\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"MOLECULAR INTERACTION\"",
+        "\"TCF7L2 PROTEIN\""
+      ],
+      [
+        "\"MOLECULAR INTERACTION\"",
+        "\"STRESS CONDITION VS. NO-STRESS CONDITION\""
+      ],
+      [
+        "\"METABOLIC PATHWAY\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"PROTEIN\""
+      ],
+      [
+        "\"MOLECULAR INTERACTION\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"MOLECULAR INTERACTION\"",
+        "\"TCRS\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"ENVIRONMENTAL FACTOR\""
+      ],
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"VASCULAR ENDOTHELIAL GROWTH FACTOR (VEGF)\""
+      ],
+      [
+        "\"LIFESTYLE FACTORS\"",
+        "\"PHYSIOLOGICAL PROCESS\""
+      ],
+      [
+        "\"PHYSIOLOGICAL PROCESS\"",
+        "\"STUDY SELECTION\",\"QUALITY ASSESSMENT\""
+      ],
+      [
+        "\"ENVIRONMENTAL FACTOR\"",
+        "\"MOLECULAR INTERACTION\""
+      ],
+      [
+        "\"INTERLEUKIN 2\"",
+        "\"PHYSIOLOGICAL PROCESS\""
+      ]
+    ],
+    "nodes": [
+      "\"VASCULAR ENDOTHELIAL GROWTH FACTOR (VEGF)\"",
+      "\"STRESS CONDITION VS. NO-STRESS CONDITION\"",
+      "\"TREG SUPPRESSIVE CAPACITY\"",
+      "\"LIFESTYLE FACTORS\"",
+      "\"MOLECULAR INTERACTION\"",
+      "\"INTERLEUKIN 2\"",
+      "\"STUDY SELECTION\",\"QUALITY ASSESSMENT\"",
+      "\"TUFM GENOMIC VARIANTS\"",
+      "\"ENVIRONMENTAL FACTOR\"",
+      "\"FOLATE METABOLISM PHYSIOLOGICAL PROCESS\"",
+      "\"TCRS\"",
+      "\"PHYSIOLOGICAL PROCESS\"",
+      "\"TCF7L2 PROTEIN\""
+    ],
+    "chunk_ids": [
+      "chunk-8f23bd741f82dc8ca1e2600d790b690f",
+      "chunk-41c7131af28e2a745ef6b88b8601860f",
+      "chunk-84ec948f22126cef7d93b1d7465b79db",
+      "chunk-5e709975097a773fb3d31e265d76a71b",
+      "chunk-6a7c69534e11aa2fc4bd948484aa81c4",
+      "chunk-dcbd547f8218e7097805720fd6ea43ba",
+      "chunk-6cb127717713bd0ab5be9436fc0c7568",
+      "chunk-a321a6d63755366a1fc3eafbd9fbce83",
+      "chunk-614333487e4b92705503909d34155179",
+      "chunk-9a35876dc1aaf7342f023cab4f5b9914",
+      "chunk-f921f48a406901d82ec2e32af99485bf",
+      "chunk-c6fdc5ed25c4e17b8c421a952bb05450",
+      "chunk-257a38a8ce6582c434f31b023b4a9704",
+      "chunk-fed46d4ab6d22b3530c4c06a4b7def46",
+      "chunk-2c91cdebb36ef064eb01a7021a961302",
+      "chunk-f02653cb486dbf68cc259f74ea8b2b2e",
+      "chunk-dee0a8a550579bff19f48d41446e842d",
+      "chunk-089bcdf055eb2f007db49dbe2409429b",
+      "chunk-814fe155e9cb953da61f6a79d1d25784",
+      "chunk-d0476488384aadcae4630e94d982d2e0",
+      "chunk-dc5e8cc04a1b16b1e00f3a4120e004c4",
+      "chunk-4964b2db9e3ddddb4967fb7150e4404d",
+      "chunk-380a8a6e0d08cd28068a146ae5e00ce4",
+      "chunk-183db5c908df609bb5289896b4ba09d0",
+      "chunk-fde6653b9d9013ed054505cfe4cd1455",
+      "chunk-c63d60b991cd7442f690dcc364af47dd",
+      "chunk-8fb20f873daf79a9b7d6e8d25c8889d6",
+      "chunk-54c4fede216a6c4183b95ee1a2edcb17"
+    ],
+    "occurrence": 0.4666666666666667,
+    "sub_communities": [
+      "8",
+      "9"
+    ]
+  },
+  "3": {
+    "report_string": "# Genetic and Nutrient Dynamics in Type 2 Diabetes\n\nThis community focuses on how genetic factors interact with dietary patterns to influence type 2 diabetes risk and management. Key entities include genes like MTHFR, SLC30A8, FADS1; nutrients such as omega-3 fatty acids and folate; and significant scientific claims related to these interactions.\n\n## MTHFR C677T Variant and Folate Metabolism\n\nThe MTHFR C677T variant is associated with reduced enzymatic activity, leading to altered homocysteine levels. This genetic factor influences the need for increased folate intake in individuals, highlighting a critical dietary implication for disease prevention.\n\n## Omega-3 Fatty Acids and Inflammation Reduction\n\nGenetic variations such as those in FADS2 influence omega-3 fatty acid metabolism. This influences the effectiveness of dietary supplements, suggesting personalized nutrition strategies for reducing inflammation and its impact on type 2 diabetes.\n\n## SLC30A8 rs13266634 Variant and Zinc Transport\n\nThe SLC30A8 variant affects zinc transport, which is crucial for pancreatic beta-cell function. This genetic factor could impact insulin secretion in individuals consuming diets high in processed foods.\n\n## Folate's Role in Genetic Variants and Disease Risk\n\nFolate intake is particularly critical due to its interaction with genetic variants like MTHFR C677T, affecting not just metabolic pathways but also disease risks such as type 2 diabetes.\n\n## Dietary Patterns and Their Impact on Inflammatory Markers\n\nDifferent dietary patterns influence inflammatory markers in individuals. This suggests a dynamic interaction between genetics, diet, and lifestyle that collectively affects health outcomes like cardiovascular disease risk.\n\n## Environmental Influences on Dietary Choices\n\nLifestyle behaviors, including smoking habits for example, can significantly alter dietary patterns. These interactions highlight the complex interplay between environmental factors and genetic predispositions in influencing health outcomes like lung cancer risk.\n\n## Nutritional Management Post-Treatment\n\nThe use of low-protein diets or diazoxide post-treatment influences metabolic pathways, particularly important for conditions such as ulcerative colitis where dietary treatments play a significant role in disease management.",
+    "report_json": {
+      "title": "Genetic and Nutrient Dynamics in Type 2 Diabetes",
+      "summary": "This community focuses on how genetic factors interact with dietary patterns to influence type 2 diabetes risk and management. Key entities include genes like MTHFR, SLC30A8, FADS1; nutrients such as omega-3 fatty acids and folate; and significant scientific claims related to these interactions.",
+      "rating": 6.5,
+      "rating_explanation": "The impact severity rating is moderate due to the clear influence of genetic factors on dietary recommendations for disease management, particularly in predisposed populations.",
+      "findings": [
+        {
+          "summary": "MTHFR C677T Variant and Folate Metabolism",
+          "explanation": "The MTHFR C677T variant is associated with reduced enzymatic activity, leading to altered homocysteine levels. This genetic factor influences the need for increased folate intake in individuals, highlighting a critical dietary implication for disease prevention."
+        },
+        {
+          "summary": "Omega-3 Fatty Acids and Inflammation Reduction",
+          "explanation": "Genetic variations such as those in FADS2 influence omega-3 fatty acid metabolism. This influences the effectiveness of dietary supplements, suggesting personalized nutrition strategies for reducing inflammation and its impact on type 2 diabetes."
+        },
+        {
+          "summary": "SLC30A8 rs13266634 Variant and Zinc Transport",
+          "explanation": "The SLC30A8 variant affects zinc transport, which is crucial for pancreatic beta-cell function. This genetic factor could impact insulin secretion in individuals consuming diets high in processed foods."
+        },
+        {
+          "summary": "Folate's Role in Genetic Variants and Disease Risk",
+          "explanation": "Folate intake is particularly critical due to its interaction with genetic variants like MTHFR C677T, affecting not just metabolic pathways but also disease risks such as type 2 diabetes."
+        },
+        {
+          "summary": "Dietary Patterns and Their Impact on Inflammatory Markers",
+          "explanation": "Different dietary patterns influence inflammatory markers in individuals. This suggests a dynamic interaction between genetics, diet, and lifestyle that collectively affects health outcomes like cardiovascular disease risk."
+        },
+        {
+          "summary": "Environmental Influences on Dietary Choices",
+          "explanation": "Lifestyle behaviors, including smoking habits for example, can significantly alter dietary patterns. These interactions highlight the complex interplay between environmental factors and genetic predispositions in influencing health outcomes like lung cancer risk."
+        },
+        {
+          "summary": "Nutritional Management Post-Treatment",
+          "explanation": "The use of low-protein diets or diazoxide post-treatment influences metabolic pathways, particularly important for conditions such as ulcerative colitis where dietary treatments play a significant role in disease management."
+        }
+      ]
+    },
+    "level": 0,
+    "title": "Cluster 3",
+    "edges": [
+      [
+        "\"DIETARY PATTERN\"",
+        "\"ENVIRONMENTAL FACTOR\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"WESTERN DIET\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"SMOKER V. NON-SMOKER\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"LIFESTYLE BEHAVIOR\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"HEME IRON INTAKE\""
+      ],
+      [
+        "\"DIETARY PATTERN\"",
+        "\"INFLUENCED BY TUMOR CHARACTERISTICS\""
+      ]
+    ],
+    "nodes": [
+      "\"LIFESTYLE BEHAVIOR\"",
+      "\"SMOKER V. NON-SMOKER\"",
+      "\"INFLUENCED BY TUMOR CHARACTERISTICS\"",
+      "\"DIETARY PATTERN\"",
+      "\"WESTERN DIET\"",
+      "\"HEME IRON INTAKE\""
+    ],
+    "chunk_ids": [
+      "chunk-e8f81fdd25a22582c6ce3d1e15f74af3",
+      "chunk-938d8bf2e56584de9dd556be5eb70964",
+      "chunk-41c7131af28e2a745ef6b88b8601860f",
+      "chunk-84ec948f22126cef7d93b1d7465b79db",
+      "chunk-2c395e2fed68f9267c06e9fcee853aae",
+      "chunk-dcbd547f8218e7097805720fd6ea43ba",
+      "chunk-6cb127717713bd0ab5be9436fc0c7568",
+      "chunk-a321a6d63755366a1fc3eafbd9fbce83",
+      "chunk-45a965c3c3013c70d0fa0f1680283083",
+      "chunk-9a35876dc1aaf7342f023cab4f5b9914",
+      "chunk-f921f48a406901d82ec2e32af99485bf",
+      "chunk-e0d9c2e8ae2160bad4ae90ab6e8a12f6",
+      "chunk-8382a49b61215482f9fc75e3a86cb987",
+      "chunk-4b6e8f78911cafc70959cfdfed786c29",
+      "chunk-257a38a8ce6582c434f31b023b4a9704",
+      "chunk-f7bf38c7a21b86ad85fa360a21bfb447",
+      "chunk-0d155c005072e55d94179ce7952bf5a9",
+      "chunk-2b81371954b99facae9a0056e70aa7bd",
+      "chunk-2c91cdebb36ef064eb01a7021a961302",
+      "chunk-b6ea16f7f7eb8bc6f36f2be03fe62403",
+      "chunk-e1b4f4dac52e806f19c580640a50c729",
+      "chunk-1c470c93632f3704d6f3566de7a1dd0c",
+      "chunk-af413a33fae8d27bdb15cd18447dfad4",
+      "chunk-089bcdf055eb2f007db49dbe2409429b",
+      "chunk-dc5e8cc04a1b16b1e00f3a4120e004c4",
+      "chunk-4964b2db9e3ddddb4967fb7150e4404d",
+      "chunk-380a8a6e0d08cd28068a146ae5e00ce4",
+      "chunk-fde6653b9d9013ed054505cfe4cd1455",
+      "chunk-6f7ce1c71bd46f223756da44b0d0bb2c",
+      "chunk-54c4fede216a6c4183b95ee1a2edcb17",
+      "chunk-d4e04dd6cd6ea28f04fd72d964574ec1"
+    ],
+    "occurrence": 0.5166666666666667,
+    "sub_communities": []
+  },
+  "5": {
+    "report_string": "# Genetics and Nutrient Interactions in Health and Disease\n\nThis community focuses on complex interactions between genes, nutrient metabolism, and disease states including type 2 diabetes, cardiovascular health, and autoimmune diseases such as T cell transfer colitis. Key entities include the METABOLIC PATHWAY, DISEASE-associated genes like ABCC8, GLUD1, NOS1, HFE, Cdx-2, FTO, and immunological factors related to TCF7L2.\n\n## Gene-Nutrient Relationships in Metabolic Pathways\n\nThe relationship between genes such as ABCC8 and GLUD1 and metabolic pathways like the METABOLIC PATHWAY is central to understanding chronic hypoglycemia in infants (CHI). This pathway also includes other genes like Cdx-2, which may influence disease states like ovarian cancer through their impact on gene regulation and splicing.\n\n## Impact of Genetic Variants on Disease Risk\n\nGenes such as FTO have been linked to obesity risk but showed inconsistent results in university studies, suggesting a complex interplay between socioeconomic factors and genetic predispositions that warrants further investigation into metabolic pathways.\n\n## Role of Nitric Oxide Synthesis in Cardiovascular Health\n\nThe NOS1 gene plays a critical role in nitric oxide synthesis, central to vascular function. This pathway is influenced by both genetic variants and dietary patterns such as heme iron intake, highlighting the importance of environmental factors in maintaining cardiovascular health.\n\n## Dietary Factors Influencing Immune Responses\n\nT cell transfer colitis demonstrates complex interactions between immune system responses and dietary factors. This suggests that not only genetic predispositions but also diet can profoundly influence the body’s inflammatory response, influencing both disease onset and management.\n\n## Impact of Iron Metabolism on Cardiovascular Risk\n\nThe HFE gene variants directly impact iron metabolism, which in turn influences cardiovascular risk factors like hypertension. This underlines the importance of genetic predispositions not just in disease outcome but also in determining susceptibility to various health conditions.\n\n## Influence of Nutrient Intake on Dental Health\n\nThe relationship between nutritional intake and genes related to dental health, as exemplified by the TUFM GENOMIC VARIANTS, highlights how specific nutrient-gene interactions can indirectly influence oral health through their broader impact on metabolic pathways.\n\n## Complexities in Gene-Environment Interactions\n\nThe findings across different entities such as obesity risk (FTO), inflammatory responses (T cell transfer colitis), and gene expression patterns related to immunodominant epitopes underscore the complexity of gene-environment interactions. These interactions are pivotal not just in disease causation but also in understanding potential therapeutic targets.",
+    "report_json": {
+      "title": "Genetics and Nutrient Interactions in Health and Disease",
+      "summary": "This community focuses on complex interactions between genes, nutrient metabolism, and disease states including type 2 diabetes, cardiovascular health, and autoimmune diseases such as T cell transfer colitis. Key entities include the METABOLIC PATHWAY, DISEASE-associated genes like ABCC8, GLUD1, NOS1, HFE, Cdx-2, FTO, and immunological factors related to TCF7L2.",
+      "rating": 6.5,
+      "rating_explanation": "The impact severity rating indicates moderate influence across multiple health domains including metabolic pathways, disease states like type 2 diabetes and cardiovascular diseases, and specific genetic variants influencing nutrient handling.",
+      "findings": [
+        {
+          "summary": "Gene-Nutrient Relationships in Metabolic Pathways",
+          "explanation": "The relationship between genes such as ABCC8 and GLUD1 and metabolic pathways like the METABOLIC PATHWAY is central to understanding chronic hypoglycemia in infants (CHI). This pathway also includes other genes like Cdx-2, which may influence disease states like ovarian cancer through their impact on gene regulation and splicing."
+        },
+        {
+          "summary": "Impact of Genetic Variants on Disease Risk",
+          "explanation": "Genes such as FTO have been linked to obesity risk but showed inconsistent results in university studies, suggesting a complex interplay between socioeconomic factors and genetic predispositions that warrants further investigation into metabolic pathways."
+        },
+        {
+          "summary": "Role of Nitric Oxide Synthesis in Cardiovascular Health",
+          "explanation": "The NOS1 gene plays a critical role in nitric oxide synthesis, central to vascular function. This pathway is influenced by both genetic variants and dietary patterns such as heme iron intake, highlighting the importance of environmental factors in maintaining cardiovascular health."
+        },
+        {
+          "summary": "Dietary Factors Influencing Immune Responses",
+          "explanation": "T cell transfer colitis demonstrates complex interactions between immune system responses and dietary factors. This suggests that not only genetic predispositions but also diet can profoundly influence the body’s inflammatory response, influencing both disease onset and management."
+        },
+        {
+          "summary": "Impact of Iron Metabolism on Cardiovascular Risk",
+          "explanation": "The HFE gene variants directly impact iron metabolism, which in turn influences cardiovascular risk factors like hypertension. This underlines the importance of genetic predispositions not just in disease outcome but also in determining susceptibility to various health conditions."
+        },
+        {
+          "summary": "Influence of Nutrient Intake on Dental Health",
+          "explanation": "The relationship between nutritional intake and genes related to dental health, as exemplified by the TUFM GENOMIC VARIANTS, highlights how specific nutrient-gene interactions can indirectly influence oral health through their broader impact on metabolic pathways."
+        },
+        {
+          "summary": "Complexities in Gene-Environment Interactions",
+          "explanation": "The findings across different entities such as obesity risk (FTO), inflammatory responses (T cell transfer colitis), and gene expression patterns related to immunodominant epitopes underscore the complexity of gene-environment interactions. These interactions are pivotal not just in disease causation but also in understanding potential therapeutic targets."
+        }
+      ]
+    },
+    "level": 0,
+    "title": "Cluster 5",
+    "edges": [
+      [
+        "\"DISEASE\"",
+        "\"T CELL TRANSFER COLITIS\""
+      ],
+      [
+        "\"IRON METABOLISM\"",
+        "\"METABOLIC PATHWAY\""
+      ],
+      [
+        "\"DISEASE\"",
+        "\"OBESITY RISK\""
+      ],
+      [
+        "\"METABOLIC PATHWAY\"",
+        "\"NITRIC OXIDE SYNTHESIS\""
+      ],
+      [
+        "\"DISEASE\"",
+        "\"METABOLIC PATHWAY\""
+      ],
+      [
+        "\"METABOLIC PATHWAY\"",
+        "\"NUTRIENT\""
+      ],
+      [
+        "\"METABOLIC PATHWAY\"",
+        "\"TUFM GENOMIC VARIANTS\""
+      ]
+    ],
+    "nodes": [
+      "\"IRON METABOLISM\"",
+      "\"DISEASE\"",
+      "\"NITRIC OXIDE SYNTHESIS\"",
+      "\"OBESITY RISK\"",
+      "\"T CELL TRANSFER COLITIS\"",
+      "\"METABOLIC PATHWAY\""
+    ],
+    "chunk_ids": [
+      "chunk-8f23bd741f82dc8ca1e2600d790b690f",
+      "chunk-938d8bf2e56584de9dd556be5eb70964",
+      "chunk-cc528af98598e1adb4684c0166430cf4",
+      "chunk-41c7131af28e2a745ef6b88b8601860f",
+      "chunk-84ec948f22126cef7d93b1d7465b79db",
+      "chunk-6a7c69534e11aa2fc4bd948484aa81c4",
+      "chunk-6cb127717713bd0ab5be9436fc0c7568",
+      "chunk-2c395e2fed68f9267c06e9fcee853aae",
+      "chunk-ba82b7eb40cf9eea561d839b20584f91",
+      "chunk-f921f48a406901d82ec2e32af99485bf",
+      "chunk-4b6e8f78911cafc70959cfdfed786c29",
+      "chunk-257a38a8ce6582c434f31b023b4a9704",
+      "chunk-fed46d4ab6d22b3530c4c06a4b7def46",
+      "chunk-f7bf38c7a21b86ad85fa360a21bfb447",
+      "chunk-0d155c005072e55d94179ce7952bf5a9",
+      "chunk-2b81371954b99facae9a0056e70aa7bd",
+      "chunk-2c91cdebb36ef064eb01a7021a961302",
+      "chunk-5b68770e1b446d6cba0d4e1ecabf497b",
+      "chunk-63d0b5be485a69f44e2799ccc9510487",
+      "chunk-dc5e8cc04a1b16b1e00f3a4120e004c4",
+      "chunk-fde6653b9d9013ed054505cfe4cd1455",
+      "chunk-c63d60b991cd7442f690dcc364af47dd",
+      "chunk-8fb20f873daf79a9b7d6e8d25c8889d6",
+      "chunk-54c4fede216a6c4183b95ee1a2edcb17"
+    ],
+    "occurrence": 0.4,
+    "sub_communities": []
+  },
+  "1": {
+    "report_string": "# Warfarin Metabolism and Genetic Variation\n\nThe community focuses on warfarin metabolism, a drug used to prevent blood clots, and its impact on cardiovascular disease risk through genetic variants. Key entities include CYP2C9, GENE, SNPS (SINGLE NUCLEOTIDE POLYMORPHISMS), GENETIC VARIANT, TRANSCRIPT, and GENOMIC VARIANT.\n\n## CYP2C9's role in warfarin metabolism\n\nCYP2C9 is pivotal in the metabolic activation of warfarin, a medication used to prevent blood clot formation. Its function is crucial for understanding drug efficacy and potential side effects.\n\n## SNPS (SINGLE NUCLEOTIDE POLYMORPHISMS) and cardiovascular risk\n\nGenetic variants like rs1799853 and rs1057910 associated with CYP2C9 are linked to changes in warfarin metabolism, influencing dosing requirements and potentially affecting drug efficacy.\n\n## GENETIC VARIANTS AND TRANSCRIPTIONAL REGULATION\n\nThe regulation of genes like CYP2C9 by transcriptional processes is significant for understanding how genetic variations can lead to altered biological outcomes, specifically in drug response.\n\n## GENOMIC VARIANT and its implications for warfarin dosing\n\nThe GENOMIC VARIANT associated with CYP2C9 influences the body's genomic makeup, impacting not only how drugs like warfarin are metabolized but also potentially other physiological processes.",
+    "report_json": {
+      "title": "Warfarin Metabolism and Genetic Variation",
+      "summary": "The community focuses on warfarin metabolism, a drug used to prevent blood clots, and its impact on cardiovascular disease risk through genetic variants. Key entities include CYP2C9, GENE, SNPS (SINGLE NUCLEOTIDE POLYMORPHISMS), GENETIC VARIANT, TRANSCRIPT, and GENOMIC VARIANT.",
+      "rating": 4.5,
+      "rating_explanation": "The impact severity rating is moderate due to the specialized focus on warfarin metabolism and its genetic determinants in cardiovascular disease prevention.",
+      "findings": [
+        {
+          "summary": "CYP2C9's role in warfarin metabolism",
+          "explanation": "CYP2C9 is pivotal in the metabolic activation of warfarin, a medication used to prevent blood clot formation. Its function is crucial for understanding drug efficacy and potential side effects."
+        },
+        {
+          "summary": "SNPS (SINGLE NUCLEOTIDE POLYMORPHISMS) and cardiovascular risk",
+          "explanation": "Genetic variants like rs1799853 and rs1057910 associated with CYP2C9 are linked to changes in warfarin metabolism, influencing dosing requirements and potentially affecting drug efficacy."
+        },
+        {
+          "summary": "GENETIC VARIANTS AND TRANSCRIPTIONAL REGULATION",
+          "explanation": "The regulation of genes like CYP2C9 by transcriptional processes is significant for understanding how genetic variations can lead to altered biological outcomes, specifically in drug response."
+        },
+        {
+          "summary": "GENOMIC VARIANT and its implications for warfarin dosing",
+          "explanation": "The GENOMIC VARIANT associated with CYP2C9 influences the body's genomic makeup, impacting not only how drugs like warfarin are metabolized but also potentially other physiological processes."
+        }
+      ]
+    },
+    "level": 0,
+    "title": "Cluster 1",
+    "edges": [
+      [
+        "\"CYP2C9\"",
+        "\"SNPS (SINGLE NUCLEOTIDE POLYMORPHISMS)\""
+      ],
+      [
+        "\"CYP2C9\"",
+        "\"TRANSCRIPT\""
+      ],
+      [
+        "\"CYP2C9\"",
+        "\"GENOMIC VARIANT\""
+      ]
+    ],
+    "nodes": [
+      "\"CYP2C9\"",
+      "\"SNPS (SINGLE NUCLEOTIDE POLYMORPHISMS)\""
+    ],
+    "chunk_ids": [
+      "chunk-22216738ccbae0a6276bb4499018c434",
+      "chunk-d4e04dd6cd6ea28f04fd72d964574ec1",
+      "chunk-f433e179cd5e32035a0303b9a14da3f1"
+    ],
+    "occurrence": 0.05,
+    "sub_communities": []
+  }
+}
