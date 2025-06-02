@@ -16,17 +16,17 @@ logging.getLogger("nano-graphrag").setLevel(logging.INFO)
 
 
 ######################################################
-
 # Set WORKING_DIR
 # os.chdir(r"/root/projects/nano-graphrag/biomedical")
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 print(os.getcwd())
 
+
 # WORKING_DIR = "./nano_graphrag_cache_groq_biomed_TEST_300halftext_LLAMA4_BioPrompts_biobert"
 # WORKING_DIR = "./nano_graphrag_cache_groq_biomed_TEST_200Results_LLAMA4_BioPrompts_biobert"
 WORKING_DIR = "./cache_groqLLAMA4scout_biobert_bioprompt_20Results_TEST"
 WORKING_DIR = "./cache_groqLLAMA4scout_openaiembed_bioprompt_20Results_TEST"
-WORKING_DIR = "./dummy_cache_groqllama4_openaiemb"  # For testing purposes, use a dummy cache directory
+WORKING_DIR = "./ablation_study/cache_gemma2_dmis-lab_biobert-v1.1"  # For testing purposes, use a dummy cache directory
 
 
 #### Choose the model to use for the RAG #####
@@ -75,7 +75,7 @@ BERT_MODELS = {
 OPENAI_EMBEDDER = "text-embedding-3-small"  
 OLLAMA_EMBEDDING_MODEL = "nomic-embed-text"
 
-EMBEDDER = BERT_MODELS[1]  # <===== Change this to select a different embedding model
+EMBEDDER = BERT_MODELS[0]  # <===== Change this to select a different embedding model
 
 ######################################################
 
@@ -87,6 +87,9 @@ model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
 WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  # For testing purposes, use a dummy cache directory
 
 print(f"Working Directory: {WORKING_DIR}")
+print(f"LLM Model: {os.environ['MODEL']}")
+print(f"Embedding Model: {EMBEDDER}")
+
 ######################################################
 
 
@@ -133,6 +136,10 @@ def query_naive(question):
     )
 
 
+# Get Questions
+import pickle
+questions = pickle.load(open("./question_generation/questions_dataframe_v2.pkl", "rb"))
+
 question = "What are the top themes in this story?"
 question = "What is the function of the protein encoded by the gene CDK2?"
 question = "With what the gene CTLA4 is associated with?"
@@ -141,6 +148,8 @@ question = "What is SOD and what are his main relationships in nutrition?"
 # question = "tell me to what condition are Genetic variants in DLG5 associated"
 question="What gene is associated with rs45500793 and what disease?"
 
+question = questions.Questions[0][0]
+print(f"Question: {question}")
 #%%
 
 ########## RUN THE Queries ##########
