@@ -49,6 +49,7 @@ def insert_doc(doc, path, llm_fun, embed_fun):
 		best_model_func=llm_fun,
 		cheap_model_func=llm_fun,
 		embedding_func=embed_fun,
+        enable_naive_rag = True,
 	)
 	start = time.time()
 	rag.insert(doc)
