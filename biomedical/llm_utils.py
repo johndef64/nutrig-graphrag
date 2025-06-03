@@ -280,7 +280,25 @@ async def ollama_model_if_cache(
     # -----------------------------------------------------
     return result
 
+from groq import Groq
+def base_groq(question, system):
+    GROQ_API_KEY = api_keys["groq"]
+    MODEL = os.environ['MODEL'] 
+    
+    # Test Native LLM response
+    client = Groq(api_key=GROQ_API_KEY)
 
+    response = client.chat.completions.create(
+        model=MODEL,
+        messages=[
+            {"role": "system", "content": system},
+            {"role": "user", "content": question},
+        ],
+        stream=False
+    )
+
+    print(response.choices[0].message.content)
+    return response.choices[0].message.content
 
 ####### Embedders #######
 
@@ -355,7 +373,8 @@ def NutrigGraphRAG(GraphRAG,
     # os.mkdir(".cache_huggingface", exist_ok=True)
     if embedding_model in BERT_MODELS.values():
         EMBED_MODEL = SentenceTransformer(
-            embedding_model, cache_folder= ".cache_huggingface", device="cpu"
+            #embedding_model, cache_folder= ".cache_huggingface", device="cpu"
+            embedding_model, cache_folder= "./TRYYY", device="cpu"
         )
 
         # We're using Sentence Transformers to generate embeddings for the BGE model
@@ -416,3 +435,137 @@ def NutrigGraphRAG(GraphRAG,
         embedding_func=embedder,
         **kwargs
     )
+
+# %%
+
+
+# Create Niave GraphRAG
+
+# HUGGINGFACE SETTING
+BERT_MODELS = {
+    0: "dmis-lab/biobert-v1.1",
+    1: "all-MiniLM-L6-v2",
+    2: "all-mpnet-base-v2"
+}
+BERT_MODEL = BERT_MODELS[2]  # "all-mpnet-base-v2"
+
+
+import json
+from tqdm import tqdm
+def BuildNaiveRAG(working_dir,BERT_MODEL, device= "cpu"):
+        
+    EMBED_MODEL = SentenceTransformer(
+                BERT_MODEL, cache_folder= "./.cache_huggingface", device=device
+            )
+    
+    dataset = os.path.join(working_dir, "kv_store_text_chunks.json")
+    with open(dataset, "r") as f:
+        data = json.load(f)
+    # We're using Sentence Transformers to generate embeddings for the BGE mode
+    
+    for id in tqdm(list(data.keys())):
+        text = data[id]["content"]
+        embedding = EMBED_MODEL.encode(text, normalize_embeddings=True)
+        data[id]["embedding"] = embedding.tolist()  # Convert numpy array to list for JSON serialization
+        
+    naive_vdb = os.path.join(working_dir, "chunkvdb_text_chunks.json")
+
+    with open(naive_vdb, "w") as f:
+        json.dump(data, f, indent=4)
+
+# working_dir = "/root/projects/nano-graphrag/biomedical/ablation_study/cache_gemma2_dmis-lab_biobert-v1.1"
+# BuildNaiveRAG(working_dir, BERT_MODELS[0])
+
+#%%
+
+def LoadVDB(file):
+    """
+    Load a VDB file and return the data.
+    """
+    with open(file, "r") as f:
+        data = json.load(f)
+    return data 
+
+def GetSimilarity(vdb, query, k=20, threshold=0.3, 
+                  BERT_MODEL= BERT_MODELS[0]):
+    """
+    Get the top-k most similar embeddings from the VDB.
+    """
+    
+    EMBED_MODEL = SentenceTransformer(
+        #embedding_model, cache_folder= ".cache_huggingface", device="cpu"
+        BERT_MODEL, cache_folder= "./.cache_huggingface", device="cpu"
+    )
+    query_embedding = EMBED_MODEL.encode(query, normalize_embeddings=True)
+
+    similarities = []
+    for id, item in vdb.items():
+        embedding = np.array(item["embedding"])
+        similarity = np.dot(embedding, query_embedding) / (np.linalg.norm(embedding) * np.linalg.norm(query_embedding))
+        similarities.append((id, similarity))
+
+    # Sort by similarity and get the top-k
+    similarities.sort(key=lambda x: x[1], reverse=True)
+    # Filter by threshold   
+    similarities = [(id, sim) for id, sim in similarities if sim >= threshold][:k]
+    results = []
+    chunk_ids = [chunk[0] for chunk in similarities]
+    for i in chunk_ids:
+        results.append(vdb[i]["content"])
+    return results
+
+# GetSimilarity(LoadVDB(naive_vdb), "What is the role of vitamin D in the body?", k=20)
+
+def QueryNaiveGraphRAG(question,llm_model=GROQ_MODELS[8], 
+                       working_dir=None, k=20, threshold=0.3, 
+                       BERT_MODEL= BERT_MODELS[0]):
+    """
+    Query the naive GraphRAG with a question.
+    """
+    vdb_file = os.path.join(working_dir, "chunkvdb_text_chunks.json")
+    vdb = LoadVDB(vdb_file)
+    results = GetSimilarity(vdb, question, k=k, threshold=threshold, BERT_MODEL=BERT_MODEL)
+
+    # get results as string text from list
+    result_text = "\n\n".join(list(results))
+    
+    if not results:
+        return "No relevant information found."
+    
+    system_prompt = f"""\n\n Answer the question based on the following information:
+    
+    {result_text}
+    """
+
+    os.environ['MODEL'] = llm_model  # Set the model in environment variables
+    print(f"\n\n --Using model: {os.environ['MODEL']}   \n\n")
+
+    if llm_model in GROQ_MODELS.values():
+        USE_LLM = base_groq
+    # elif llm_model in OLLAMA_MODELS.values():
+    #     USE_LLM = base_ollama
+    # elif llm_model in DEEP_MODELS.values(): 
+    #     USE_LLM = deepseepk_model_if_cache
+    else: 
+        raise ValueError(f"Model {llm_model} is not recognized. Please choose a valid model from GROQ_MODELS or OLLAMA_MODELS.")
+
+
+    response = USE_LLM(question, system_prompt)
+
+    print(response)
+    return response
+
+
+# USAGE ~~~~~
+# question = "What gene is associated with rs45500793 and what disease?"
+# DIR = "/root/projects/nano-graphrag/biomedical/ablation_study/cache_gemma2_all-mpnet-base-v2"
+# QueryNaiveGraphRAG(
+#     question,llm_model=GROQ_MODELS[8], 
+#     working_dir=DIR, k=20, threshold=0.1, 
+#     BERT_MODEL= BERT_MODELS[0]
+#     )
+# %%
+
+# GetSimilarity(LoadVDB(naive_vdb), "What is the role of vitamin D in the body?", k=20)
+
+# %%

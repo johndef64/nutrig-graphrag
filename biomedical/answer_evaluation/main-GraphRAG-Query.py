@@ -114,6 +114,25 @@ def query(question):
     print(response)
     return response
 
+
+def query_local(question):
+
+    rag = NutrigGraphRAG(GraphRAG,
+        working_dir=WORKING_DIR,
+        llm_model=os.environ['MODEL'],
+        embedding_model=EMBEDDER,
+        )
+    print(f"Usint {EMBEDDER} embedding model")
+    print(f"Using {os.environ['MODEL']} model for LLM")
+
+    response = rag.query(
+            question, param=QueryParam(mode="local")
+        )
+    print(response)
+    return response
+
+
+
 def query_naive(question):
     # rag = GraphRAG(
     #     working_dir=WORKING_DIR,
@@ -128,14 +147,14 @@ def query_naive(question):
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
-        enable_naive_rag =True,
+        enable_naive_rag = True,
         )
-    print(
-        rag.query(
-            question, param=QueryParam(mode="naive")
-        )
-    )
 
+    response = rag.query(
+            question, param=QueryParam(mode="naive", top_k=100 )
+        )
+    print(response)
+    return response
 
 # Get Questions
 import pickle
@@ -155,77 +174,88 @@ question="What gene is associated with rs45500793 and what disease?"
 
 import pandas as pd
 answer_df = pd.DataFrame(columns=["User","Task", "Question"])
-user = questions.User[0]
-task = questions.Task[0]
-#%%
+n = 0
+
 import time
 time1 = time.time()
-for question in questions.Questions[0]:
-    print(f"Question: {question}")
+for n in range(5):
+    user = questions.User[n]
+    task = questions.Task[n]
+    print(f"User: {user}, Task: {task}")
 
-    ########## RUN THE Queries ##########
-    
-    print("\n\n<<<<<<<<<<<<< GraphRAG Answer >>>>>>>>>>>>>>>")
-    graphrag_response = query(question)
+    for question in questions.Questions[n]:
+        print(f"Question: {question}")
 
-
-    print("<<< ----------------- >>>")
-    
-    # Naive RAG Query
-    print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
-    naive_response = query_naive(question)
-    
-
-    print("<<< ----------------- >>>")
-
-    from groq import Groq
-
-    print("\n\n<<<<<<<<<<<<< No-RAG Answer >>>>>>>>>>>>>>>")
-    GROQ_API_KEY = api_keys["groq"]
-    MODEL = os.environ['MODEL'] 
-    
-    # Test Native LLM response
-    client = Groq(api_key=GROQ_API_KEY)
-
-    norag_response = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant"},
-            {"role": "user", "content": question},
-        ],
-        stream=False
-    )
-    norag_response = norag_response.choices[0].message.content
-    print(norag_response)
-    print("<<< ----------------- >>>")
+        ########## RUN THE Queries ##########
+        
+        print("\n\n<<<<<<<<<<<<< GraphRAG Answer >>>>>>>>>>>>>>>")
+        graphrag_response = query(question)
 
 
-    # Dati da aggiungere
-    new_row = {
-        "User": user,
-        "Task": task,
-        "Question": question,
-        "GraphRAG-Answer": graphrag_response,
-        "Naive-RAG-Answer": naive_response,
-        "No-RAG-Answer": norag_response
-    }
+        print("<<< ----------------- >>>")
+        
+        # Naive RAG Query
+        print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
+        # naive_response = query_naive(question)
+        naive_response = QueryNaiveGraphRAG(
+                        question,llm_model=os.environ["MODEL"], 
+                        working_dir=WORKING_DIR, k=20, threshold=0.2, 
+                        BERT_MODEL= EMBEDDER
+                        )
+        
 
-    # Crea un DataFrame con la nuova riga
-    new_df = pd.DataFrame([new_row])
+        print("<<< ----------------- >>>")
 
-    # Concatena i DataFrame
-    answer_df = pd.concat([answer_df, new_df], ignore_index=True)
+        from groq import Groq
+
+        print("\n\n<<<<<<<<<<<<< No-RAG Answer >>>>>>>>>>>>>>>")
+        GROQ_API_KEY = api_keys["groq"]
+        MODEL = os.environ['MODEL'] 
+        
+        # Test Native LLM response
+        client = Groq(api_key=GROQ_API_KEY)
+
+        norag_response = client.chat.completions.create(
+            model=MODEL,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant"},
+                {"role": "user", "content": question},
+            ],
+            stream=False
+        )
+        norag_response = norag_response.choices[0].message.content
+        print(norag_response)
+        print("<<< ----------------- >>>")
+
+
+        # Dati da aggiungere
+        new_row = {
+            "User": user,
+            "Task": task,
+            "Question": question,
+            "GraphRAG-Answer": graphrag_response,
+            "Naive-RAG-Answer": naive_response,
+            "No-RAG-Answer": norag_response
+        }
+
+        # Crea un DataFrame con la nuova riga
+        new_df = pd.DataFrame([new_row])
+
+        # Concatena i DataFrame
+        answer_df = pd.concat([answer_df, new_df], ignore_index=True)
 
 print(f"Time taken for question: {time.time() - time1:.2f} seconds")
 # %%
 answer_df
 # %%
 
-
 # try naive
 replyes = []
-for i in range(10):
-    for question in questions.Questions[i]:
+for n in range(1):
+    user = questions.User[n]
+    task = questions.Task[n]
+    print(f"User: {user}, Task: {task}")
+    for question in questions.Questions[n]:
         print(f"Question: {question}")
 
         ########## RUN THE Queries ##########
@@ -234,8 +264,14 @@ for i in range(10):
         
         # Naive RAG Query
         print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
-        naive_response = query_naive(question)
+        # naive_response = query_naive(question)
+        naive_response = QueryNaiveGraphRAG(
+                question,llm_model=os.environ["MODEL"], 
+                working_dir=WORKING_DIR, k=20, threshold=0.2, 
+                BERT_MODEL= EMBEDDER
+                )
         replyes.append(naive_response)
 # %%
-replyes
+set(replyes)
     
+# %%

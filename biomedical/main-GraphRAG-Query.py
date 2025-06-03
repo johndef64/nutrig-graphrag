@@ -22,12 +22,6 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 print(os.getcwd())
 
 
-# WORKING_DIR = "./nano_graphrag_cache_groq_biomed_TEST_300halftext_LLAMA4_BioPrompts_biobert"
-# WORKING_DIR = "./nano_graphrag_cache_groq_biomed_TEST_200Results_LLAMA4_BioPrompts_biobert"
-WORKING_DIR = "./cache_groqLLAMA4scout_biobert_bioprompt_20Results_TEST"
-WORKING_DIR = "./cache_groqLLAMA4scout_openaiembed_bioprompt_20Results_TEST"
-WORKING_DIR = "./ablation_study/cache_gemma2_dmis-lab_biobert-v1.1"  # For testing purposes, use a dummy cache directory
-
 
 #### Choose the model to use for the RAG #####
 OLLAMA_MODELS = {
@@ -58,7 +52,7 @@ DEEP_MODELS = {
 }
 
 # Choose a model from the GROQ_MODELS dictionary
-os.environ['MODEL'] =  GROQ_MODELS[0]  # <===== Change this to select a different model
+os.environ['MODEL'] =  GROQ_MODELS[8]  # <===== Change this to select a different model
 # os.environ['MODEL'] =  OLLAMA_MODELS[0] 
 
 print(f"Using model: {os.environ['MODEL']}")
@@ -75,7 +69,7 @@ BERT_MODELS = {
 OPENAI_EMBEDDER = "text-embedding-3-small"  
 OLLAMA_EMBEDDING_MODEL = "nomic-embed-text"
 
-EMBEDDER = BERT_MODELS[0]  # <===== Change this to select a different embedding model
+EMBEDDER = BERT_MODELS[2]  # <===== Change this to select a different embedding model
 
 ######################################################
 
@@ -85,6 +79,8 @@ EMBEDDER = BERT_MODELS[0]  # <===== Change this to select a different embedding 
 project = "nutrig-graphrag"
 model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
 WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  # For testing purposes, use a dummy cache directory
+WORKING_DIR = "./ablation_study/cache_gemma2_dmis-lab_biobert-v1.1"
+# WORKING_DIR = "biomedical/nutrig-graphrag_meta-llama_llama-4-scout-17b-16e-instruct_all-mpnet-base-v2_1"
 
 print(f"Working Directory: {WORKING_DIR}")
 print(f"LLM Model: {os.environ['MODEL']}")
@@ -104,41 +100,91 @@ def query(question):
     #     cheap_model_func=USE_LLM,
     #     embedding_func=local_embedding,
     # )
+    print(f"Usint {EMBEDDER} embedding model")
+    print(f"Using {os.environ['MODEL']} model for LLM")
     rag = NutrigGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
         )
-    print(
-        rag.query(
+    response = rag.query(
             question, param=QueryParam(mode="global")
         )
-    )
+    print(response)
+    return response
 
-def query_naive(question):
-    # rag = GraphRAG(
-    #     working_dir=WORKING_DIR,
-    #     best_model_func=USE_LLM,
-    #     cheap_model_func=USE_LLM,
-    #     enable_naive_rag =True,
-    #     embedding_func=embedder,
-    # )
+
+def query_local(question):
+
     rag = NutrigGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
-        enable_naive_rag =True,
         )
-    print(
-        rag.query(
+    print(f"Usint {EMBEDDER} embedding model")
+    print(f"Using {os.environ['MODEL']} model for LLM")
+
+    response = rag.query(
+            question, param=QueryParam(mode="local")
+        )
+    print(response)
+    return response
+
+
+############
+def query_naive_original(question):
+
+    EMBED_MODEL = SentenceTransformer(
+    EMBEDDER, cache_folder= ".cache_huggingface", device="cpu"
+    )
+
+    # We're using Sentence Transformers to generate embeddings for the BGE model
+    @wrap_embedding_func_with_attrs(
+        embedding_dim=EMBED_MODEL.get_sentence_embedding_dimension(),
+        max_token_size=EMBED_MODEL.max_seq_length,
+    )
+    async def local_embedding(texts: list[str]) -> np.ndarray:
+        return EMBED_MODEL.encode(texts, normalize_embeddings=True)
+
+    rag = GraphRAG(
+        working_dir=WORKING_DIR,
+        best_model_func=groq_model_if_cache,
+        cheap_model_func=groq_model_if_cache,
+        enable_naive_rag =True,
+        embedding_func=local_embedding
+        )
+    print(f"Usint {EMBEDDER} embedding model")
+    print(f"Using {os.environ['MODEL']} model for LLM")
+
+    response = rag.query(
             question, param=QueryParam(mode="naive")
         )
-    )
+    print(response)
+    return response
+############
+
+
+def query_naive(question):
+
+    rag = NutrigGraphRAG(GraphRAG,
+        working_dir=WORKING_DIR,
+        llm_model=os.environ['MODEL'],
+        embedding_model=EMBEDDER,
+        enable_naive_rag = True,
+        )
+    print(f"Usint {EMBEDDER} embedding model")
+    print(f"Using {os.environ['MODEL']} model for LLM")
+
+    response = rag.query(
+            question, param=QueryParam(mode="naive")
+        )
+    print(response)
+    return response
 
 
 # Get Questions
 import pickle
-questions = pickle.load(open("./question_generation/questions_dataframe_v2.pkl", "rb"))
+questions = pickle.load(open("./question_generation/questions_cache_gemma2_all-mpnet-base-v2.pkl", "rb"))
 
 question = "What are the top themes in this story?"
 question = "What is the function of the protein encoded by the gene CDK2?"
@@ -148,8 +194,8 @@ question = "What is SOD and what are his main relationships in nutrition?"
 # question = "tell me to what condition are Genetic variants in DLG5 associated"
 question="What gene is associated with rs45500793 and what disease?"
 
-question = questions.Questions[0][0]
-print(f"Question: {question}")
+question = questions.Questions[2][1]
+# print(f"Question: {question}")
 #%%
 
 ########## RUN THE Queries ##########
