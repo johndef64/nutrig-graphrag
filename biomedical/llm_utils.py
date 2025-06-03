@@ -300,6 +300,24 @@ def base_groq(question, system):
     print(response.choices[0].message.content)
     return response.choices[0].message.content
 
+import ollama
+def base_ollama(question, system):
+    MODEL = os.environ['MODEL'] 
+
+    response = ollama.chat(
+        model=MODEL,
+        messages=[
+            {"role": "system", "content": system},
+            {"role": "user", "content": question}
+        ]
+    )
+
+    # La risposta di Ollama è un dizionario con la chiave 'message'
+    print(response['message']['content'])
+    return response['message']['content']
+
+
+
 ####### Embedders #######
 
 # @wrap_embedding_func_with_attrs(
@@ -447,7 +465,7 @@ BERT_MODELS = {
     1: "all-MiniLM-L6-v2",
     2: "all-mpnet-base-v2"
 }
-BERT_MODEL = BERT_MODELS[2]  # "all-mpnet-base-v2"
+# BERT_MODEL = BERT_MODELS[2]  # "all-mpnet-base-v2"
 
 
 import json
@@ -542,8 +560,8 @@ def QueryNaiveGraphRAG(question,llm_model=GROQ_MODELS[8],
 
     if llm_model in GROQ_MODELS.values():
         USE_LLM = base_groq
-    # elif llm_model in OLLAMA_MODELS.values():
-    #     USE_LLM = base_ollama
+    elif llm_model in OLLAMA_MODELS.values():
+        USE_LLM = base_ollama
     # elif llm_model in DEEP_MODELS.values(): 
     #     USE_LLM = deepseepk_model_if_cache
     else: 
