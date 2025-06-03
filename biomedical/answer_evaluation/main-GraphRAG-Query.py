@@ -69,7 +69,7 @@ BERT_MODELS = {
 OPENAI_EMBEDDER = "text-embedding-3-small"  
 OLLAMA_EMBEDDING_MODEL = "nomic-embed-text"
 
-EMBEDDER = BERT_MODELS[0]  # <===== Change this to select a different embedding model
+EMBEDDER = BERT_MODELS[2]  # <===== Change this to select a different embedding model
 
 ######################################################
 
@@ -80,6 +80,7 @@ project = "nutrig-graphrag"
 model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
 WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  
 WORKING_DIR = "./ablation_study/cache_gemma2_dmis-lab_biobert-v1.1" 
+WORKING_DIR = "/root/projects/nano-graphrag/biomedical/answer_evaluation/cache_gemma2_all-mpnet-base-v2"  # For testing purposes, use a dummy cache directory
 
 
 print(f"Working Directory: {WORKING_DIR}")
@@ -100,16 +101,18 @@ def query(question):
     #     cheap_model_func=USE_LLM,
     #     embedding_func=local_embedding,
     # )
+    print(f"Usint {EMBEDDER} embedding model")
+    print(f"Using {os.environ['MODEL']} model for LLM")
     rag = NutrigGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
         )
-    print(
-        rag.query(
+    response = rag.query(
             question, param=QueryParam(mode="global")
         )
-    )
+    print(response)
+    return response
 
 def query_naive(question):
     # rag = GraphRAG(
@@ -119,6 +122,8 @@ def query_naive(question):
     #     enable_naive_rag =True,
     #     embedding_func=embedder,
     # )
+    print(f"Usint {EMBEDDER} embedding model")
+    print(f"Using {os.environ['MODEL']} model for LLM")
     rag = NutrigGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
@@ -134,7 +139,11 @@ def query_naive(question):
 
 # Get Questions
 import pickle
-questions = pickle.load(open("./question_generation/questions_dataframe_v2.pkl", "rb"))
+root = os.path.dirname(os.path.abspath(__file__))
+questions_file = os.path.join(root, "questions_cache_gemma2_all-mpnet-base-v2.pkl")
+questions = pickle.load(open(questions_file, "rb"))
+
+questions = questions[:10]
 
 question = "What are the top themes in this story?"
 question = "What is the function of the protein encoded by the gene CDK2?"
@@ -144,28 +153,33 @@ question = "What is SOD and what are his main relationships in nutrition?"
 # question = "tell me to what condition are Genetic variants in DLG5 associated"
 question="What gene is associated with rs45500793 and what disease?"
 
-question = questions.Questions[0][1]
-print(f"Question: {question}")
+import pandas as pd
+answer_df = pd.DataFrame(columns=["User","Task", "Question"])
+user = questions.User[0]
+task = questions.Task[0]
 #%%
+import time
+time1 = time.time()
+for question in questions.Questions[0]:
+    print(f"Question: {question}")
 
-########## RUN THE Queries ##########
-print("\n\n<<<<<<<<<<<<< GraphRAG Answer >>>>>>>>>>>>>>>")
-if __name__ == "__main__":
-    query(question)
+    ########## RUN THE Queries ##########
+    
+    print("\n\n<<<<<<<<<<<<< GraphRAG Answer >>>>>>>>>>>>>>>")
+    graphrag_response = query(question)
 
-print("<<< ----------------- >>>")
 
-#%% Naive RAG Query
-print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
-if __name__ == "__main__":
-    query_naive(question)
+    print("<<< ----------------- >>>")
+    
+    # Naive RAG Query
+    print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
+    naive_response = query_naive(question)
+    
 
-print("<<< ----------------- >>>")
+    print("<<< ----------------- >>>")
 
-#%%
-from groq import Groq
+    from groq import Groq
 
-if __name__ == "__main__":
     print("\n\n<<<<<<<<<<<<< No-RAG Answer >>>>>>>>>>>>>>>")
     GROQ_API_KEY = api_keys["groq"]
     MODEL = os.environ['MODEL'] 
@@ -173,7 +187,7 @@ if __name__ == "__main__":
     # Test Native LLM response
     client = Groq(api_key=GROQ_API_KEY)
 
-    response = client.chat.completions.create(
+    norag_response = client.chat.completions.create(
         model=MODEL,
         messages=[
             {"role": "system", "content": "You are a helpful assistant"},
@@ -181,7 +195,47 @@ if __name__ == "__main__":
         ],
         stream=False
     )
-
-    print(response.choices[0].message.content)
+    norag_response = norag_response.choices[0].message.content
+    print(norag_response)
     print("<<< ----------------- >>>")
+
+
+    # Dati da aggiungere
+    new_row = {
+        "User": user,
+        "Task": task,
+        "Question": question,
+        "GraphRAG-Answer": graphrag_response,
+        "Naive-RAG-Answer": naive_response,
+        "No-RAG-Answer": norag_response
+    }
+
+    # Crea un DataFrame con la nuova riga
+    new_df = pd.DataFrame([new_row])
+
+    # Concatena i DataFrame
+    answer_df = pd.concat([answer_df, new_df], ignore_index=True)
+
+print(f"Time taken for question: {time.time() - time1:.2f} seconds")
 # %%
+answer_df
+# %%
+
+
+# try naive
+replyes = []
+for i in range(10):
+    for question in questions.Questions[i]:
+        print(f"Question: {question}")
+
+        ########## RUN THE Queries ##########
+
+        print("<<< ----------------- >>>")
+        
+        # Naive RAG Query
+        print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
+        naive_response = query_naive(question)
+        replyes.append(naive_response)
+# %%
+replyes
+    
