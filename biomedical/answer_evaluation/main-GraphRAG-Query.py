@@ -3,6 +3,7 @@ import os
 import logging
 import ollama
 import numpy as np
+import pandas as pd
 from openai import AsyncOpenAI
 from nano_graphrag import GraphRAG, QueryParam
 from nano_graphrag.base import BaseKVStorage
@@ -52,7 +53,7 @@ DEEP_MODELS = {
 }
 
 # Choose a model from the GROQ_MODELS dictionary
-os.environ['MODEL'] =  GROQ_MODELS[8]  # <===== Change this to select a different model
+os.environ['MODEL'] =  GROQ_MODELS[0]  # <===== Change this to select a different model
 # os.environ['MODEL'] =  OLLAMA_MODELS[0] 
 
 print(f"Using model: {os.environ['MODEL']}")
@@ -81,7 +82,7 @@ model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
 WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  
 WORKING_DIR = "./ablation_study/cache_gemma2_dmis-lab_biobert-v1.1" 
 WORKING_DIR = "/root/projects/nano-graphrag/biomedical/answer_evaluation/cache_gemma2_all-mpnet-base-v2"  # For testing purposes, use a dummy cache directory
-
+WORKING_DIR = "/root/projects/nano-graphrag/biomedical/nutrig-graphrag_gemma2_all-mpnet-base-v2"
 
 print(f"Working Directory: {WORKING_DIR}")
 print(f"LLM Model: {os.environ['MODEL']}")
@@ -94,7 +95,13 @@ def remove_if_exist(file):
     if os.path.exists(file):
         os.remove(file)
 
-def query(question):
+def query_global(question, **kwargs):
+    """
+    Default parameters for global query:
+    global_min_community_rating: float = 0
+    global_max_consider_community: float = 512
+    global_max_token_for_community_report: int = 16384
+    """
     # rag = GraphRAG(
     #     working_dir=WORKING_DIR,
     #     best_model_func=USE_LLM,
@@ -109,7 +116,9 @@ def query(question):
         embedding_model=EMBEDDER,
         )
     response = rag.query(
-            question, param=QueryParam(mode="global")
+            question, param=QueryParam(mode="global", 
+                                       **kwargs
+                                       )
         )
     print(response)
     return response
@@ -133,7 +142,12 @@ def query_local(question):
 
 
 
-def query_naive(question):
+def query_naive(question, **kwargs):
+    """
+    top_k: int = 20
+    # naive search
+    naive_max_token_for_text_unit = 12000
+    """
     # rag = GraphRAG(
     #     working_dir=WORKING_DIR,
     #     best_model_func=USE_LLM,
@@ -151,92 +165,150 @@ def query_naive(question):
         )
 
     response = rag.query(
-            question, param=QueryParam(mode="naive", top_k=100 )
+            question, param=QueryParam(mode="naive", **kwargs)
         )
     print(response)
     return response
 
 # Get Questions
 import pickle
-root = os.path.dirname(os.path.abspath(__file__))
-questions_file = os.path.join(root, "questions_cache_gemma2_all-mpnet-base-v2.pkl")
+os.chdir("/root/projects/nano-graphrag/biomedical/")
+# root = os.path.dirname(os.path.abspath(__file__))
+root = "question_generation"
+# questions_filename = "questions_cache_gemma2_all-mpnet-base-v2.pkl"
+questions_filename = "questions_dataframe_v3.pkl"
+
+
+questions_file = os.path.join(root, questions_filename)
 questions = pickle.load(open(questions_file, "rb"))
+questions.columns = ['Category', 'User', 'Task', 'Questions']
 
-questions = questions[:10]
-
-question = "What are the top themes in this story?"
-question = "What is the function of the protein encoded by the gene CDK2?"
-question = "With what the gene CTLA4 is associated with?"
 question = "Tell me hypertension-associated Mutations and genes"
 question = "What is SOD and what are his main relationships in nutrition?"
 # question = "tell me to what condition are Genetic variants in DLG5 associated"
 question="What gene is associated with rs45500793 and what disease?"
+# questions = questions[:10]
 
-import pandas as pd
+questions
+print( f"Number of questions: {len(questions)*5}")
 answer_df = pd.DataFrame(columns=["User","Task", "Question"])
-n = 0
 
+questions
+
+#%%
+GROQ_MODELS = {
+    0: "gemma2-9b-it",
+    1: "llama-3.3-70b-versatile",
+    2: "llama-3.1-8b-instant",
+    3: "llama-guard-3-8b",
+    4: "llama3-70b-8192",
+    5: "llama3-8b-8192",
+    6: "deepseek-r1-distill-llama-70b",
+    7: "meta-llama/llama-4-maverick-17b-128e-instruct",
+    8: "meta-llama/llama-4-scout-17b-16e-instruct",
+    9: "mistral-saba-24b",
+    10: "qwen-qwq-32b"
+}
+os.environ['MODEL'] = GROQ_MODELS[1] 
+# MOdel context window
+# gemma2-9b-it 8,192
+# llama-3.3-70b-versatile 32,768
+# llama-3.1-8b-instant 8,192
+
+
+import re
 import time
+from groq import Groq
+no_rag = False  # Set to True if you want to test the No-RAG query
+
 time1 = time.time()
-for n in range(5):
+counter = 0
+# Loop through each question and run the queries
+for n in tqdm(range(len(questions))):
+
+        
     user = questions.User[n]
     task = questions.Task[n]
     print(f"User: {user}, Task: {task}")
 
     for question in questions.Questions[n]:
+        counter += 1
+        if counter % 2 == 0:
+            print("Sleeping for 10 seconds to avoid rate limiting...")
+            time.sleep(10)
+
+        # usa una regex per estrarre la domanda
+        question = re.split(r'Q\d+\. ', question, 1)[1]
+
         print(f"Question: {question}")
 
         ########## RUN THE Queries ##########
         
         print("\n\n<<<<<<<<<<<<< GraphRAG Answer >>>>>>>>>>>>>>>")
-        graphrag_response = query(question)
+        try:
+            graphrag_response = query_global(question,
+                                            global_max_consider_community = 512,
+                                            global_min_community_rating  =0,
+                                            global_max_token_for_community_report = 16384)
+            print("<<< ----------------- >>>")
+            
+            # Naive RAG Query
+            print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
+            naive_response = query_naive(question,  
+                                        top_k=10, 
+                                        naive_max_token_for_text_unit = 12000) # threshold=0.2
+            # naive_response = QueryNaiveGraphRAG(
+            #                 question,llm_model=os.environ["MODEL"], 
+            #                 working_dir=WORKING_DIR, k=10, threshold=0.6, 
+            #                 BERT_MODEL= EMBEDDER
+            #                 )
+            print("<<< ----------------- >>>")
 
 
-        print("<<< ----------------- >>>")
-        
-        # Naive RAG Query
-        print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
-        # naive_response = query_naive(question)
-        naive_response = QueryNaiveGraphRAG(
-                        question,llm_model=os.environ["MODEL"], 
-                        working_dir=WORKING_DIR, k=20, threshold=0.2, 
-                        BERT_MODEL= EMBEDDER
-                        )
-        
+            print("\n\n<<<<<<<<<<<<< No-RAG Answer >>>>>>>>>>>>>>>")
+            if no_rag:
+                GROQ_API_KEY = api_keys["groq"]
+                MODEL = os.environ['MODEL'] 
+                
+                # Test Native LLM response
+                client = Groq(api_key=GROQ_API_KEY)
 
-        print("<<< ----------------- >>>")
+                norag_response = client.chat.completions.create(
+                    model=MODEL,
+                    messages=[
+                        {"role": "system", "content": "You are a helpful assistant"},
+                        {"role": "user", "content": question},
+                    ],
+                    stream=False
+                )
+                norag_response = norag_response.choices[0].message.content
+            else:
+                norag_response = None
 
-        from groq import Groq
-
-        print("\n\n<<<<<<<<<<<<< No-RAG Answer >>>>>>>>>>>>>>>")
-        GROQ_API_KEY = api_keys["groq"]
-        MODEL = os.environ['MODEL'] 
-        
-        # Test Native LLM response
-        client = Groq(api_key=GROQ_API_KEY)
-
-        norag_response = client.chat.completions.create(
-            model=MODEL,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant"},
-                {"role": "user", "content": question},
-            ],
-            stream=False
-        )
-        norag_response = norag_response.choices[0].message.content
-        print(norag_response)
-        print("<<< ----------------- >>>")
+            print("<<< ----------------- >>>")
 
 
-        # Dati da aggiungere
-        new_row = {
-            "User": user,
-            "Task": task,
-            "Question": question,
-            "GraphRAG-Answer": graphrag_response,
-            "Naive-RAG-Answer": naive_response,
-            "No-RAG-Answer": norag_response
-        }
+            # Dati da aggiungere
+            new_row = {
+                "User": user,
+                "Task": task,
+                "Question": question,
+                "GraphRAG-Answer": graphrag_response,
+                "Naive-RAG-Answer": naive_response,
+                "No-RAG-Answer": norag_response
+            }
+
+        except Exception as e:
+            print(f"Error processing question: {question}")
+            print(f"Error: {e}")
+            new_row = {
+                "User": user,
+                "Task": task,
+                "Question": question,
+                "GraphRAG-Answer": None,
+                "Naive-RAG-Answer": None,
+                "No-RAG-Answer": None
+            }
 
         # Crea un DataFrame con la nuova riga
         new_df = pd.DataFrame([new_row])
@@ -244,10 +316,30 @@ for n in range(5):
         # Concatena i DataFrame
         answer_df = pd.concat([answer_df, new_df], ignore_index=True)
 
+        time.sleep(1)  # Sleep to avoid rate limiting
+
 print(f"Time taken for question: {time.time() - time1:.2f} seconds")
 # %%
+
+# Save Answer df
+# answer_df.to_csv(f"answers_V2_nutrig-graphrag_gemma2_all-mpnet-base-v2.csv")
 answer_df
+
 # %%
+GROQ_MODELS = {
+    0: "gemma2-9b-it",
+    1: "llama-3.3-70b-versatile",
+    2: "llama-3.1-8b-instant",
+    3: "llama-guard-3-8b",
+    4: "llama3-70b-8192",
+    5: "llama3-8b-8192",
+    6: "deepseek-r1-distill-llama-70b",
+    7: "meta-llama/llama-4-maverick-17b-128e-instruct",
+    8: "meta-llama/llama-4-scout-17b-16e-instruct",
+    9: "mistral-saba-24b",
+    10: "qwen-qwq-32b"
+}
+os.environ['MODEL'] = GROQ_MODELS[4] 
 
 # try naive
 replyes = []
@@ -255,7 +347,7 @@ for n in range(1):
     user = questions.User[n]
     task = questions.Task[n]
     print(f"User: {user}, Task: {task}")
-    for question in questions.Questions[n]:
+    for question in questions.Questions[n][:1]:
         print(f"Question: {question}")
 
         ########## RUN THE Queries ##########
@@ -264,12 +356,15 @@ for n in range(1):
         
         # Naive RAG Query
         print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
-        # naive_response = query_naive(question)
-        naive_response = QueryNaiveGraphRAG(
-                question,llm_model=os.environ["MODEL"], 
-                working_dir=WORKING_DIR, k=20, threshold=0.2, 
-                BERT_MODEL= EMBEDDER
-                )
+        print(f"Using {EMBEDDER} embedding model")
+        print(f"Using {os.environ['MODEL']} model for LLM")
+        naive_response = query_naive(question, 
+                                     top_k=8)
+        # naive_response = QueryNaiveGraphRAG(
+        #         question,llm_model=os.environ["MODEL"], 
+        #         working_dir=WORKING_DIR, k=10, threshold=0.6, 
+        #         BERT_MODEL= EMBEDDER
+        #         )
         replyes.append(naive_response)
 # %%
 set(replyes)
