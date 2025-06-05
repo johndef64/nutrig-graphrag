@@ -248,7 +248,8 @@ for n in tqdm(range(len(questions))):
     in_df = question in answer_df.Question.to_list()
     try:
         #is_answered = answer_df[answer_df["Question"] == question]["GraphRAG-Answer"].values[0] != None
-        is_answered = answer_df["GraphRAG-Answer"][n] != None
+        #is_answered = answer_df["GraphRAG-Answer"][n] != None
+        is_answered = not pd.isna(answer_df["GraphRAG-Answer"][n])
     except KeyError:
         is_answered = True
 
@@ -256,7 +257,7 @@ for n in tqdm(range(len(questions))):
     if not is_answered:
         counter += 1
         if counter % 1 == 0 and counter > 1:
-            sec = 10
+            sec = 12
             print(f"Sleeping for {sec} seconds to avoid rate limiting...")
             time.sleep(sec)
 
@@ -267,8 +268,9 @@ for n in tqdm(range(len(questions))):
 
         ########## RUN THE Queries ##########
         
-        print("\n\n<<<<<<<<<<<<< GraphRAG Answer >>>>>>>>>>>>>>>")
+        
         try:
+            print("\n\n<<<<<<<<<<<<< GraphRAG Answer >>>>>>>>>>>>>>>")
             graphrag_response = query_global(question,
                                             global_max_consider_community = 512,
                                             global_min_community_rating  =0,
@@ -294,9 +296,9 @@ for n in tqdm(range(len(questions))):
             print(f"Error in NaiveRAG query: {e}")
             graphrag_response = None
 
-
-        print("\n\n<<<<<<<<<<<<< No-RAG Answer >>>>>>>>>>>>>>>")
+        
         if no_rag:
+            print("\n\n<<<<<<<<<<<<< No-RAG Answer >>>>>>>>>>>>>>>")
             GROQ_API_KEY = api_keys["groq"]
             MODEL = os.environ['MODEL'] 
             
@@ -337,6 +339,7 @@ for n in tqdm(range(len(questions))):
         # new_df = pd.DataFrame([new_row])
         # answer_df = pd.concat([answer_df, new_df], ignore_index=True)
         answer_df.to_pickle(answer_filename)
+
         #time.sleep(1)  # Sleep to avoid rate limiting
     else:
 
@@ -398,3 +401,34 @@ for n in range(1):
 set(replyes)
     
 # %%
+
+
+
+import re
+import time
+from groq import Groq
+no_rag = False  # Set to True if you want to test the No-RAG query
+
+time1 = time.time()
+counter = 0
+# Loop through each question and run the queries
+for n in tqdm(range(len(questions))):
+
+    user = questions.UserID[n]
+    task = questions.Task[n]
+    question = questions.Questions[n]
+
+    answer_df = pd.read_pickle(answer_filename)
+    in_df = question in answer_df.Question.to_list()
+    try:
+        is_answered = not pd.isna(answer_df["GraphRAG-Answer"][n])
+    except KeyError:
+        is_answered = True
+
+    # if not in_df or not is_answered:
+    if not is_answered:
+        print(f"Question {n}: not answered yet, running queries...")
+
+# %%
+# answer_df["GraphRAG-Answer"][42] != nan
+# pd.isna(answer_df["GraphRAG-Answer"][42])
