@@ -80,8 +80,8 @@ EMBEDDER = BERT_MODELS[2]  # <===== Change this to select a different embedding 
 project = "nutrig-graphrag"
 model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
 WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  
-WORKING_DIR = "./ablation_study/cache_gemma2_dmis-lab_biobert-v1.1" 
-WORKING_DIR = "/root/projects/nano-graphrag/biomedical/answer_evaluation/cache_gemma2_all-mpnet-base-v2"  # For testing purposes, use a dummy cache directory
+# WORKING_DIR = "./ablation_study/cache_gemma2_dmis-lab_biobert-v1.1" 
+# WORKING_DIR = "/root/projects/nano-graphrag/biomedical/answer_evaluation/cache_gemma2_all-mpnet-base-v2"  # For testing purposes, use a dummy cache directory
 WORKING_DIR = "/root/projects/nano-graphrag/biomedical/nutrig-graphrag_gemma2_all-mpnet-base-v2"
 
 print(f"Working Directory: {WORKING_DIR}")
