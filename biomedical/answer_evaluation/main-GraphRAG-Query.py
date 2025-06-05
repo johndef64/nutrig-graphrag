@@ -176,12 +176,13 @@ os.chdir("/root/projects/nano-graphrag/biomedical/")
 # root = os.path.dirname(os.path.abspath(__file__))
 root = "question_generation"
 # questions_filename = "questions_cache_gemma2_all-mpnet-base-v2.pkl"
-questions_filename = "questions_dataframe_v3.pkl"
+questions_filename = "question_dataframe_v4.pkl"
 
 
 questions_file = os.path.join(root, questions_filename)
 questions = pickle.load(open(questions_file, "rb"))
-questions.columns = ['Category', 'User', 'Task', 'Questions']
+#questions.columns = ['Category', 'User', 'Task', 'Questions']
+questions.columns = ['Category', 'User', 'Task', 'Questions','UserID']
 
 question = "Tell me hypertension-associated Mutations and genes"
 question = "What is SOD and what are his main relationships in nutrition?"
@@ -191,10 +192,19 @@ question="What gene is associated with rs45500793 and what disease?"
 
 questions
 print( f"Number of questions: {len(questions)*5}")
-answer_df = pd.DataFrame(columns=["User","Task", "Question"])
+answer_df = pd.DataFrame(columns=["User","Task", "Question","GraphRAG-Answer","Naive-RAG-Answer","No-RAG-Answer"])
+# add n 
+answer_df["User"] = questions.UserID
+answer_filename = "answer_evaluation/answers_V4_nutrig-graphrag_gemma2_all-mpnet-base-v2_V3.pkl"
+if os.path.exists(answer_filename):
+    answer_df = pd.read_pickle(answer_filename)
+else:
+    answer_df.to_pickle(answer_filename)
 
-questions
+answer_df.Question.to_list()
 
+questions#.columns
+answer_df
 #%%
 GROQ_MODELS = {
     0: "gemma2-9b-it",
@@ -226,19 +236,32 @@ counter = 0
 # Loop through each question and run the queries
 for n in tqdm(range(len(questions))):
 
-        
-    user = questions.User[n]
+    user = questions.UserID[n]
     task = questions.Task[n]
     print(f"User: {user}, Task: {task}")
 
-    for question in questions.Questions[n]:
+    question = questions.Questions[n]
+
+    #for question in questions.Questions[n]:
+
+    answer_df = pd.read_pickle(answer_filename)
+    in_df = question in answer_df.Question.to_list()
+    try:
+        #is_answered = answer_df[answer_df["Question"] == question]["GraphRAG-Answer"].values[0] != None
+        is_answered = answer_df["GraphRAG-Answer"][n] != None
+    except KeyError:
+        is_answered = True
+
+    # if not in_df or not is_answered:
+    if not is_answered:
         counter += 1
-        if counter % 2 == 0:
-            print("Sleeping for 10 seconds to avoid rate limiting...")
-            time.sleep(10)
+        if counter % 1 == 0 and counter > 1:
+            sec = 10
+            print(f"Sleeping for {sec} seconds to avoid rate limiting...")
+            time.sleep(sec)
 
         # usa una regex per estrarre la domanda
-        question = re.split(r'Q\d+\. ', question, 1)[1]
+        # question = re.split(r'Q\d+\. ', question, 1)[1]
 
         print(f"Question: {question}")
 
@@ -251,7 +274,11 @@ for n in tqdm(range(len(questions))):
                                             global_min_community_rating  =0,
                                             global_max_token_for_community_report = 16384)
             print("<<< ----------------- >>>")
-            
+        except Exception as e:
+            print(f"Error in GraphRAG query: {e}")
+            graphrag_response = None
+        
+        try:
             # Naive RAG Query
             print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
             naive_response = query_naive(question,  
@@ -263,68 +290,69 @@ for n in tqdm(range(len(questions))):
             #                 BERT_MODEL= EMBEDDER
             #                 )
             print("<<< ----------------- >>>")
-
-
-            print("\n\n<<<<<<<<<<<<< No-RAG Answer >>>>>>>>>>>>>>>")
-            if no_rag:
-                GROQ_API_KEY = api_keys["groq"]
-                MODEL = os.environ['MODEL'] 
-                
-                # Test Native LLM response
-                client = Groq(api_key=GROQ_API_KEY)
-
-                norag_response = client.chat.completions.create(
-                    model=MODEL,
-                    messages=[
-                        {"role": "system", "content": "You are a helpful assistant"},
-                        {"role": "user", "content": question},
-                    ],
-                    stream=False
-                )
-                norag_response = norag_response.choices[0].message.content
-            else:
-                norag_response = None
-
-            print("<<< ----------------- >>>")
-
-
-            # Dati da aggiungere
-            new_row = {
-                "User": user,
-                "Task": task,
-                "Question": question,
-                "GraphRAG-Answer": graphrag_response,
-                "Naive-RAG-Answer": naive_response,
-                "No-RAG-Answer": norag_response
-            }
-
         except Exception as e:
-            print(f"Error processing question: {question}")
-            print(f"Error: {e}")
-            new_row = {
-                "User": user,
-                "Task": task,
-                "Question": question,
-                "GraphRAG-Answer": None,
-                "Naive-RAG-Answer": None,
-                "No-RAG-Answer": None
-            }
+            print(f"Error in NaiveRAG query: {e}")
+            graphrag_response = None
 
-        # Crea un DataFrame con la nuova riga
-        new_df = pd.DataFrame([new_row])
 
-        # Concatena i DataFrame
-        answer_df = pd.concat([answer_df, new_df], ignore_index=True)
+        print("\n\n<<<<<<<<<<<<< No-RAG Answer >>>>>>>>>>>>>>>")
+        if no_rag:
+            GROQ_API_KEY = api_keys["groq"]
+            MODEL = os.environ['MODEL'] 
+            
+            # Test Native LLM response
+            client = Groq(api_key=GROQ_API_KEY)
 
-        time.sleep(1)  # Sleep to avoid rate limiting
+            norag_response = client.chat.completions.create(
+                model=MODEL,
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant"},
+                    {"role": "user", "content": question},
+                ],
+                stream=False
+            )
+            norag_response = norag_response.choices[0].message.content
+        else:
+            norag_response = None
+
+        print("<<< ----------------- >>>")
+
+        # answer_df["User"][n] = user
+        answer_df["Task"][n] = task
+        answer_df["Question"][n] = question
+        answer_df["GraphRAG-Answer"][n] = graphrag_response
+        answer_df["Naive-RAG-Answer"][n] = naive_response
+        answer_df["No-RAG-Answer"][n] = norag_response
+
+        # # Dati da aggiungere
+        # new_row = {
+        #     "User": user,
+        #     "Task": task,
+        #     "Question": question,
+        #     "GraphRAG-Answer": graphrag_response,
+        #     "Naive-RAG-Answer": naive_response,
+        #     "No-RAG-Answer": norag_response
+        # }
+
+        # new_df = pd.DataFrame([new_row])
+        # answer_df = pd.concat([answer_df, new_df], ignore_index=True)
+        answer_df.to_pickle(answer_filename)
+        #time.sleep(1)  # Sleep to avoid rate limiting
+    else:
+
+        print(f"Question already answered: {question}")
+        continue    
 
 print(f"Time taken for question: {time.time() - time1:.2f} seconds")
 # %%
 
 # Save Answer df
-# answer_df.to_csv(f"answers_V2_nutrig-graphrag_gemma2_all-mpnet-base-v2.csv")
+answer_df.to_csv(f"answer_evaluation/answers_V2_nutrig-graphrag_gemma2_all-mpnet-base-v2_PARTIAL.csv")
 answer_df
+# tempo: 15 domande in 6 minuti con time sleep 10 ongni 2 ed una skippata 
 
+# %%
+2
 # %%
 GROQ_MODELS = {
     0: "gemma2-9b-it",
