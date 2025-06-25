@@ -60,14 +60,14 @@ def get_dataset():
 	df = pd.read_csv("datasets/working_dataset_1000.csv")
 
 	# Filter Dataset
-	df = df[~((df['INTRO'].isna() & df['METHODS'].isna() & df['RESULTS'].isna() & df['DISCUSS'].isna()))]
-	df = df[~((df['RESULTS'].isna() & df['DISCUSS'].isna()))].reset_index(drop=True)
+	#df = df[~((df['INTRO'].isna() & df['METHODS'].isna() & df['RESULTS'].isna() & df['DISCUSS'].isna()))]
+	#df = df[~((df['RESULTS'].isna() & df['DISCUSS'].isna()))].reset_index(drop=True)
 	df = df[~(df['RESULTS'].isna())].reset_index(drop=True)
 	df.fillna("", inplace=True)
 
-	df.text = df["RESULTS"] + "\n\n\n\n" + df["DISCUSS"]
-	df.text = df["RESULTS"]
-	df.text = df.text.str.replace("<SEP>","\n\n")
+	#df.text = df["RESULTS"] + "\n\n\n\n" + df["DISCUSS"]
+	df["text"] = df["RESULTS"]
+	df["text"] = df.text.str.replace("<SEP>","\n\n")
 	return df
 
 if __name__ == "__main__":
@@ -113,9 +113,9 @@ if __name__ == "__main__":
 		ollama_client = connect_ollama_server(ip, port)
 		llm_fun = get_ollama_model_server_fun(ollama_client)
 
-
 	if embedder == "dmis-lab/biobert-v1.1":
-		login("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")
+        HF_TOKEN = os.environ['HF_TOKEN']
+		login(HF_TOKEN)
 
 	embed_model = SentenceTransformer(
 		embedder, cache_folder=working_dir, device="cpu"
@@ -136,7 +136,7 @@ if __name__ == "__main__":
 
 	for i in range(len(df)):
 		try:
-			if len(df.text[i]) > 10:
+			if len(df["text"][i]) > 10:
 				logger.info(f"Processing document {i+1}/{len(df)} (length: {len(df.text[i])} chars)")
 				insert_doc(df.text[i], working_dir, llm_fun, embed_fun)
 				processed_count += 1
