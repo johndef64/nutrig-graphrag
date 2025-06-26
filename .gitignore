@@ -191,6 +191,10 @@ novels/
 biomedical/datasets/abstract*
 biomedical/datasets/RAG*
 biomedical/datasets/depreca*
+biomedical/answer_evaluation/cache_gemma2_all-mpnet-base-v2
+
+# RAQ for 1000
+biomedical/nutrig-graphrag_gemma2_all-mpnet-base-v2_1000
 
 MANIFEST.in
 .gitattributes

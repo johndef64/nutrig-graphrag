@@ -81,9 +81,8 @@ EMBEDDER = BERT_MODELS[2]  # <===== Change this to select a different embedding 
 project = "nutrig-graphrag"
 model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
 WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  
-# WORKING_DIR = "./ablation_study/cache_gemma2_dmis-lab_biobert-v1.1" 
-# WORKING_DIR = "/root/projects/nano-graphrag/biomedical/answer_evaluation/cache_gemma2_all-mpnet-base-v2"  # For testing purposes, use a dummy cache directory
-WORKING_DIR = "/root/projects/nano-graphrag/biomedical/nutrig-graphrag_gemma2_all-mpnet-base-v2"
+
+WORKING_DIR = "nutrig-graphrag_gemma2_all-mpnet-base-v2_200"
 
 print(f"Working Directory: {WORKING_DIR}")
 print(f"LLM Model: {os.environ['MODEL']}")
@@ -353,7 +352,7 @@ print(f"Time taken for question: {time.time() - time1:.2f} seconds")
 # Save Answer df
 answer_df.to_csv(f"answer_evaluation/answers_V2_nutrig-graphrag_gemma2_all-mpnet-base-v2_PARTIAL.csv")
 answer_df
-# tempo: 15 domande in 6 minuti con time sleep 10 ongni 2 ed una skippata 
+# time: 15 questions in 6 minutes with time sleep 10 every 2 and one skipped
 
 # %%
 2
