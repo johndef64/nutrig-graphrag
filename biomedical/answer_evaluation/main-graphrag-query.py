@@ -76,6 +76,7 @@ EMBEDDER = BERT_MODELS[2]  # <===== Change this to select a different embedding 
 
 #%%
 
+
 # Set working Directory
 project = "nutrig-graphrag"
 model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
