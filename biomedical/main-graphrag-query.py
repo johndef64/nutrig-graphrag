@@ -220,7 +220,7 @@ GROQ_MODELS = {
     10: "qwen-qwq-32b"
 }
 os.environ['MODEL'] = GROQ_MODELS[1] 
-# MOdel context window
+# Model context window
 # gemma2-9b-it 8,192
 # llama-3.3-70b-versatile 32,768
 # llama-3.1-8b-instant 8,192
@@ -354,8 +354,6 @@ answer_df.to_csv(f"answer_evaluation/answers_V2_nutrig-graphrag_gemma2_all-mpnet
 answer_df
 # time: 15 questions in 6 minutes with time sleep 10 every 2 and one skipped
 
-# %%
-2
 # %%
 GROQ_MODELS = {
     0: "gemma2-9b-it",
