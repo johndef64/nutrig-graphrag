@@ -1,3 +1,4 @@
+#%%
 import os
 import time
 import logging
@@ -55,19 +56,19 @@ def insert_doc(doc, path, llm_fun, embed_fun):
 	rag.insert(doc)
 	print("indexing time:", time.time() - start)
 
-def get_dataset():
+def get_dataset(dataset_name):
 	# df = pd.read_csv("datasets/fulltext_dataset.zip")
-	df = pd.read_csv("datasets/working_dataset_1000.csv")
+	df = pd.read_csv(f"datasets/{dataset_name}")
 
 	# Filter Dataset
-	#df = df[~((df['INTRO'].isna() & df['METHODS'].isna() & df['RESULTS'].isna() & df['DISCUSS'].isna()))]
-	#df = df[~((df['RESULTS'].isna() & df['DISCUSS'].isna()))].reset_index(drop=True)
+	df = df[~((df['INTRO'].isna() & df['METHODS'].isna() & df['RESULTS'].isna() & df['DISCUSS'].isna()))]
+	df = df[~((df['RESULTS'].isna() & df['DISCUSS'].isna()))].reset_index(drop=True)
 	df = df[~(df['RESULTS'].isna())].reset_index(drop=True)
 	df.fillna("", inplace=True)
 
-	#df.text = df["RESULTS"] + "\n\n\n\n" + df["DISCUSS"]
-	df["text"] = df["RESULTS"]
-	df["text"] = df.text.str.replace("<SEP>","\n\n")
+	df.text = df["RESULTS"] + "\n\n\n\n" + df["DISCUSS"]
+	df.text = df["RESULTS"]
+	df.text = df.text.str.replace("<SEP>","\n\n")
 	return df
 
 if __name__ == "__main__":
@@ -78,6 +79,7 @@ if __name__ == "__main__":
 	parser.add_argument("--llm", type=str, default="deepseek-v2" , choices=["deepseek-v2","gemma2", "gemma2:27b", "qwen2:7b", "llama3.1:8b", "qwen2.5:14b"], help="")
 	parser.add_argument("--ip", type=str, default=None, help="IP address for the LLM server")
 	parser.add_argument("--port", type=int, default=None, help="Port for the LLM server")
+	parser.add_argument("--dataset", type=str, default="working_dataset_200.csv", help="Dataset file name")
 
 	args = parser.parse_args()
 	# start_id = args.start_id
@@ -86,6 +88,7 @@ if __name__ == "__main__":
 	llm = args.llm
 	ip = args.ip
 	port = args.port
+	DATASET = args.dataset
 
 	working_dir = f"graphrag_{llm}_{embedder}"
 	working_dir = working_dir.replace(":", "_").replace("/", "_")
@@ -113,9 +116,9 @@ if __name__ == "__main__":
 		ollama_client = connect_ollama_server(ip, port)
 		llm_fun = get_ollama_model_server_fun(ollama_client)
 
+
 	if embedder == "dmis-lab/biobert-v1.1":
-        HF_TOKEN = os.environ['HF_TOKEN']
-		login(HF_TOKEN)
+		login("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")
 
 	embed_model = SentenceTransformer(
 		embedder, cache_folder=working_dir, device="cpu"
@@ -128,7 +131,7 @@ if __name__ == "__main__":
 	async def embed_fun(texts: list[str]) -> np.ndarray:
 		return embed_model.encode(texts, normalize_embeddings=True)
 	
-	df = get_dataset()
+	df = get_dataset(DATASET)
 	logger.info("Starting document processing...")
 	processed_count = 0
 	skipped_count = 0
@@ -136,7 +139,7 @@ if __name__ == "__main__":
 
 	for i in range(len(df)):
 		try:
-			if len(df["text"][i]) > 10:
+			if len(df.text[i]) > 10:
 				logger.info(f"Processing document {i+1}/{len(df)} (length: {len(df.text[i])} chars)")
 				insert_doc(df.text[i], working_dir, llm_fun, embed_fun)
 				processed_count += 1
