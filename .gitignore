@@ -182,8 +182,10 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 
+consigli_pietro*
 
 paper/
+biomedical/dev/
 biomedical/datasets/chunks.zip
 biomedical/datasets/fulltext_dataset.zip
 examples/

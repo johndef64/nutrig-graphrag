@@ -1,4 +1,4 @@
-future>=1.0.0
+# Core dependencies
 openai
 tiktoken
 networkx
@@ -10,8 +10,28 @@ tenacity
 dspy-ai
 neo4j
 aioboto3
-groq
+nest_asyncio
+
+# Data manipulation and analysis
+numpy
+pandas
+
+# Machine Learning and NLP
 sentence-transformers
-nest-asyncio
-asyncio
+huggingface_hub
+pydantic
+
+# Progress bars and utilities
+tqdm
+
+# Third-party APIs
+groq
 ollama
+
+# Visualization and plotting
+matplotlib
+scipy
+
+# Optional vector databases (uncomment if needed)
+# faiss-cpu
+# pymilvus
