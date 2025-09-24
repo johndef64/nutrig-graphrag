@@ -392,8 +392,8 @@ def NutrigGraphRAG(GraphRAG,
     # os.mkdir(".cache_huggingface", exist_ok=True)
     if embedding_model in BERT_MODELS.values():
         EMBED_MODEL = SentenceTransformer(
-            #embedding_model, cache_folder= ".cache_huggingface", device="cpu"
-            embedding_model, cache_folder= "./TRYYY", device="cpu"
+            embedding_model, cache_folder= ".cache_huggingface", device="cpu"
+            #embedding_model, cache_folder= "./TRYYY", device="cpu"
         )
 
         # We're using Sentence Transformers to generate embeddings for the BGE model
