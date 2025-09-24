@@ -6,7 +6,7 @@ import argparse
 import numpy as np
 import pandas as pd
 from huggingface_hub import login
-from nano_graphrag import GraphRAG
+from nano_graphrag.graphrag_bio import GraphRAG
 from sentence_transformers import SentenceTransformer
 from nano_graphrag._utils import wrap_embedding_func_with_attrs
 

@@ -22,7 +22,8 @@ GROQ_MODELS = {
     7: "meta-llama/llama-4-maverick-17b-128e-instruct",
     8: "meta-llama/llama-4-scout-17b-16e-instruct",
     9: "mistral-saba-24b",
-    10: "qwen-qwq-32b"
+    10: "qwen-qwq-32b",
+    11: "openai/gpt-oss-20b"
 }
 
 # DEEPSEEK SETTING

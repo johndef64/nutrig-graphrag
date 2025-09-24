@@ -5,7 +5,7 @@ import ollama
 import numpy as np
 import pandas as pd
 from openai import AsyncOpenAI
-from nano_graphrag import GraphRAG, QueryParam
+from nano_graphrag.graphrag_bio import GraphRAG, QueryParam
 from nano_graphrag.base import BaseKVStorage
 from nano_graphrag._utils import compute_args_hash, wrap_embedding_func_with_attrs
 from sentence_transformers import SentenceTransformer

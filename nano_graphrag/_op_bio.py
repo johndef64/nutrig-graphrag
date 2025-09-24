@@ -26,7 +26,7 @@ from .base import (
     TextChunkSchema,
     QueryParam,
 )
-from .prompt import GRAPH_FIELD_SEP, PROMPTS
+from .prompt_bio import GRAPH_FIELD_SEP, PROMPTS
 
 
 
