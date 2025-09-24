@@ -68,7 +68,7 @@ pip install -e .
 4. **Build your graph RAG:**
 
 ```python
-from nutrig_graphrag.nano_graphrag import GraphRAG, QueryParam
+from nutrig_graphrag.nano_graphrag.graphrag_bio import GraphRAG, QueryParam
 from nutrig_graphrag.biomedical.llm_utils import NutrigGraphRAG
 
 # Initialize
