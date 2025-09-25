@@ -96,7 +96,7 @@ def insert(TEXT, ):
     #    cheap_model_func=USE_LLM,
     #    embedding_func=embedder,
     # )
-    rag = NutrigGraphRAG(GraphRAG,
+    rag = GeneralGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
@@ -135,15 +135,15 @@ project = "nutrig-graphrag"
 model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
 WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  # For testing purposes, use a dummy cache directory
 WORKING_DIR = f"./NAIVERAG"  
-WORKING_DIR = f"./Carrol_5"  
+WORKING_DIR = f"./Carrol_10"  
 print(f"Working Directory: {WORKING_DIR}")
 
 
 #%%
 
 ########## RUN THE JOB ##########
-start_id = 0
-batch_size = 4
+start_id = 2
+batch_size = 6
 
 
 t1 = time.time() 
@@ -154,7 +154,7 @@ if __name__ == "__main__":
     #insert("""  """)
     
     for i in range(start_id, start_id+batch_size):
-        if len(DOCS[i]) > 10: 
+        if len(DOCS[i]) > 20: 
             # print(f"""Inserting text of len {len(df.text[i])}""")
             insert(DOCS[i])
             print(f"""\n\n<<<<<<<<<  {i+1}/{batch_size+start_id}  >>>>>>>>>\n\n """)

@@ -9,7 +9,7 @@ from nano_graphrag.base import BaseKVStorage
 from nano_graphrag._utils import compute_args_hash, wrap_embedding_func_with_attrs
 from sentence_transformers import SentenceTransformer
 
-from biomedical.llm_utils import *
+from llm_utils import *
 
 logging.basicConfig(level=logging.WARNING)
 logging.getLogger("nano-graphrag").setLevel(logging.INFO)
@@ -102,7 +102,7 @@ def query(question):
     # )
     print(f"Usint {EMBEDDER} embedding model")
     print(f"Using {os.environ['MODEL']} model for LLM")
-    rag = NutrigGraphRAG(GraphRAG,
+    rag = GeneralGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
@@ -116,7 +116,7 @@ def query(question):
 
 def query_local(question):
 
-    rag = NutrigGraphRAG(GraphRAG,
+    rag = GeneralGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
@@ -166,7 +166,7 @@ def query_naive_original(question):
 
 def query_naive(question):
 
-    rag = NutrigGraphRAG(GraphRAG,
+    rag = GeneralGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,

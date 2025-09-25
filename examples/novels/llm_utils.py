@@ -406,7 +406,7 @@ def base_ollama(question, system):
 
 # Initialize
 
-def NutrigGraphRAG(GraphRAG,
+def GeneralGraphRAG(GraphRAG,
     working_dir="./workspace",
     llm_model="gemma2-9b-it",
     embedding_model="all-MiniLM-L6-v2",
