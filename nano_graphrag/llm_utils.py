@@ -75,30 +75,30 @@ PORT = 11434
 
 
 def load_json_from_lib(file_path):
-    """Carica un file JSON dal percorso specificato."""
+    '''Load a JSON file from the specified path.'''
     with open(file_path, 'r') as file:
         return json.load(file)
 
 def load_api_keys():
     """
-    Carica le API keys dal file api_keys.json nel pacchetto nano_graphrag.
-    Cerca prima nella directory corrente, poi nella directory del pacchetto.
+    Load API keys from the api_keys.json file in the nano_graphrag package.
+    First, it searches in the current directory, then in the package directory.
     """
-    # Prima prova nella directory corrente (working directory)
+    # First, try in the current directory (working directory)
     cwd_path = os.path.join(os.getcwd(), 'api_keys.json')
     if os.path.exists(cwd_path):
         print(f"API keys loaded from current directory: {cwd_path}")
         return load_json_from_lib(cwd_path)
-    
-    # Poi prova nella directory del pacchetto nano_graphrag
+
+    # Then, try in the nano_graphrag package directory
     package_dir = os.path.dirname(os.path.abspath(__file__))
     package_path = os.path.join(package_dir, 'api_keys.json')
     
     if os.path.exists(package_path):
         print(f"API keys loaded from package directory: {package_path}")
         return load_json_from_lib(package_path)
-    
-    # Se non trova il file in nessuna delle due posizioni
+
+    # If the file is not found in either location
     print(f"""
     API keys file not found in:
     - Current directory: {cwd_path}
