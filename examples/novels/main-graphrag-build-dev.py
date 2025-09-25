@@ -76,20 +76,6 @@ EMBEDDER = BERT_MODELS[2]  # <===== Change this to select a different embedding 
 ######################################################
 
 
-
-# Set working Directory
-project = "nutrig-graphrag"
-model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
-WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  # For testing purposes, use a dummy cache directory
-WORKING_DIR = f"./NAIVERAG"  
-WORKING_DIR = f"./Carrol_4"  
-print(f"Working Directory: {WORKING_DIR}")
-
-
-
-#%%
-
-
 def remove_if_exist(file):
     if os.path.exists(file):
         os.remove(file)
@@ -140,6 +126,17 @@ with open(book) as f:
 # df.text = df["RESULTS"]
 # df.text = df.text.str.replace("<SEP>","\n\n")
 # df.to_csv("datasets/halftext_dataset5000.csv", index=False)
+
+
+######################################################
+
+# Set working Directory
+project = "nutrig-graphrag"
+model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
+WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  # For testing purposes, use a dummy cache directory
+WORKING_DIR = f"./NAIVERAG"  
+WORKING_DIR = f"./Carrol_5"  
+print(f"Working Directory: {WORKING_DIR}")
 
 
 #%%
