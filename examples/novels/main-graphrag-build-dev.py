@@ -171,7 +171,7 @@ if __name__ == "__main__":
 print(f"\033[94mBatch runtime: [{round(time.time() - t1, 2)}s]\033[0m")
 
 
-from graphml_visualize import CreateGraphVisualization
+from nano_graphrag.graphml_visualize import CreateGraphVisualization
 
 CreateGraphVisualization(WORKING_DIR.split("/")[-1])
 
