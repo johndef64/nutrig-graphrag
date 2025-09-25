@@ -10,8 +10,8 @@ from nano_graphrag.graphrag_bio import GraphRAG
 from sentence_transformers import SentenceTransformer
 from nano_graphrag._utils import wrap_embedding_func_with_attrs
 
-from biomedical.utils import *
-from biomedical.graphml_visualize import CreateGraphVisualization
+from nano_graphrag.ollama_utils import *
+from nano_graphrag.graphml_visualize import CreateGraphVisualization
 
 # logging.basicConfig(level=logging.WARNING)
 # logging.getLogger("nano-graphrag").setLevel(logging.INFO)

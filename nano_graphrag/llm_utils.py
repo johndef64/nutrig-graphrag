@@ -22,8 +22,7 @@ GROQ_MODELS = {
     7: "meta-llama/llama-4-maverick-17b-128e-instruct",
     8: "meta-llama/llama-4-scout-17b-16e-instruct",
     9: "mistral-saba-24b",
-    10: "qwen-qwq-32b",
-    11: "openai/gpt-oss-20b"
+    10: "qwen-qwq-32b"
 }
 
 # DEEPSEEK SETTING
@@ -180,6 +179,11 @@ async def deepseepk_model_if_cache(
     # -----------------------------------------------------
     return response.choices[0].message.content
 
+def get_groq_model_fun_wrap(llm_model):
+    async def wrapper(prompt, system_prompt=None, history_messages=[], **kwargs):
+        return await groq_model_if_cache(prompt, system_prompt, history_messages, model=llm_model, **kwargs)
+
+    return wrapper
 
 
 async def groq_model_if_cache(
@@ -204,7 +208,11 @@ async def groq_model_if_cache(
     # -----------------------------------------------------
 
     response = await openai_async_client.chat.completions.create(
-        model=os.environ['MODEL'], messages=messages, **kwargs
+        model=os.environ['MODEL'], 
+        messages=messages, 
+        # temperature=0.1,
+        seed=42,
+        **kwargs
     )
 
     # Cache the response if having-------------------
@@ -215,6 +223,39 @@ async def groq_model_if_cache(
     # -----------------------------------------------------
     return response.choices[0].message.content
 
+def get_groq_model_fun(llm_model):
+    async def groq_model_if_cache(
+        prompt, system_prompt=None, history_messages=[], **kwargs
+    ) -> str:
+        openai_async_client = AsyncOpenAI(
+            api_key=GROQ_API_KEY, base_url="https://api.groq.com/openai/v1"
+        )
+        messages = []
+        if system_prompt:
+            messages.append({"role": "system", "content": system_prompt})
+
+        # Get the cached response if having-------------------
+        hashing_kv: BaseKVStorage = kwargs.pop("hashing_kv", None)
+        messages.extend(history_messages)
+        messages.append({"role": "user", "content": prompt})
+        if hashing_kv is not None:
+            args_hash = compute_args_hash(os.environ['MODEL'], messages)
+            if_cache_return = await hashing_kv.get_by_id(args_hash)
+            if if_cache_return is not None:
+                return if_cache_return["return"]
+        # -----------------------------------------------------
+
+        response = await openai_async_client.chat.completions.create(
+            model=os.environ['MODEL'], messages=messages, **kwargs
+        )
+
+        # Cache the response if having-------------------
+        if hashing_kv is not None:
+            await hashing_kv.upsert(
+                {args_hash: {"return": response.choices[0].message.content, "model": os.environ['MODEL']}}
+            )
+        # -----------------------------------------------------
+        return response.choices[0].message.content
 
 
 async def ollama_model_server_if_cache(
@@ -240,7 +281,10 @@ async def ollama_model_server_if_cache(
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
-    response = await ollama_client.chat(model=os.environ['MODEL'], messages=messages, **kwargs)
+    response = await ollama_client.chat(model=os.environ['MODEL'], messages=messages, 
+                                        # temperature=0.1,
+                                        seed=42,
+                                        **kwargs)
 
     result = response["message"]["content"]
     # Cache the response if having-------------------
@@ -369,7 +413,9 @@ def base_ollama(question, system):
 
 # Initialize
 
-def NutrigGraphRAG(GraphRAG,
+
+
+def GeneralGraphRAG(GraphRAG,
     working_dir="./workspace",
     llm_model="gemma2-9b-it",
     embedding_model="all-MiniLM-L6-v2",
@@ -393,7 +439,7 @@ def NutrigGraphRAG(GraphRAG,
     if embedding_model in BERT_MODELS.values():
         EMBED_MODEL = SentenceTransformer(
             embedding_model, cache_folder= ".cache_huggingface", device="cpu"
-            #embedding_model, cache_folder= "./TRYYY", device="cpu"
+            # embedding_model, cache_folder= "./TRYYY", device="cpu"
         )
 
         # We're using Sentence Transformers to generate embeddings for the BGE model
@@ -454,6 +500,9 @@ def NutrigGraphRAG(GraphRAG,
         embedding_func=embedder,
         **kwargs
     )
+
+
+NutrigGraphRAG = GeneralGraphRAG
 
 # %%
 

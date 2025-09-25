@@ -10,7 +10,7 @@ from nano_graphrag.base import BaseKVStorage
 from nano_graphrag._utils import compute_args_hash, wrap_embedding_func_with_attrs
 from sentence_transformers import SentenceTransformer
 
-from biomedical.llm_utils import *
+from nano_graphrag.llm_utils import *
 
 logging.basicConfig(level=logging.WARNING)
 logging.getLogger("nano-graphrag").setLevel(logging.INFO)

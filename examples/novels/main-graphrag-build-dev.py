@@ -100,7 +100,8 @@ def insert(TEXT, ):
         working_dir=WORKING_DIR,
         llm_model=os.environ['MODEL'],
         embedding_model=EMBEDDER,
-        enable_naive_rag = False,
+        enable_naive_rag = False,  # No embedder
+        enable_local = None   # No embedder
         )
     start = time()
     rag.insert(TEXT)
@@ -135,7 +136,7 @@ project = "nutrig-graphrag"
 model_name = os.environ['MODEL'].replace("/", "_").replace(":", "_")
 WORKING_DIR = f"./{project}_{model_name}_{EMBEDDER}_1"  # For testing purposes, use a dummy cache directory
 WORKING_DIR = f"./NAIVERAG"  
-WORKING_DIR = f"./Carrol_10"  
+WORKING_DIR = f"./Carrol_E"  
 print(f"Working Directory: {WORKING_DIR}")
 
 
@@ -143,7 +144,7 @@ print(f"Working Directory: {WORKING_DIR}")
 
 ########## RUN THE JOB ##########
 start_id = 2
-batch_size = 6
+batch_size = 4
 
 
 t1 = time.time() 

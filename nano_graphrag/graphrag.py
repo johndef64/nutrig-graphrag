@@ -251,6 +251,7 @@ class GraphRAG:
                 param,
                 asdict(self),
             )
+            
         elif param.mode == "naive":
             response = await naive_query(
                 query,
