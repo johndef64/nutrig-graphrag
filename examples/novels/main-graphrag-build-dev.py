@@ -146,7 +146,7 @@ with open(book) as f:
 
 ########## RUN THE JOB ##########
 start_id = 0
-batch_size = 8
+batch_size = 4
 
 
 t1 = time.time() 
