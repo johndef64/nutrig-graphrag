@@ -74,42 +74,45 @@ PORT = 11434
 ###########################################
 
 
-def load_json_from_lib(nome_file, local = False):
-    # Usa __file__ per ottenere il percorso della directory del file corrente
-    if not local:
-        file_path = os.path.join(os.path.dirname(__file__), nome_file)
-    else:
-        file_path = nome_file
+def load_json_from_lib(file_path):
+    """Carica un file JSON dal percorso specificato."""
     with open(file_path, 'r') as file:
         return json.load(file)
 
 def load_api_keys():
-    root = os.path.dirname(os.path.abspath(__file__))
-    # if not api_keys.json in cwd, save it in pkg dir
-    print(os.path.join(root, "api_keys.json"))
-
-    if not os.path.exists(os.path.join(root, "api_keys.json")):
-        file_path = os.path.join(os.path.dirname(__file__), "api_keys.json")
-        if os.path.exists(file_path):
-            # load api keys from pkg
-            api_keys = load_json_from_lib("api_keys.json")
-        else:
-            """
-            Please, provide API keys to the system running function:
-            in the file "api_keys.json"
-            
-            """
-            api_keys = {
-                "openai":   "miss",
-                "deepseek": "miss",
-                "groq":   "miss",
-                "huggingface": "miss",
-            }
-    else:
-        # if api_keys.json in cwd, take them from here
-        api_keys = load_json_from_lib("api_keys.json", local=True)
-
-    return api_keys
+    """
+    Carica le API keys dal file api_keys.json nel pacchetto nano_graphrag.
+    Cerca prima nella directory corrente, poi nella directory del pacchetto.
+    """
+    # Prima prova nella directory corrente (working directory)
+    cwd_path = os.path.join(os.getcwd(), 'api_keys.json')
+    if os.path.exists(cwd_path):
+        print(f"API keys loaded from current directory: {cwd_path}")
+        return load_json_from_lib(cwd_path)
+    
+    # Poi prova nella directory del pacchetto nano_graphrag
+    package_dir = os.path.dirname(os.path.abspath(__file__))
+    package_path = os.path.join(package_dir, 'api_keys.json')
+    
+    if os.path.exists(package_path):
+        print(f"API keys loaded from package directory: {package_path}")
+        return load_json_from_lib(package_path)
+    
+    # Se non trova il file in nessuna delle due posizioni
+    print(f"""
+    API keys file not found in:
+    - Current directory: {cwd_path}
+    - Package directory: {package_path}
+    
+    Please provide API keys in the file "api_keys.json"
+    """)
+    
+    return {
+        "openai": "miss",
+        "deepseek": "miss",
+        "groq": "miss",
+        "huggingface": "miss",
+    }
 
 
 api_keys = load_api_keys()
