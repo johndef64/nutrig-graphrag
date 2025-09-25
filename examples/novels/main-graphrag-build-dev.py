@@ -11,7 +11,7 @@ from nano_graphrag.base import BaseKVStorage
 from nano_graphrag._utils import compute_args_hash, wrap_embedding_func_with_attrs
 from sentence_transformers import SentenceTransformer
 
-from biomedical.llm_utils import *
+from llm_utils import *
 
 logging.basicConfig(level=logging.WARNING)
 logging.getLogger("nano-graphrag").setLevel(logging.INFO)
@@ -173,7 +173,7 @@ if __name__ == "__main__":
 print(f"\033[94mBatch runtime: [{round(time.time() - t1, 2)}s]\033[0m")
 
 
-from biomedical.graphml_visualize import CreateGraphVisualization
+from graphml_visualize import CreateGraphVisualization
 
 CreateGraphVisualization(WORKING_DIR.split("/")[-1])
 
