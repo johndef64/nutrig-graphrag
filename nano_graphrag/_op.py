@@ -936,6 +936,8 @@ async def local_query(
         query,
         system_prompt=sys_prompt,
     )
+
+    logger.info(f"{'='*40} \nFinal Context: {sys_prompt}  \n{'='*20} end context {'='*20}")
     return response
 
 
@@ -1009,9 +1011,9 @@ global_min_community_rating
 async def global_query(
     query,
     knowledge_graph_inst: BaseGraphStorage,
-    entities_vdb: BaseVectorStorage,
+    entities_vdb: None, #BaseVectorStorage,
     community_reports: BaseKVStorage[CommunitySchema],
-    text_chunks_db: BaseKVStorage[TextChunkSchema],
+    text_chunks_db: None, #BaseKVStorage[TextChunkSchema],
     query_param: QueryParam,
     global_config: dict,
 ) -> str:
@@ -1051,7 +1053,7 @@ async def global_query(
     # with open(f"community_data_{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}.json", "w") as f:
     #     json.dump(community_datas, f, indent=4)
 
-    logger.info(f"Revtrieved {len(community_datas)} communities")
+    logger.info(f"Retrieved {len(community_datas)} communities")
     
     ### Map communities to points with query
     map_communities_points = await _map_global_communities(
@@ -1098,6 +1100,13 @@ Importance Score: {dp['score']}
             report_data=points_context, response_type=query_param.response_type
         ),
     )
+    CONTEXT = sys_prompt_temp.format(
+            report_data=points_context, response_type=query_param.response_type
+    )
+    logger.info(f"\n{'='*40} \nQuery: {query} \n{'='*40}")
+    logger.info(f"Points used: {len(final_support_points)}")
+    # logger.info(f"\n{'='*40} \nPoints context: {points_context} \n{'='*40}")
+    logger.info(f"\n{'='*40} \nFinal Context: {CONTEXT} \n{'='*20} end context {'='*20}")
     return response
 
 
