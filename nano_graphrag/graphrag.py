@@ -222,7 +222,9 @@ class GraphRAG:
         loop = always_get_an_event_loop()
         return loop.run_until_complete(self.ainsert(string_or_strings))
 
-    def query(self, query: str, param: QueryParam = QueryParam()):
+    def query(self, 
+              query: str, 
+              param: QueryParam = QueryParam()):
         loop = always_get_an_event_loop()
         return loop.run_until_complete(self.aquery(query, param))
 

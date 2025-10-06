@@ -13,6 +13,8 @@ class QueryParam:
     response_type: str = "Multiple Paragraphs"
     level: int = 2
     top_k: int = 20
+    # prints
+    print_context: bool = False
     # naive search
     naive_max_token_for_text_unit = 12000
     # local search

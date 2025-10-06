@@ -937,7 +937,8 @@ async def local_query(
         system_prompt=sys_prompt,
     )
 
-    # logger.info(f"{'='*40} \nFinal Context: {sys_prompt}  \n{'='*20} end context {'='*20}")
+    if query_param.print_context:
+        logger.info(f"{'='*40} \nFinal Context: {sys_prompt}  \n{'='*20} end context {'='*20}")
     return response
 
 
@@ -1103,10 +1104,11 @@ Importance Score: {dp['score']}
     CONTEXT = sys_prompt_temp.format(
             report_data=points_context, response_type=query_param.response_type
     )
-    # logger.info(f"\n{'='*40} \nQuery: {query} \n{'='*40}")
-    # logger.info(f"Points used: {len(final_support_points)}")
-    # # logger.info(f"\n{'='*40} \nPoints context: {points_context} \n{'='*40}")
-    # logger.info(f"\n{'='*40} \nFinal Context: {CONTEXT} \n{'='*20} end context {'='*20}")
+    if query_param.print_context:
+        logger.info(f"\n{'='*40} \nQuery: {query} \n{'='*40}")
+        logger.info(f"Points used: {len(final_support_points)}")
+        # logger.info(f"\n{'='*40} \nPoints context: {points_context} \n{'='*40}")
+        logger.info(f"\n{'='*40} \nFinal Context: {CONTEXT} \n{'='*20} end context {'='*20}")
     return response
 
 
@@ -1141,4 +1143,6 @@ async def naive_query(
         query,
         system_prompt=sys_prompt,
     )
+    if query_param.print_context:
+        logger.info(f"{'='*40} \nFinal Context: {sys_prompt}  \n{'='*20} end context {'='*20}")
     return response

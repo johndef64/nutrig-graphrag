@@ -94,7 +94,7 @@ def remove_if_exist(file):
     if os.path.exists(file):
         os.remove(file)
 
-def query_global(question):
+def query_global(question, print_context=False):
     # rag = GraphRAG(
     #     working_dir=WORKING_DIR,
     #     best_model_func=USE_LLM,
@@ -110,13 +110,13 @@ def query_global(question):
     # print(f"UsinG {EMBEDDER} embedding model")
     print(f"Using {os.environ['MODEL']} model for LLM")
     response = rag.query(
-            question, param=QueryParam(mode="global")
+            question, param=QueryParam(mode="global", print_context=print_context),
         )
     print(response)
     return response
 
 
-def query_local(question):
+def query_local(question, print_context=False):
 
     rag = NutrigGraphRAG(GraphRAG,
         working_dir=WORKING_DIR,
@@ -128,7 +128,7 @@ def query_local(question):
     print(f"Using {os.environ['MODEL']} model for LLM")
 
     response = rag.query(
-            question, param=QueryParam(mode="local")
+            question, param=QueryParam(mode="local", print_context=print_context)
         )
     print(response)
     return response
@@ -160,7 +160,7 @@ def query_naive_original(question):
     print(f"Using {os.environ['MODEL']} model for LLM")
 
     response = rag.query(
-            question, param=QueryParam(mode="naive")
+            question, param=QueryParam(mode="naive", print_context=print_context)
         )
     print(response)
     return response
@@ -197,14 +197,14 @@ question = "What is SOD and what are his main relationships in nutrition?"
 # question = "tell me to what condition are Genetic variants in DLG5 associated"
 question="What gene is associated with rs45500793 and what disease?"
 
-question = questions["Cleaned Question"][3]
-print(f"Question: {question}")
+question = questions["Cleaned Question"][3] + "Explicitly indicates associated SNPs using the correct rsIDs."
+print(f"Question: {question}. ")
 #%%
 
 ########## RUN THE Queries ##########
 print("\n\n<<<<<<<<<<<<< GraphRAG Global Answer >>>>>>>>>>>>>>>")
 if __name__ == "__main__":
-    query_global(question)
+    query_global(question, True)
 
 print("<<< ----------------- >>>")
 
@@ -212,7 +212,8 @@ print("<<< ----------------- >>>")
 
 print("\n\n<<<<<<<<<<<<< GraphRAG Local Answer >>>>>>>>>>>>>>>")
 if __name__ == "__main__":
-    query_local(question)
+    query_local(question, True)
+
 
 print("<<< ----------------- >>>")
 
@@ -220,7 +221,7 @@ print("<<< ----------------- >>>")
 
 print("\n\n<<<<<<<<<<<<< Naive-RAG Answer >>>>>>>>>>>>>>>")
 if __name__ == "__main__":
-    query_naive(question)
+    query_naive(question, True)
 
 print("<<< ----------------- >>>")
 
