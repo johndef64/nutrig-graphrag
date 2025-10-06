@@ -1,7 +1,7 @@
 #%%
 from litellm import dataclass
-from nutrig_graphrag.nano_graphrag import GraphRAG, QueryParam
-from nutrig_graphrag.biomedical.llm_utils import NutrigGraphRAG
+from nano_graphrag import GraphRAG, QueryParam
+from nano_graphrag.llm_utils import NutrigGraphRAG
 
 # Initialize
 ngrag = NutrigGraphRAG(GraphRAG,
@@ -21,24 +21,3 @@ print(ngrag.query(
     param=QueryParam(mode="global")
 ))
 # %%
-
-from typing import Literal
-from dataclasses import dataclass
-
-@dataclass
-class MyParam:
-    mode: Literal["local", "global", "naive"] = "global"
-    print_context: bool = False
-
-def test(param: MyParam):
-    if param.print_context:
-        print(f"Mode is {param.mode} and print_context is {param.print_context}")
-    else:
-        print(f"Mode is {param.mode} and print_context is False")
-
-param = MyParam(mode="local", print_context=True)
-print(param)    
-
-test(param)
-# %%
-
