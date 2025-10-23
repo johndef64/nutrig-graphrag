@@ -284,9 +284,10 @@ async def ollama_model_server_if_cache(
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
-    response = await ollama_client.chat(model=os.environ['MODEL'], messages=messages, 
+    response = await ollama_client.chat(model=os.environ['MODEL'],
+                                        messages=messages, 
                                         # temperature=0.1,
-                                        seed=42,
+                                        seed=42, # for reproducibility (FIX)
                                         **kwargs)
 
     result = response["message"]["content"]
@@ -319,7 +320,11 @@ async def ollama_model_if_cache(
         if if_cache_return is not None:
             return if_cache_return["return"]
     # -----------------------------------------------------
-    response = await ollama_client.chat(model=os.environ['MODEL'], messages=messages, **kwargs)
+    response = await ollama_client.chat(model=os.environ['MODEL']
+                                        messages=messages, 
+                                        # temperature=0.1,
+                                        seed=42,  # for reproducibility (FIX)
+                                        **kwargs)
 
     result = response["message"]["content"]
     # Cache the response if having-------------------

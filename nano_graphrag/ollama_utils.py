@@ -33,7 +33,11 @@ def get_ollama_model_server_fun(ollama_client, llm_model):
             if if_cache_return is not None:
                 return if_cache_return["return"]
 
-        response = await ollama_client.chat(model=llm_model, messages=messages, **kwargs)
+        response = await ollama_client.chat(model=llm_model, 
+                                            messages=messages, 
+                                            # temperature=0.1,
+                                            seed=42,  # for reproducibility (FIX)
+                                            **kwargs)
         result = response["message"]["content"]
 
         if hashing_kv is not None:
@@ -63,7 +67,11 @@ def get_ollama_model_fun(ll_model):
             if_cache_return = await hashing_kv.get_by_id(args_hash)
             if if_cache_return is not None:
                 return if_cache_return["return"]
-        response = await ollama_client.chat(model=ll_model, messages=messages, **kwargs)
+        response = await ollama_client.chat(model=ll_model, 
+                                            messages=messages, 
+                                            # temperature=0.1,
+                                            seed=42,  # for reproducibility (FIX)
+                                            **kwargs)
 
         result = response["message"]["content"]
         if hashing_kv is not None:
